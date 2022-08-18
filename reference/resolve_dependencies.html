@@ -108,14 +108,7 @@ The resulting file paths which will be in the maven local cache are checked on t
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">resolve_dependencies</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  groupId <span class="op">=</span> <span class="st">"io.github.terminological"</span>,</span></span>
-<span class="r-in"><span>  artifactId <span class="op">=</span> <span class="st">"r6-generator-runtime"</span>,</span></span>
-<span class="r-in"><span>  version<span class="op">=</span><span class="st">"main-SNAPSHOT"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> executing: /home/runner/.cache/rmaven/mvnw org.apache.maven.plugins:maven-dependency-plugin:3.3.0:get -Dartifact=io.github.terminological:r6-generator-runtime:main-SNAPSHOT</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in .extract_pom(coordinates, artifact = artifact):</span> no pom found at: /home/runner/.m2/repository/io/github/terminological/r6-generator-runtime/main-SNAPSHOT/r6-generator-runtime-main-SNAPSHOT.pom</span>
-<span class="r-in"><span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">resolve_dependencies</span><span class="op">(</span>groupId <span class="op">=</span> <span class="st">"commons-io"</span>, artifactId <span class="op">=</span> <span class="st">"commons-io"</span>, version<span class="op">=</span><span class="st">"2.11.0"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> executing: /home/runner/.cache/rmaven/mvnw dependency:build-classpath -Dmdep.outputFile=classpath.txt -DincludeScope=runtime</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/home/runner/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar"</span>
