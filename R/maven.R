@@ -559,7 +559,7 @@ copy_artifact = function(
 #' @examples
 #' resolve_dependencies(
 #'   groupId = "io.github.terminological",
-#'   artifactId = "r6-generator-docs",
+#'   artifactId = "r6-generator-runtime",
 #'   version="main-SNAPSHOT"
 #' )
 #'
