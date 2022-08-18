@@ -46,7 +46,7 @@ The resulting file paths which will be in the maven local cache are checked on t
 \examples{
 resolve_dependencies(
   groupId = "io.github.terminological",
-  artifactId = "r6-generator-docs",
+  artifactId = "r6-generator-runtime",
   version="main-SNAPSHOT"
 )
 
