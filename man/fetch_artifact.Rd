@@ -19,7 +19,7 @@ fetch_artifact(
 
 \item{coordinates}{optional, but if not supplied groupId and artifactId must be, coordinates as a coordinates object (see as.coordinates())}
 
-\item{artifact}{optional, coordinates as an artifact string groupId:artifactId:version[:packaging\link{:classifier}] string}
+\item{artifact}{optional, coordinates as an artifact string \verb{groupId:artifactId:version[:packaging[:classifier]]} string}
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 }
@@ -31,4 +31,5 @@ Fetch an artifact from a repository into the local .m2 cache
 }
 \examples{
 fetch_artifact(artifact="io.github.terminological:r6-generator:main-SNAPSHOT:pom")
+fetch_artifact(coordinates = as.coordinates("org.junit.jupiter","junit-jupiter-api","5.9.0"))
 }

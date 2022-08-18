@@ -32,6 +32,8 @@ resolve_dependencies(
 \item{nocache}{do not used cached version, by default we use a cached version of the classpath unless the pom.xml is newer that the cached classpath.}
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
+
+\item{...}{passed on to as.coordinates()}
 }
 \value{
 a character vector of the classpath jar files (including the current one if appropriate)
@@ -42,10 +44,20 @@ artifact is downloaded) or as a path to a jar file containing a pom.xml (e.g. a 
 The resulting file paths which will be in the maven local cache are checked on the filesystem.
 }
 \examples{
-#commons-io/commons-io/2.11.0
-resolve_dependencies(groupId = "io.github.terminological", artifactId = "r6-generator-docs", version="main-SNAPSHOT")
+resolve_dependencies(
+  groupId = "io.github.terminological",
+  artifactId = "r6-generator-docs",
+  version="main-SNAPSHOT"
+)
+
 resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version="2.11.0")
-resolve_dependencies(path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT.jar")
-resolve_dependencies(path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar")
-# resolve_dependencies(groupId = "org.apache.commons", artifactId = "commons-io", version="1.3.2")
+
+resolve_dependencies("org.junit.jupiter","junit-jupiter-api","5.9.0")
+
+resolve_dependencies(
+  path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT.jar")
+
+resolve_dependencies(
+  path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar")
+
 }

@@ -8,7 +8,7 @@
     try({start_jvm(quiet = TRUE)},silent=TRUE)
     jh = tryCatch({rJava::.jcall( 'java/lang/System', 'S', 'getProperty', 'java.home' )},error = function(e) NA)
   }
-  if(is.na(jh)) jh = tail(unlist(stringr::str_split(Sys.getenv("LD_LIBRARY_PATH"),":")),1)
+  if(is.na(jh)) jh = utils::tail(unlist(stringr::str_split(Sys.getenv("LD_LIBRARY_PATH"),":")),1)
   if(is.na(jh)) stop("Could not determine JAVA_HOME from rJava, LD_LIBRARY_PATH, or Sys.getenv")
 
   jh_orig = jh
@@ -155,15 +155,16 @@ package_jars = function(package_name, types = c("all","thin-jar","fat-jar","src"
 
 #' Prints a coordinates object
 #'
-#' @param coordinates a maven coordinates object
+#' @param x a maven coordinates object
+#' @param ... ignored
 #'
 #' @return nothing. for side effects.
 #' @export
 #'
 #' @examples
 #' print(as.coordinates("org.junit.jupiter","junit-jupiter-api","4.13.2"))
-print.coordinates = function(coordinates) {
-  print(.artifact(coordinates))
+print.coordinates = function(x,...) {
+  print(.artifact(x))
 }
 
 #' Maven coordinates
@@ -233,11 +234,11 @@ as.coordinates = function(groupId, artifactId, version, ...) {
 # coordinates = .coordinates_from_jar(jar_path)
 # .m2_path(coordinates) == jar_path
 .coordinates_from_jar = function(jar_path) {
-  paths = unzip(jar_path, list = TRUE)
+  paths = utils::unzip(jar_path, list = TRUE)
   pom_paths = paths$Name[fs::path_file(paths$Name) == "pom.xml"]
   for (pom_path in pom_paths) {
     # pom_path = pom_paths[1]
-    unzip(jar_path,junkpaths = TRUE,files = pom_path,exdir = tempdir(),overwrite = TRUE)
+    utils::unzip(jar_path,junkpaths = TRUE,files = pom_path,exdir = tempdir(),overwrite = TRUE)
     coords = .coordinates_from_pom(fs::path(tempdir(),"pom.xml"))
 
     # If there is only one pom.xml return that, or if there are multiple, return first that matches the artifactId
@@ -402,7 +403,7 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
 #' @param repoUrl the URLs of the repositories to check (defaults to maven central)
 #' @param ... can express the coordinates as groupId, artifactId and version strings, plus optionally packaging and coordinates
 #' @param coordinates optional, but if not supplied groupId and artifactId must be, coordinates as a coordinates object (see as.coordinates())
-#' @param artifact optional, coordinates as an artifact string groupId:artifactId:version[:packaging[:classifier]] string
+#' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
 #'
 #' @return the output of the system2 call. 0 on success.
@@ -435,7 +436,7 @@ fetch_artifact = function(
 #' @param repoUrl the URLs of the repositories to check (defaults to maven central & sonatype snaphots)
 #' @param ... can express the coordinates as groupId, artifactId and version strings, plus optionally packaging and coordinates
 #' @param coordinates optional, coordinates as a coordinates object (see as.coordinates())
-#' @param artifact optional, coordinates as an artifact string groupId:artifactId:version[:packaging[:classifier]] string
+#' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
 #' @param outputDirectory optional path, defaults to the rmaven cache directory
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
 #'
@@ -471,7 +472,8 @@ copy_artifact = function(
   } else {
     fs::file_copy(
       .m2_path(coords),
-      target
+      target,
+      overwrite = TRUE
     )
   }
   return(target)
@@ -544,6 +546,7 @@ copy_artifact = function(
 #' @param groupId the maven groupId, optional (either groupId,artifactId and version must be specified, or coordinates)
 #' @param artifactId the maven artifactId, optional (either groupId,artifactId and version must be specified, or coordinates)
 #' @param version the maven version, optional (either groupId,artifactId and version must be specified, or coordinates)
+#' @param ... passed on to as.coordinates()
 #' @param coordinates the maven coordinates, optional (either groupId,artifactId and version must be specified, or coordinates)
 #' @param path the path to the source directory, pom file or jar file
 #' @param include_self do you want include this path in the classpath. optional, if missing the path will be included if it is a regular jar, or a fat jar, otherwise not.
@@ -554,12 +557,22 @@ copy_artifact = function(
 #' @export
 #'
 #' @examples
-#' resolve_dependencies(groupId = "io.github.terminological", artifactId = "r6-generator-docs", version="main-SNAPSHOT")
+#' resolve_dependencies(
+#'   groupId = "io.github.terminological",
+#'   artifactId = "r6-generator-docs",
+#'   version="main-SNAPSHOT"
+#' )
+#'
 #' resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version="2.11.0")
+#'
 #' resolve_dependencies("org.junit.jupiter","junit-jupiter-api","5.9.0")
-#' resolve_dependencies(path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT.jar")
-#' resolve_dependencies(path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar")
-#' # not resolvable as has moved: resolve_dependencies(groupId = "org.apache.commons", artifactId = "commons-io", version="1.3.2")
+#'
+#' resolve_dependencies(
+#'   path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT.jar")
+#'
+#' resolve_dependencies(
+#'   path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar")
+#'
 resolve_dependencies = function(
     groupId = NULL,
     artifactId = NULL,

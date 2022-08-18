@@ -20,7 +20,7 @@ copy_artifact(
 
 \item{coordinates}{optional, coordinates as a coordinates object (see as.coordinates())}
 
-\item{artifact}{optional, coordinates as an artifact string groupId:artifactId:version[:packaging\link{:classifier}] string}
+\item{artifact}{optional, coordinates as an artifact string \verb{groupId:artifactId:version[:packaging[:classifier]]} string}
 
 \item{outputDirectory}{optional path, defaults to the rmaven cache directory}
 
@@ -33,5 +33,6 @@ the output of the system2 call. 0 on success.
 Fetch an artifact from a repository to a local directory
 }
 \examples{
-tmp = copy_artifact(artifact="io.github.terminological:r6-generator:main-SNAPSHOT:pom")
+tmp = copy_artifact(coordinates = as.coordinates("org.junit.jupiter","junit-jupiter-api","5.9.0"))
+print(tmp)
 }

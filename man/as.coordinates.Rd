@@ -11,9 +11,9 @@ as.coordinates(groupId, artifactId, version, ...)
 
 \item{artifactId}{the maven artifactId}
 
-\item{version}{the maven version (defaults to "LATEST")}
+\item{version}{the maven version}
 
-\item{...}{other params ignored apart from packaging (jar or ejb) and coordinates (tests, client, sources, javadoc)}
+\item{...}{other params ignored apart from packaging (jar or ejb) and classifier (tests, client, sources, javadoc)}
 }
 \value{
 a coordinates object containing the coordinates
@@ -22,5 +22,5 @@ a coordinates object containing the coordinates
 Maven coordinates
 }
 \examples{
-as.coordinates()
+as.coordinates("org.junit.jupiter","junit-jupiter-api","4.13.2")
 }

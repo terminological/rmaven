@@ -28,7 +28,8 @@ Compilation will package the Java source code in to a Jar file for further use. 
 optionally package them into a single 'uber' jar (using maven assembly).
 }
 \examples{
-path = here::here("inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar")
-path = here::here("inst/testdata/test-project")
-compile_jar_with_dependencies(path,nocache=TRUE)
+path = package_jars("rmaven","src")
+compile_jar(path,nocache=TRUE)
+path2 = system.file("testdata/test-project",package = "rmaven")
+compile_jar(path2,nocache=TRUE,with_dependencies=TRUE)
 }
