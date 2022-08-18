@@ -81,12 +81,15 @@ optionally package them into a single 'uber' jar (using maven assembly).</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">path</span> <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu">here</span><span class="op">(</span><span class="st">"inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in loadNamespace(x):</span> there is no package called ‘here’</span>
-<span class="r-in"><span><span class="va">path</span> <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu">here</span><span class="op">(</span><span class="st">"inst/testdata/test-project"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in loadNamespace(x):</span> there is no package called ‘here’</span>
-<span class="r-in"><span><span class="fu">compile_jar_with_dependencies</span><span class="op">(</span><span class="va">path</span>,nocache<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in compile_jar_with_dependencies(path, nocache = TRUE):</span> could not find function "compile_jar_with_dependencies"</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">path</span> <span class="op">=</span> <span class="fu"><a href="package_jars.html">package_jars</a></span><span class="op">(</span><span class="st">"rmaven"</span>,<span class="st">"src"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">compile_jar</span><span class="op">(</span><span class="va">path</span>,nocache<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Bootstrapping maven wrapper.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> executing: /home/runner/.cache/rmaven/mvnw compile package</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> /home/runner/.cache/rmaven/org.example:test-project:0.0.1-SNAPSHOT:jar:src/test-project-0.0.1-SNAPSHOT/target/test-project-0.0.1-SNAPSHOT.jar</span>
+<span class="r-in"><span><span class="va">path2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testdata/test-project"</span>,package <span class="op">=</span> <span class="st">"rmaven"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">compile_jar</span><span class="op">(</span><span class="va">path2</span>,nocache<span class="op">=</span><span class="cn">TRUE</span>,with_dependencies<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> executing: /home/runner/.cache/rmaven/mvnw compile assembly:single package -DdescriptorId=jar-with-dependencies -Dmaven.test.skip=true</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> /home/runner/.cache/rmaven/org.example:test-project:0.0.1-SNAPSHOT/test-project-0.0.1-SNAPSHOT/target/test-project-0.0.1-SNAPSHOT-jar-with-dependencies.jar</span>
 </code></pre></div>
     </div>
   </div>

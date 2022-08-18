@@ -58,11 +58,11 @@
 
 
 <dt>version</dt>
-<dd><p>the maven version (defaults to "LATEST")</p></dd>
+<dd><p>the maven version</p></dd>
 
 
 <dt>...</dt>
-<dd><p>other params ignored apart from packaging (jar or ejb) and coordinates (tests, client, sources, javadoc)</p></dd>
+<dd><p>other params ignored apart from packaging (jar or ejb) and classifier (tests, client, sources, javadoc)</p></dd>
 
 </dl></div>
     <div id="value">
@@ -74,8 +74,8 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">as.coordinates</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as.coordinates():</span> argument "groupId" is missing, with no default</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">as.coordinates</span><span class="op">(</span><span class="st">"org.junit.jupiter"</span>,<span class="st">"junit-jupiter-api"</span>,<span class="st">"4.13.2"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "org.junit.jupiter:junit-jupiter-api:4.13.2"</span>
 </code></pre></div>
     </div>
   </div>

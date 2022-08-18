@@ -94,6 +94,10 @@ The resulting file paths which will be in the maven local cache are checked on t
 <dt>verbose</dt>
 <dd><p>how much output from maven, one of "normal", "quiet", "debug"</p></dd>
 
+
+<dt>...</dt>
+<dd><p>passed on to as.coordinates()</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -104,18 +108,33 @@ The resulting file paths which will be in the maven local cache are checked on t
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">#commons-io/commons-io/2.11.0</span></span></span>
-<span class="r-in"><span><span class="fu">resolve_dependencies</span><span class="op">(</span>groupId <span class="op">=</span> <span class="st">"io.github.terminological"</span>, artifactId <span class="op">=</span> <span class="st">"r6-generator-docs"</span>, version<span class="op">=</span><span class="st">"main-SNAPSHOT"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">resolve_dependencies</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  groupId <span class="op">=</span> <span class="st">"io.github.terminological"</span>,</span></span>
+<span class="r-in"><span>  artifactId <span class="op">=</span> <span class="st">"r6-generator-docs"</span>,</span></span>
+<span class="r-in"><span>  version<span class="op">=</span><span class="st">"main-SNAPSHOT"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> executing: /home/runner/.cache/rmaven/mvnw org.apache.maven.plugins:maven-dependency-plugin:3.3.0:get -Dartifact=io.github.terminological:r6-generator-docs:main-SNAPSHOT</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in .extract_pom(coordinates, artifact = artifact):</span> no pom found at: /home/runner/.m2/repository/io/github/terminological/r6-generator-docs/main-SNAPSHOT/r6-generator-docs-main-SNAPSHOT.pom</span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">resolve_dependencies</span><span class="op">(</span>groupId <span class="op">=</span> <span class="st">"commons-io"</span>, artifactId <span class="op">=</span> <span class="st">"commons-io"</span>, version<span class="op">=</span><span class="st">"2.11.0"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> executing: /home/runner/.cache/rmaven/mvnw dependency:build-classpath -Dmdep.outputFile=classpath.txt -DincludeScope=runtime</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/home/runner/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar"</span>
-<span class="r-in"><span><span class="fu">resolve_dependencies</span><span class="op">(</span>path<span class="op">=</span><span class="st">"/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT.jar"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in unzip(jar_path, list = TRUE):</span> zip file '/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT.jar' cannot be opened</span>
-<span class="r-in"><span><span class="fu">resolve_dependencies</span><span class="op">(</span>path<span class="op">=</span><span class="st">"/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in unzip(jar_path, list = TRUE):</span> zip file '/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar' cannot be opened</span>
-<span class="r-in"><span><span class="co"># resolve_dependencies(groupId = "org.apache.commons", artifactId = "commons-io", version="1.3.2")</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">resolve_dependencies</span><span class="op">(</span><span class="st">"org.junit.jupiter"</span>,<span class="st">"junit-jupiter-api"</span>,<span class="st">"5.9.0"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> executing: /home/runner/.cache/rmaven/mvnw dependency:build-classpath -Dmdep.outputFile=classpath.txt -DincludeScope=runtime</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/home/runner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.0/junit-jupiter-api-5.9.0.jar"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "/home/runner/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar"                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "/home/runner/.m2/repository/org/junit/platform/junit-platform-commons/1.9.0/junit-platform-commons-1.9.0.jar"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "/home/runner/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar"                 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">resolve_dependencies</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  path<span class="op">=</span><span class="st">"/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT.jar"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in utils::unzip(jar_path, list = TRUE):</span> zip file '/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT.jar' cannot be opened</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">resolve_dependencies</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  path<span class="op">=</span><span class="st">"/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in utils::unzip(jar_path, list = TRUE):</span> zip file '/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar' cannot be opened</span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>

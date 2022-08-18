@@ -68,7 +68,7 @@
 
 
 <dt>artifact</dt>
-<dd><p>optional, coordinates as an artifact string groupId:artifactId:version[:packaging:classifier] string</p></dd>
+<dd><p>optional, coordinates as an artifact string <code>groupId:artifactId:version[:packaging[:classifier]]</code> string</p></dd>
 
 
 <dt>verbose</dt>
@@ -87,6 +87,9 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">fetch_artifact</span><span class="op">(</span>artifact<span class="op">=</span><span class="st">"io.github.terminological:r6-generator:main-SNAPSHOT:pom"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> executing: /home/runner/.cache/rmaven/mvnw org.apache.maven.plugins:maven-dependency-plugin:3.3.0:get -Dartifact=io.github.terminological:r6-generator:main-SNAPSHOT:pom</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-in"><span><span class="fu">fetch_artifact</span><span class="op">(</span>coordinates <span class="op">=</span> <span class="fu"><a href="as.coordinates.html">as.coordinates</a></span><span class="op">(</span><span class="st">"org.junit.jupiter"</span>,<span class="st">"junit-jupiter-api"</span>,<span class="st">"5.9.0"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> executing: /home/runner/.cache/rmaven/mvnw org.apache.maven.plugins:maven-dependency-plugin:3.3.0:get -Dartifact=org.junit.jupiter:junit-jupiter-api:5.9.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 </code></pre></div>
     </div>
   </div>
