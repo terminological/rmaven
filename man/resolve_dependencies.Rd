@@ -49,10 +49,10 @@ resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version=
 
 resolve_dependencies("org.junit.jupiter","junit-jupiter-api","5.9.0")
 
-resolve_dependencies(
-  path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT.jar")
+resolve_dependencies(path=
+  system.file("testdata/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
 
-resolve_dependencies(
-  path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar")
+resolve_dependencies(path=
+  system.file("testdata/test-project-0.0.1-SNAPSHOT-src.jar",package="rmaven"))
 
 }

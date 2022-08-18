@@ -123,6 +123,7 @@ package_jars = function(package_name, types = c("all","thin-jar","fat-jar","src"
 # internal function
 # all caches are in a sub-directory of the rmaven
 .working_dir = function(artifact = "", subpath="") {
+  artifact = stringr::str_replace_all(artifact,stringr::fixed(":"),"_")
   tmp = path.expand(fs::path(rappdirs::user_cache_dir("rmaven"),artifact, subpath))
   fs::dir_create(tmp)
   return(tmp)
@@ -130,7 +131,7 @@ package_jars = function(package_name, types = c("all","thin-jar","fat-jar","src"
 
 # internal function
 .working_file = function(path, artifact="", subpath = "") {
-  return(fs::path(.working_dir(artifact), subpath, path))
+  return(fs::path(.working_dir(artifact, subpath=subpath), path))
 }
 
 # internal function
@@ -562,11 +563,11 @@ copy_artifact = function(
 #'
 #' resolve_dependencies("org.junit.jupiter","junit-jupiter-api","5.9.0")
 #'
-#' resolve_dependencies(
-#'   path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT.jar")
+#' resolve_dependencies(path=
+#'   system.file("testdata/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
 #'
-#' resolve_dependencies(
-#'   path="/home/terminological/Git/rmaven/inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar")
+#' resolve_dependencies(path=
+#'   system.file("testdata/test-project-0.0.1-SNAPSHOT-src.jar",package="rmaven"))
 #'
 resolve_dependencies = function(
     groupId = NULL,
