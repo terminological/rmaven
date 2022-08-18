@@ -44,11 +44,6 @@ artifact is downloaded) or as a path to a jar file containing a pom.xml (e.g. a 
 The resulting file paths which will be in the maven local cache are checked on the filesystem.
 }
 \examples{
-resolve_dependencies(
-  groupId = "io.github.terminological",
-  artifactId = "r6-generator-runtime",
-  version="main-SNAPSHOT"
-)
 
 resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version="2.11.0")
 

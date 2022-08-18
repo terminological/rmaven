@@ -557,11 +557,6 @@ copy_artifact = function(
 #' @export
 #'
 #' @examples
-#' resolve_dependencies(
-#'   groupId = "io.github.terminological",
-#'   artifactId = "r6-generator-runtime",
-#'   version="main-SNAPSHOT"
-#' )
 #'
 #' resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version="2.11.0")
 #'
