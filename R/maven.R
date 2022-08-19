@@ -463,10 +463,10 @@ fetch_artifact = function(
 
 
 
-#' Fetch an artifact from a repository to a local directory
+#' Copy an artifact from a repository to a local directory
 #'
 #' @param repoUrl the URLs of the repositories to check (defaults to maven central & sonatype snaphots)
-#' @param ... can express the coordinates as groupId, artifactId and version strings, plus optionally packaging and coordinates
+#' @param ... can express the coordinates as groupId, artifactId and version strings, plus optionally packaging and classifier
 #' @param coordinates optional, coordinates as a coordinates object (see as.coordinates())
 #' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
 #' @param outputDirectory optional path, defaults to the rmaven cache directory
