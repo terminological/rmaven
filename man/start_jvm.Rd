@@ -18,5 +18,6 @@ nothing - called for side effects
 This does not do anything if the JVM has already been started.
 }
 \examples{
-start_jvm(TRUE)
+start_jvm()
+# start_jvm(debug = TRUE)
 }

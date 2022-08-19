@@ -30,18 +30,30 @@
       jh = jh_parent
       jh_parent = fs::path_dir(jh)
     }
-    stop("Couldn't find 'bin/javac' or 'bin/java' in any parent directories starting at ",jh_orig,", please set options('rmaven.java_home'=...) to a location of a JRE or better a JDK.")
+    stop("Couldn't find 'bin/javac(.exe)' or 'bin/java(.exe)' in any parent directories starting at ",jh_orig,", please set options('rmaven.java_home'=...) to the root of a JDK (the directory above 'bin/javac').")
   }
   if (set) Sys.setenv("JAVA_HOME"=jh)
   return(jh)
 }
 
 .is_jdk_home = function(path = .java_home(set=FALSE, quiet=TRUE)) {
-  return(fs::file_exists(fs::path(path,"bin/javac")))
+  if(.Platform$OS.type == "windows") {
+    return(
+      fs::file_exists(fs::path(path,"bin/javac.exe"))
+      # fs::file_exists(fs::path(path,"bin/javac.cmd")) ||
+      # fs::file_exists(fs::path(path,"bin/javac.bin"))
+    )
+  } else {
+    return(fs::file_exists(fs::path(path,"bin/javac")))
+  }
 }
 
 .is_jre_home = function(path = .java_home(set=FALSE, quiet=TRUE)) {
-  return(fs::file_exists(fs::path(path,"bin/java")))
+  if(.Platform$OS.type == "windows") {
+    return(fs::file_exists(fs::path(path,"bin/java.exe")))
+  } else {
+    return(fs::file_exists(fs::path(path,"bin/java")))
+  }
 }
 
 #' Start an rJava JVM with or without debugging options
@@ -55,7 +67,8 @@
 #' @export
 #'
 #' @examples
-#' start_jvm(TRUE)
+#' start_jvm()
+#' # start_jvm(debug = TRUE)
 start_jvm = function(debug = FALSE, quiet = getOption("rmaven.quiet",FALSE)) {
   tryCatch({
     if (!rJava::.jniInitialized) {
