@@ -405,7 +405,25 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
   .java_home(quiet=TRUE)
   # changing the wd is required due to an issue in Mvnw.cmd on windows.
   wd = getwd()
-  if(!is.null(pom_path)) setwd(fs::path_dir(pom_path))
+
+    # if (Platform.os == "windows") {
+    # wrapper_props = fs::path(fs::path_dir(pom_path),".mvn/wrapper/maven-wrapper.properties")
+    # # Windows mvnw.cmd looks for this in the directory the pom is in.
+    # if (!file.exists(wrapper_props)) {
+    #   write(c(
+    #     "distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.3.9/apache-maven-3.3.9-bin.zip",
+    #     "wrapperUrl=https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.1.1/maven-wrapper-3.1.1.jar"
+    #   ), wrapper_props)
+    # }
+    # }
+
+  # change the working directory
+  if(!is.null(pom_path)) {
+    setwd(fs::path_dir(pom_path))
+  } else {
+    setwd(fs::path_dir(mvn_path))
+  }
+
   if (!quiet) message("executing: ",mvn_path," ",paste0(args,collapse=" "))
   out = system2(mvn_path, args)
   setwd(wd)
