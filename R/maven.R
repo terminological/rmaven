@@ -137,7 +137,7 @@ package_jars = function(package_name, types = c("all","thin-jar","fat-jar","src"
 # all caches are in a sub-directory of the rmaven
 .working_dir = function(artifact = "", subpath="") {
   artifact = stringr::str_replace_all(artifact,stringr::fixed(":"),"_")
-  tmp = path.expand(fs::path(rappdirs::user_cache_dir("rmaven"),artifact, subpath))
+  tmp = fs::path_expand(fs::path(rappdirs::user_cache_dir("rmaven"),artifact, subpath))
   fs::dir_create(tmp)
   return(tmp)
 }
@@ -314,7 +314,7 @@ as.coordinates = function(groupId, artifactId, version, ...) {
 .m2_path = function(coordinates) {
   groupPath = stringr::str_replace_all(coordinates$groupId, stringr::fixed("."), "/")
   repoPath = sprintf("%s/%s/%s/%s",groupPath,coordinates$artifactId,coordinates$version,.filename(coordinates))
-  return(path.expand(fs::path("~/.m2/repository/", repoPath)))
+  return(fs::path_expand(fs::path("~/.m2/repository/", repoPath)))
 }
 
 ## Maven command functions ----
