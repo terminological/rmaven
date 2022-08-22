@@ -42,6 +42,6 @@ the .m2 path of the artifact
 Fetch an artifact from a repository into the local .m2 cache
 }
 \examples{
-fetch_artifact(artifact="io.github.terminological:r6-generator:main-SNAPSHOT:pom")
+fetch_artifact(artifact="com.google.guava:guava:31.1-jre")
 fetch_artifact(coordinates = as.coordinates("org.junit.jupiter","junit-jupiter-api","5.9.0"))
 }
