@@ -450,7 +450,7 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
 #' @export
 #'
 #' @examples
-#' fetch_artifact(artifact="io.github.terminological:r6-generator:main-SNAPSHOT:pom")
+#' fetch_artifact(artifact="com.google.guava:guava:31.1-jre")
 #' fetch_artifact(coordinates = as.coordinates("org.junit.jupiter","junit-jupiter-api","5.9.0"))
 fetch_artifact = function(
     groupId = NULL,
