@@ -380,7 +380,7 @@ as.coordinates = function(groupId, artifactId, version, ...) {
 #' @param require_jdk does the goal you are executing require a jdk (e.g. compilation)
 #' @param ... named parameters are passed to maven as options in the form -Dname=value
 #'
-#' @return the output of the system2 call. 0 on success.
+#' @return nothing, invisibly
 #' @export
 #'
 #' @examples
@@ -425,74 +425,128 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
   }
 
   if (!quiet) message("executing: ",mvn_path," ",paste0(args,collapse=" "))
-  out = system2(mvn_path, args)
+  out = system2(mvn_path, args, stdout = TRUE)
+  if (!quiet) cat(paste0(c(out,""),collapse="\n"))
   setwd(wd)
-  return(out)
+  invisible(NULL)
 }
 
 #' Fetch an artifact from a repository into the local .m2 cache
 #'
+
+#' @param groupId optional, the maven groupId,
+#' @param artifactId optional, the maven artifactId,
+#' @param version optional, the maven version,
+#' @param ... other maven coordinates such as classifier or packaging
+#' @param coordinates optional, coordinates as a coordinates object,
+#' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
 #' @param repoUrl the URLs of the repositories to check (defaults to maven central)
-#' @param ... can express the coordinates as groupId, artifactId and version strings, plus optionally packaging and coordinates
 #' @param coordinates optional, but if not supplied groupId and artifactId must be, coordinates as a coordinates object (see as.coordinates())
 #' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
+#' @param nocache normally artifacts are only fetched if required, nocache forces fetching
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
 #'
-#' @return the output of the system2 call. 0 on success.
+#' @return the .m2 path of the artifact
 #' @export
 #'
 #' @examples
 #' fetch_artifact(artifact="io.github.terminological:r6-generator:main-SNAPSHOT:pom")
 #' fetch_artifact(coordinates = as.coordinates("org.junit.jupiter","junit-jupiter-api","5.9.0"))
 fetch_artifact = function(
-    repoUrl = getOption("rmaven.default_repos"),
+    groupId = NULL,
+    artifactId = NULL,
+    version = NULL,
     ...,
-    coordinates = as.coordinates(...),
-    artifact = .artifact(coordinates),
+    coordinates = NULL,
+    artifact = NULL,
+    repoUrl = getOption("rmaven.default_repos"),
+    nocache = FALSE,
     verbose = c("normal","quiet","debug")
 ) {
+  if ((is.null(groupId) || is.null(artifactId) || is.null(version)) && is.null(coordinates) && is.null(artifact)) {
+    stop("one of groupId,artifactId + version or coordinates or artifact must be given")
+  }
+
+  if (!is.null(coordinates)) {
+    artifact = .artifact(coordinates)
+  } else if (!is.null(artifact)) {
+    coordinates = .coordinates(artifact)
+  } else {
+    coordinates = as.coordinates(groupId, artifactId, version, ...)
+    artifact = .artifact(coordinates)
+  }
+
   verbose = match.arg(verbose)
-  return(execute_maven(
-    goal = "org.apache.maven.plugins:maven-dependency-plugin:3.3.0:get",
-    remoteRepositories = paste0(repoUrl,collapse = ","),
-    artifact = artifact,
-    verbose = verbose,
-    require_jdk = FALSE
-  ))
+  if(is.null(coordinates)) coordinates = .coordinates(artifact)
+  target = .m2_path(coordinates)
+  if (nocache) unlink(target)
+  if (!fs::file_exists(target)) {
+    execute_maven(
+      goal = "org.apache.maven.plugins:maven-dependency-plugin:3.3.0:get",
+      remoteRepositories = paste0(repoUrl,collapse = ","),
+      artifact = artifact,
+      verbose = verbose,
+      require_jdk = FALSE
+    )
+  }
+  if (!fs::file_exists(target)) stop("did not sucessfully fetch artifact: ",target)
+  return(target)
 }
 
 
 
 #' Copy an artifact from a repository to a local directory
 #'
-#' @param repoUrl the URLs of the repositories to check (defaults to maven central & sonatype snaphots)
-#' @param ... can express the coordinates as groupId, artifactId and version strings, plus optionally packaging and classifier
-#' @param coordinates optional, coordinates as a coordinates object (see as.coordinates())
+#' @param groupId optional, the maven groupId,
+#' @param artifactId optional, the maven artifactId,
+#' @param version optional, the maven version,
+#' @param ... other maven coordinates such as classifier or packaging
+#' @param coordinates optional, coordinates as a coordinates object,
 #' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
+#' @param repoUrl the URLs of the repositories to check (defaults to maven central & sonatype snaphots)
 #' @param outputDirectory optional path, defaults to the rmaven cache directory
+#' @param nocache normally artifacts are only fetched if required, nocache forces fetching
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
 #'
 #' @return the output of the system2 call. 0 on success.
 #' @export
 #'
 #' @examples
-#' tmp = copy_artifact(coordinates = as.coordinates("org.junit.jupiter","junit-jupiter-api","5.9.0"))
+#' tmp = copy_artifact("org.junit.jupiter","junit-jupiter-api","5.9.0")
 #' print(tmp)
 copy_artifact = function(
-    repoUrl = getOption("rmaven.default_repos"),
+    groupId = NULL,
+    artifactId = NULL,
+    version = NULL,
     ...,
-    coordinates = as.coordinates(...),
-    artifact = .artifact(coordinates),
+    coordinates = NULL,
+    artifact = NULL,
     outputDirectory = .working_dir(artifact),
+    repoUrl = getOption("rmaven.default_repos"),
+    nocache = FALSE,
     verbose = c("normal","quiet","debug")
 ) {
   verbose = match.arg(verbose)
-  coords = .coordinates(artifact)
-  target = fs::path(outputDirectory,.filename(coords))
-  if (!fs::file_exists(.m2_path(coords))) {
+
+  if ((is.null(groupId) || is.null(artifactId) || is.null(version)) && is.null(coordinates) && is.null(artifact)) {
+    stop("one of groupId,artifactId + version or coordinates or artifact must be given")
+  }
+
+  if (!is.null(coordinates)) {
+    artifact = .artifact(coordinates)
+  } else if (!is.null(artifact)) {
+    coordinates = .coordinates(artifact)
+  } else {
+    coordinates = as.coordinates(groupId, artifactId, version, ...)
+    artifact = .artifact(coordinates)
+  }
+
+  target = fs::path(outputDirectory,.filename(coordinates))
+  if (nocache) unlink(target)
+  if (!fs::file_exists(.m2_path(coordinates))) {
     fetch_artifact(artifact=artifact, verbose = verbose)
   }
-  if (!fs::file_exists(.m2_path(coords))) {
+  if (!fs::file_exists(.m2_path(coordinates))) {
     execute_maven(
       goal = "org.apache.maven.plugins:maven-dependency-plugin:3.3.0:copy",
       artifact = artifact,
@@ -503,7 +557,7 @@ copy_artifact = function(
     if (!fs::file_exists(target)) stop("Couldn't copy artifact from local .m2 repo or from repositories")
   } else {
     fs::file_copy(
-      .m2_path(coords),
+      .m2_path(coordinates),
       target,
       overwrite = TRUE
     )
@@ -575,12 +629,13 @@ copy_artifact = function(
 #' artifact is downloaded) or as a path to a jar file containing a pom.xml (e.g. a compiled jar file, a compiled jar-with-dependencies, or a assembled src jar)
 #' The resulting file paths which will be in the maven local cache are checked on the filesystem.
 #'
-#' @param groupId the maven groupId, optional (either groupId,artifactId and version must be specified, or coordinates)
-#' @param artifactId the maven artifactId, optional (either groupId,artifactId and version must be specified, or coordinates)
-#' @param version the maven version, optional (either groupId,artifactId and version must be specified, or coordinates)
+#' @param groupId the maven groupId, optional
+#' @param artifactId the maven artifactId, optional
+#' @param version the maven version, optional
 #' @param ... passed on to as.coordinates()
-#' @param coordinates the maven coordinates, optional (either groupId,artifactId and version must be specified, or coordinates)
-#' @param path the path to the source directory, pom file or jar file
+#' @param coordinates the maven coordinates, optional (either groupId,artifactId and version must be specified, or coordinates, or artifact)
+#' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
+#' @param path the path to the source directory, pom file or jar file. if blank the
 #' @param include_self do you want include this path in the classpath. optional, if missing the path will be included if it is a regular jar, or a fat jar, otherwise not.
 #' @param nocache do not used cached version, by default we use a cached version of the classpath unless the pom.xml is newer that the cached classpath.
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
@@ -592,7 +647,7 @@ copy_artifact = function(
 #'
 #' resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version="2.11.0")
 #'
-#' resolve_dependencies("org.junit.jupiter","junit-jupiter-api","5.9.0")
+#' resolve_dependencies(artifact = "org.junit.jupiter:junit-jupiter-api:5.9.0")
 #'
 #' resolve_dependencies(path=
 #'   system.file("testdata/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
@@ -604,21 +659,34 @@ resolve_dependencies = function(
     groupId = NULL,
     artifactId = NULL,
     version = NULL,
+    ...,
     coordinates = NULL,
+    artifact = NULL,
     path = NULL,
     include_self = NULL,
     nocache = FALSE,
-    verbose = c("normal","quiet","debug"),
-    ...
+    verbose = c("normal","quiet","debug")
 ) {
   verbose = match.arg(verbose)
-  # if only path is given
-  if ((is.null(groupId) || is.null(artifactId) || is.null(version)) && is.null(coordinates)) {
-    if (fs::path_ext(path) != "jar") stop("if neither of groupId + artifactId + version or coordinates is given, path must point to a jar file containing a pom.xml")
+
+  if ((is.null(groupId) || is.null(artifactId) || is.null(version)) && is.null(coordinates) && is.null(artifact)) {
+    if (is.null(path) || fs::path_ext(path) != "jar") stop("if neither of groupId + artifactId + version or coordinates or artifact is given, path must point to a jar file containing a pom.xml")
     coordinates = .coordinates_from_jar(path)
   }
-  if (is.null(coordinates)) coordinates = as.coordinates(groupId,artifactId, version, ...)
-  if (is.null(path)) path = .m2_path(coordinates)
+
+  if (!is.null(coordinates)) {
+    artifact = .artifact(coordinates)
+  } else if (!is.null(artifact)) {
+    coordinates = .coordinates(artifact)
+  } else {
+    coordinates = as.coordinates(groupId, artifactId, version, ...)
+    artifact = .artifact(coordinates)
+  }
+
+  if (is.null(path)) {
+    path = .m2_path(coordinates)
+    if (!file.exists(path)) fetch_artifact(coordinates, nocache = nocache, verbose = verbose)
+  }
 
   include_self = (coordinates$packaging == "jar" && (is.null(coordinates$classifier) || coordinates$classifier == "jar-with-dependencies"))
 

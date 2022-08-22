@@ -8,32 +8,35 @@ resolve_dependencies(
   groupId = NULL,
   artifactId = NULL,
   version = NULL,
+  ...,
   coordinates = NULL,
+  artifact = NULL,
   path = NULL,
   include_self = NULL,
   nocache = FALSE,
-  verbose = c("normal", "quiet", "debug"),
-  ...
+  verbose = c("normal", "quiet", "debug")
 )
 }
 \arguments{
-\item{groupId}{the maven groupId, optional (either groupId,artifactId and version must be specified, or coordinates)}
+\item{groupId}{the maven groupId, optional}
 
-\item{artifactId}{the maven artifactId, optional (either groupId,artifactId and version must be specified, or coordinates)}
+\item{artifactId}{the maven artifactId, optional}
 
-\item{version}{the maven version, optional (either groupId,artifactId and version must be specified, or coordinates)}
+\item{version}{the maven version, optional}
 
-\item{coordinates}{the maven coordinates, optional (either groupId,artifactId and version must be specified, or coordinates)}
+\item{...}{passed on to as.coordinates()}
 
-\item{path}{the path to the source directory, pom file or jar file}
+\item{coordinates}{the maven coordinates, optional (either groupId,artifactId and version must be specified, or coordinates, or artifact)}
+
+\item{artifact}{optional, coordinates as an artifact string \verb{groupId:artifactId:version[:packaging[:classifier]]} string}
+
+\item{path}{the path to the source directory, pom file or jar file. if blank the}
 
 \item{include_self}{do you want include this path in the classpath. optional, if missing the path will be included if it is a regular jar, or a fat jar, otherwise not.}
 
 \item{nocache}{do not used cached version, by default we use a cached version of the classpath unless the pom.xml is newer that the cached classpath.}
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
-
-\item{...}{passed on to as.coordinates()}
 }
 \value{
 a character vector of the classpath jar files (including the current one if appropriate)
@@ -47,7 +50,7 @@ The resulting file paths which will be in the maven local cache are checked on t
 
 resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version="2.11.0")
 
-resolve_dependencies("org.junit.jupiter","junit-jupiter-api","5.9.0")
+resolve_dependencies(artifact = "org.junit.jupiter:junit-jupiter-api:5.9.0")
 
 resolve_dependencies(path=
   system.file("testdata/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))

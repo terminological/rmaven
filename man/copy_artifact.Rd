@@ -2,27 +2,39 @@
 % Please edit documentation in R/maven.R
 \name{copy_artifact}
 \alias{copy_artifact}
-\title{Fetch an artifact from a repository to a local directory}
+\title{Copy an artifact from a repository to a local directory}
 \usage{
 copy_artifact(
-  repoUrl = getOption("rmaven.default_repos"),
+  groupId = NULL,
+  artifactId = NULL,
+  version = NULL,
   ...,
-  coordinates = as.coordinates(...),
-  artifact = .artifact(coordinates),
+  coordinates = NULL,
+  artifact = NULL,
   outputDirectory = .working_dir(artifact),
+  repoUrl = getOption("rmaven.default_repos"),
+  nocache = FALSE,
   verbose = c("normal", "quiet", "debug")
 )
 }
 \arguments{
-\item{repoUrl}{the URLs of the repositories to check (defaults to maven central & sonatype snaphots)}
+\item{groupId}{optional, the maven groupId,}
 
-\item{...}{can express the coordinates as groupId, artifactId and version strings, plus optionally packaging and coordinates}
+\item{artifactId}{optional, the maven artifactId,}
 
-\item{coordinates}{optional, coordinates as a coordinates object (see as.coordinates())}
+\item{version}{optional, the maven version,}
+
+\item{...}{other maven coordinates such as classifier or packaging}
+
+\item{coordinates}{optional, coordinates as a coordinates object,}
 
 \item{artifact}{optional, coordinates as an artifact string \verb{groupId:artifactId:version[:packaging[:classifier]]} string}
 
 \item{outputDirectory}{optional path, defaults to the rmaven cache directory}
+
+\item{repoUrl}{the URLs of the repositories to check (defaults to maven central & sonatype snaphots)}
+
+\item{nocache}{normally artifacts are only fetched if required, nocache forces fetching}
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 }
@@ -30,9 +42,9 @@ copy_artifact(
 the output of the system2 call. 0 on success.
 }
 \description{
-Fetch an artifact from a repository to a local directory
+Copy an artifact from a repository to a local directory
 }
 \examples{
-tmp = copy_artifact(coordinates = as.coordinates("org.junit.jupiter","junit-jupiter-api","5.9.0"))
+tmp = copy_artifact("org.junit.jupiter","junit-jupiter-api","5.9.0")
 print(tmp)
 }

@@ -5,26 +5,38 @@
 \title{Fetch an artifact from a repository into the local .m2 cache}
 \usage{
 fetch_artifact(
-  repoUrl = getOption("rmaven.default_repos"),
+  groupId = NULL,
+  artifactId = NULL,
+  version = NULL,
   ...,
-  coordinates = as.coordinates(...),
-  artifact = .artifact(coordinates),
+  coordinates = NULL,
+  artifact = NULL,
+  repoUrl = getOption("rmaven.default_repos"),
+  nocache = FALSE,
   verbose = c("normal", "quiet", "debug")
 )
 }
 \arguments{
-\item{repoUrl}{the URLs of the repositories to check (defaults to maven central)}
+\item{groupId}{optional, the maven groupId,}
 
-\item{...}{can express the coordinates as groupId, artifactId and version strings, plus optionally packaging and coordinates}
+\item{artifactId}{optional, the maven artifactId,}
+
+\item{version}{optional, the maven version,}
+
+\item{...}{other maven coordinates such as classifier or packaging}
 
 \item{coordinates}{optional, but if not supplied groupId and artifactId must be, coordinates as a coordinates object (see as.coordinates())}
 
 \item{artifact}{optional, coordinates as an artifact string \verb{groupId:artifactId:version[:packaging[:classifier]]} string}
 
+\item{repoUrl}{the URLs of the repositories to check (defaults to maven central)}
+
+\item{nocache}{normally artifacts are only fetched if required, nocache forces fetching}
+
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 }
 \value{
-the output of the system2 call. 0 on success.
+the .m2 path of the artifact
 }
 \description{
 Fetch an artifact from a repository into the local .m2 cache

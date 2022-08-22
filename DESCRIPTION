@@ -18,5 +18,8 @@ Imports:
     utils,
     xml2
 Suggests:
+    rmarkdown,
+    knitr,
     rJava
 URL: https://terminological.github.io/rmaven/
+VignetteBuilder: knitr

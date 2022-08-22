@@ -1,0 +1,129 @@
+---
+title: "Getting Started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  message = TRUE,
+  comment = "#>"
+)
+```
+
+The purpose of `rmaven` is to simplify the process of including Java libraries into R code for use by `rJava`. Currently the 
+`rJava` infrastructure assumes jar files of compiled code, and all the dependencies thereof, are available locally and known to the programmer. This 
+works well if the `rJava` code is part of a package, but less well if the user is programming in a REPL loop, and simply wants to use a Java library. 
+
+Even when packaging Java libraries with `rJava` code into an R package, the transitive dependencies of a moderately complicated bit of Java code can 
+be complex, and distributing the `jar` files associated with that burdensome, particularly when the underlying libraries are updated. The bundling of jar files 
+also may exceed the stringent CRAN policies for allowable package sizes, requiring a complex distribution mechanism for the dependencies.
+
+To solve this `rmaven` manages some or all of this problem for you, by integrating Java's standard build and dependency management tool Apache Maven into R. 
+This allows Java libraries used within R to be specified as `Maven` artifacts and transitive dependencies downloaded dynamically from Maven repositories. 
+`rmaven` is pure R with minimal dependencies of its own, apart from the 
+existence of a Java runtime (JRE or JDK) installed on the system, and the location known to R. It doesn't even require `rJava` (although without it there
+doesn't seem much point).
+
+```{r setup}
+library(rmaven)
+start_jvm()
+```
+
+# Download jar files using Maven
+
+When using `rmaven` the first step to using a Java library in R is to fetch it from the Maven repositories. The artifact coordinates (i.e. `groupId`, `artifactId` and `version`) of
+an specific Java library are easily found on the internet. Maven manages bootstrapping the download of libraries. Maven manages a local repository in the `.m2` subdirectory of the users home.
+
+```{r}
+dynamic_classpath = resolve_dependencies(
+  groupId = "org.apache.commons", 
+  artifactId = "commons-lang3", 
+  version="3.12.0",
+  nocache = TRUE
+)
+dynamic_classpath
+```
+
+# Caching of Java libraries
+
+`rmaven` bootstraps loading of Maven itself and any plugins required. When doing this the code above triggers a significant download. Maven is good at handling the caching of downloads, and sharing reused artifacts. Repeated invocation of `rmaven` will not require additional downloads.
+
+```{r}
+resolve_dependencies(
+  groupId = "org.apache.commons", 
+  artifactId = "commons-lang3", 
+  version="3.12.0"
+)
+```
+
+# Using local repository Jar files in rJava
+
+The second step is to add jars from the local `.m2` repository to the `rJava` class path, and using `rJava`, create an R interface to the Java class you want to use (in this case the `StringUtils` class). 
+
+```{r}
+rJava::.jaddClassPath(dynamic_classpath)
+StringUtils = rJava::J("org.apache.commons.lang3.StringUtils")
+```
+
+Finally you can call the static Java method, using rJava, in this case `StringUtils.rotate(String s, int distance)`.
+
+```{r}
+StringUtils$rotate("ABCDEF",3L)
+```
+
+# Java compilation
+
+Apart from using Maven to download manage dependencies, it also allows us to compile Java code and integrate dependencies, specified in a `pom.xml` file. By including Java code in an R project and using Maven to compile code we raise the possibility of integrating Java and R code in a manner similar to the way `RCpp` and `C++`.
+
+## Step 0: write some java code 
+
+As part of your package write some Java code including a `pom.xml` Maven build file, such as the TestCass, in the example code bundled with this package.
+
+```{r}
+# find the example bundled with this package
+source_directory = system.file("testdata/test-project",package = "rmaven")
+fs::dir_tree(source_directory, invert=TRUE, glob = "*/target/*")
+```
+
+## Step 1: compile the jar
+
+We use `rmaven` to compile the java source code. This could possibly be done in an `.onLoad()` package function:
+
+```{r}
+# In this configuration rmaven will compile a single `fat-jar`
+compiled_jar = rmaven::compile_jar(source_directory, with_dependencies = TRUE)
+compiled_jar
+```
+
+## Step 2: use the jar
+
+Once compiled we can use the Java code within R in a very similar manner as before
+
+```{r}
+rJava::.jaddClassPath(compiled_jar)
+TestClass = rJava::J("org.example.TestClass")
+TestClass$sayHelloWorld()
+```
+
+# What else could you do?
+
+* Run ant tasks. - using the `antrun` plugin
+* Initialise production web servers and apis. - using Jetty or Spring.
+* run any other maven plugin goal:
+
+```{r}
+execute_maven("help:system")
+```
+
+
+# Further work
+
+* Maven shade plugin
+* Simplify multiple dependencies 
+* Support creation of `pom.xml` files from R
+* Configurable maven repository with tools to create and maintain maven `settings.xml`

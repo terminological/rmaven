@@ -33,7 +33,7 @@ execute_maven(
 \item{...}{named parameters are passed to maven as options in the form -Dname=value}
 }
 \value{
-the output of the system2 call. 0 on success.
+nothing, invisibly
 }
 \description{
 Maven goals may be executed with or without a pom.xml file. Some maven goals (e.g. compilation)
