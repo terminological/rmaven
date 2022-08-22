@@ -399,7 +399,7 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
   } else {
     opts2 = NULL
   }
-  args = c(goal, opts, opts2) #, paste0("-f '",pomPath,"'"))
+  args = c(goal, opts, opts2, "-B") #, paste0("-f '",pomPath,"'"))
   if (quiet) args = c(args, "-q")
   if (debug) args = c(args, "-X")
   .java_home(quiet=TRUE)
@@ -424,6 +424,7 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
     setwd(fs::path_dir(mvn_path))
   }
 
+  args = unique(args)
   if (!quiet) message("executing: ",mvn_path," ",paste0(args,collapse=" "))
   out = system2(mvn_path, args, stdout = TRUE)
   if (!quiet) cat(paste0(c(out,""),collapse="\n"))
@@ -647,7 +648,7 @@ copy_artifact = function(
 #'
 #' resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version="2.11.0")
 #'
-#' resolve_dependencies(artifact = "org.junit.jupiter:junit-jupiter-api:5.9.0")
+#' resolve_dependencies(artifact = "org.junit.jupiter:junit-jupiter-api:5.9.0", nocache=TRUE)
 #'
 #' resolve_dependencies(path=
 #'   system.file("testdata/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
@@ -685,7 +686,9 @@ resolve_dependencies = function(
 
   if (is.null(path)) {
     path = .m2_path(coordinates)
-    if (!file.exists(path)) fetch_artifact(coordinates, nocache = nocache, verbose = verbose)
+    if (!file.exists(path) || nocache) {
+      fetch_artifact(coordinates = coordinates, nocache = nocache, verbose = verbose)
+    }
   }
 
   include_self = (coordinates$packaging == "jar" && (is.null(coordinates$classifier) || coordinates$classifier == "jar-with-dependencies"))
