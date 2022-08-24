@@ -45,6 +45,10 @@ the output of the system2 call. 0 on success.
 Copy an artifact from a repository to a local directory
 }
 \examples{
+\donttest{
+# This code can take quite a while to run as has to
+# download a lot of plugins, especially on first run
 tmp = copy_artifact("org.junit.jupiter","junit-jupiter-api","5.9.0")
 print(tmp)
+}
 }

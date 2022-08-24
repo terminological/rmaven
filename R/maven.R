@@ -387,7 +387,11 @@ as.coordinates = function(groupId, artifactId, version, ...) {
 #' @export
 #'
 #' @examples
+#' \donttest{
+#' # This code can take quite a while to run as has to
+#' # download a lot of plugins, especially on first run
 #' execute_maven("help:system")
+#' }
 execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose), debug=.debug(verbose), verbose = c("normal","debug","quiet"), require_jdk=FALSE, ...) {
   verbose = match.arg(verbose)
   mvn_path = .load_maven_wrapper()
@@ -454,8 +458,12 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
 #' @export
 #'
 #' @examples
+#' \donttest{
+#' # This code can take quite a while to run as has to
+#' # download a lot of plugins, especially on first run
 #' fetch_artifact(artifact="com.google.guava:guava:31.1-jre")
 #' fetch_artifact(coordinates = as.coordinates("org.junit.jupiter","junit-jupiter-api","5.9.0"))
+#' }
 fetch_artifact = function(
     groupId = NULL,
     artifactId = NULL,
@@ -516,8 +524,12 @@ fetch_artifact = function(
 #' @export
 #'
 #' @examples
+#' \donttest{
+#' # This code can take quite a while to run as has to
+#' # download a lot of plugins, especially on first run
 #' tmp = copy_artifact("org.junit.jupiter","junit-jupiter-api","5.9.0")
 #' print(tmp)
+#' }
 copy_artifact = function(
     groupId = NULL,
     artifactId = NULL,
@@ -657,10 +669,10 @@ copy_artifact = function(
 #' resolve_dependencies(artifact = "org.junit.jupiter:junit-jupiter-api:5.9.0", nocache=TRUE)
 #'
 #' resolve_dependencies(path=
-#'   system.file("java/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
+#'   system.file("testdata/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
 #'
 #' resolve_dependencies(path=
-#'   system.file("java/test-project-0.0.1-SNAPSHOT-src.jar",package="rmaven"))
+#'   system.file("testdata/test-project-0.0.1-SNAPSHOT-src.jar",package="rmaven"))
 #' }
 resolve_dependencies = function(
     groupId = NULL,
@@ -740,8 +752,8 @@ resolve_dependencies = function(
 
 # path is a directory or a `...-src.jar` file
 # here::i_am("R/maven.R")
-# path = here::here("inst/java/test-project-0.0.1-SNAPSHOT-src.jar")
-# path = here::here("inst/java/test-project")
+# path = here::here("java/test-project-0.0.1-SNAPSHOT-src.jar")
+# path = here::here("java/test-project")
 # .extract_source_code
 .extract_source_code = function(path) {
 
@@ -828,7 +840,7 @@ resolve_dependencies = function(
 #' # download a lot of plugins, especially on first run
 #' path = package_jars("rmaven","src")
 #' compile_jar(path,nocache=TRUE)
-#' path2 = system.file("java/test-project",package = "rmaven")
+#' path2 = system.file("testdata/test-project",package = "rmaven")
 #' compile_jar(path2,nocache=TRUE,with_dependencies=TRUE)
 #' }
 compile_jar = function(path, nocache = FALSE, verbose = c("normal", "quiet", "debug"), with_dependencies = FALSE) {

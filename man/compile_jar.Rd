@@ -33,7 +33,7 @@ optionally package them into a single \verb{uber jar} (using maven assembly).
 # download a lot of plugins, especially on first run
 path = package_jars("rmaven","src")
 compile_jar(path,nocache=TRUE)
-path2 = system.file("java/test-project",package = "rmaven")
+path2 = system.file("testdata/test-project",package = "rmaven")
 compile_jar(path2,nocache=TRUE,with_dependencies=TRUE)
 }
 }

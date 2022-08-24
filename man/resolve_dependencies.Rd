@@ -56,9 +56,9 @@ resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version=
 resolve_dependencies(artifact = "org.junit.jupiter:junit-jupiter-api:5.9.0", nocache=TRUE)
 
 resolve_dependencies(path=
-  system.file("java/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
+  system.file("testdata/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
 
 resolve_dependencies(path=
-  system.file("java/test-project-0.0.1-SNAPSHOT-src.jar",package="rmaven"))
+  system.file("testdata/test-project-0.0.1-SNAPSHOT-src.jar",package="rmaven"))
 }
 }

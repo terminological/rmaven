@@ -40,5 +40,9 @@ Maven goals may be executed with or without a pom.xml file. Some maven goals (e.
 require the use of a \code{JDK}.
 }
 \examples{
+\donttest{
+# This code can take quite a while to run as has to
+# download a lot of plugins, especially on first run
 execute_maven("help:system")
+}
 }

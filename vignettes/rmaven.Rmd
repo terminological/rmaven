@@ -86,7 +86,7 @@ As part of your package write some Java code including a `pom.xml` Maven build f
 
 ```{r}
 # find the example bundled with this package
-source_directory = system.file("java/test-project",package = "rmaven")
+source_directory = system.file("testdata/test-project",package = "rmaven")
 fs::dir_tree(source_directory, invert=TRUE, glob = "*/target/*")
 ```
 

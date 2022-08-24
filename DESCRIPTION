@@ -4,7 +4,7 @@ Version: 0.1.0
 Authors@R: 
     person("Robert", "Challen", , "rob@terminological.co.uk", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5504-7768"))
-Description: Distributing large files in packages is contrary to CRAN policies. Java libraries frequently have large dependencies, and this makes it hard to submit to CRAN. Java has a sophisticated dependency management tool (Maven) which can calculate and cache dependencies. Running Maven from R allows for better integration of Java libraries into R. Maven provides various options for resolving complied Java code dependencies, configuring `classpaths`, or compiling Java source code, all of which are useful for efficient use of Java within R.
+Description: Distributing large files in packages is contrary to 'CRAN' policies. Java libraries frequently have large dependencies, and this makes it hard to submit to CRAN. Java has a sophisticated dependency management tool (Maven) which can calculate and cache dependencies. Running Maven from R allows for better integration of Java libraries into R. Maven provides various options for resolving complied Java code dependencies, configuring class path, or compiling Java source code, all of which are useful for efficient use of Java within R.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
