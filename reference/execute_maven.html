@@ -29,6 +29,9 @@ require the use of a JDK."><!-- mathjax --><script src="https://cdnjs.cloudflare
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -104,65 +107,68 @@ require the use of a <code>JDK</code>.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">execute_maven</span><span class="op">(</span><span class="st">"help:system"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># This code can take quite a while to run as has to</span></span></span>
+<span class="r-in"><span><span class="co"># download a lot of plugins, especially on first run</span></span></span>
+<span class="r-in"><span><span class="fu">execute_maven</span><span class="op">(</span><span class="st">"help:system"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> executing: /home/runner/.cache/rmaven/mvnw help:system -B</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Scanning for projects...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.5/maven-clean-plugin-2.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.5/maven-clean-plugin-2.5.pom (4 KB at 13.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.5/maven-clean-plugin-2.5.pom (4 KB at 14.9 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.5/maven-clean-plugin-2.5.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.5/maven-clean-plugin-2.5.jar (25 KB at 511.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.5/maven-clean-plugin-2.5.jar (25 KB at 801.9 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.pom (7 KB at 194.7 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.pom (7 KB at 311.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.jar (27 KB at 692.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.jar (27 KB at 940.0 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-deploy-plugin/2.7/maven-deploy-plugin-2.7.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-deploy-plugin/2.7/maven-deploy-plugin-2.7.pom (6 KB at 176.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-deploy-plugin/2.7/maven-deploy-plugin-2.7.pom (6 KB at 304.5 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-deploy-plugin/2.7/maven-deploy-plugin-2.7.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-deploy-plugin/2.7/maven-deploy-plugin-2.7.jar (27 KB at 794.0 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-deploy-plugin/2.7/maven-deploy-plugin-2.7.jar (27 KB at 1191.0 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-site-plugin/3.3/maven-site-plugin-3.3.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-site-plugin/3.3/maven-site-plugin-3.3.pom (21 KB at 635.2 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-site-plugin/3.3/maven-site-plugin-3.3.pom (21 KB at 1016.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-site-plugin/3.3/maven-site-plugin-3.3.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-site-plugin/3.3/maven-site-plugin-3.3.jar (122 KB at 2640.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-site-plugin/3.3/maven-site-plugin-3.3.jar (122 KB at 3680.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/1.3/maven-antrun-plugin-1.3.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/1.3/maven-antrun-plugin-1.3.pom (5 KB at 144.4 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/1.3/maven-antrun-plugin-1.3.pom (5 KB at 256.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/12/maven-plugins-12.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/12/maven-plugins-12.pom (12 KB at 327.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/12/maven-plugins-12.pom (12 KB at 637.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/9/maven-parent-9.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/9/maven-parent-9.pom (33 KB at 943.2 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/9/maven-parent-9.pom (33 KB at 1145.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/1.3/maven-antrun-plugin-1.3.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/1.3/maven-antrun-plugin-1.3.jar (24 KB at 822.2 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/1.3/maven-antrun-plugin-1.3.jar (24 KB at 1096.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.2-beta-5/maven-assembly-plugin-2.2-beta-5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.2-beta-5/maven-assembly-plugin-2.2-beta-5.pom (15 KB at 477.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.2-beta-5/maven-assembly-plugin-2.2-beta-5.pom (15 KB at 822.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/16/maven-plugins-16.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/16/maven-plugins-16.pom (13 KB at 468.4 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/16/maven-plugins-16.pom (13 KB at 702.5 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.2-beta-5/maven-assembly-plugin-2.2-beta-5.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.2-beta-5/maven-assembly-plugin-2.2-beta-5.jar (204 KB at 5367.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.2-beta-5/maven-assembly-plugin-2.2-beta-5.jar (204 KB at 4249.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/2.8/maven-dependency-plugin-2.8.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/2.8/maven-dependency-plugin-2.8.pom (12 KB at 329.0 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/2.8/maven-dependency-plugin-2.8.pom (12 KB at 372.9 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/2.8/maven-dependency-plugin-2.8.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/2.8/maven-dependency-plugin-2.8.jar (150 KB at 4533.2 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/2.8/maven-dependency-plugin-2.8.jar (150 KB at 4274.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/2.3.2/maven-release-plugin-2.3.2.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/2.3.2/maven-release-plugin-2.3.2.pom (10 KB at 293.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/2.3.2/maven-release-plugin-2.3.2.pom (10 KB at 413.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/release/maven-release/2.3.2/maven-release-2.3.2.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/release/maven-release/2.3.2/maven-release-2.3.2.pom (9 KB at 271.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/release/maven-release/2.3.2/maven-release-2.3.2.pom (9 KB at 240.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/2.3.2/maven-release-plugin-2.3.2.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/2.3.2/maven-release-plugin-2.3.2.jar (44 KB at 1353.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-release-plugin/2.3.2/maven-release-plugin-2.3.2.jar (44 KB at 1883.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (14 KB at 491.5 KB/sec)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (21 KB at 380.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (21 KB at 359.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/maven-metadata.xml</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/maven-metadata.xml (683 B at 21.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/maven-metadata.xml (683 B at 44.5 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/3.3.0/maven-help-plugin-3.3.0.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/3.3.0/maven-help-plugin-3.3.0.pom (11 KB at 405.7 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/3.3.0/maven-help-plugin-3.3.0.pom (11 KB at 730.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/37/maven-plugins-37.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/37/maven-plugins-37.pom (10 KB at 439.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/37/maven-plugins-37.pom (10 KB at 460.5 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/37/maven-parent-37.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/37/maven-parent-37.pom (45 KB at 1392.4 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/37/maven-parent-37.pom (45 KB at 2345.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom (20 KB at 864.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom (20 KB at 1325.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/3.3.0/maven-help-plugin-3.3.0.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/3.3.0/maven-help-plugin-3.3.0.jar (83 KB at 3283.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-help-plugin/3.3.0/maven-help-plugin-3.3.0.jar (83 KB at 3420.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO]                                                                         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Building Maven Stub Project (No POM) 1</span>
@@ -170,199 +176,199 @@ require the use of a <code>JDK</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] --- maven-help-plugin:3.3.0:system (default-cli) @ standalone-pom ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.6.4/maven-plugin-tools-generators-3.6.4.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.6.4/maven-plugin-tools-generators-3.6.4.pom (4 KB at 199.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.6.4/maven-plugin-tools-generators-3.6.4.pom (4 KB at 249.8 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools/3.6.4/maven-plugin-tools-3.6.4.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools/3.6.4/maven-plugin-tools-3.6.4.pom (15 KB at 682.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools/3.6.4/maven-plugin-tools-3.6.4.pom (15 KB at 754.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.6.4/maven-plugin-tools-api-3.6.4.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.6.4/maven-plugin-tools-api-3.6.4.pom (3 KB at 141.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.6.4/maven-plugin-tools-api-3.6.4.pom (3 KB at 185.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.2.5/maven-core-3.2.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.2.5/maven-core-3.2.5.pom (8 KB at 291.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.2.5/maven-core-3.2.5.pom (8 KB at 437.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven/3.2.5/maven-3.2.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven/3.2.5/maven-3.2.5.pom (22 KB at 993.0 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven/3.2.5/maven-3.2.5.pom (22 KB at 606.9 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/3.2.5/maven-model-3.2.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/3.2.5/maven-model-3.2.5.pom (5 KB at 180.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/3.2.5/maven-model-3.2.5.pom (5 KB at 207.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.2.5/maven-settings-3.2.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.2.5/maven-settings-3.2.5.pom (3 KB at 68.4 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.2.5/maven-settings-3.2.5.pom (3 KB at 124.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings-builder/3.2.5/maven-settings-builder-3.2.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings-builder/3.2.5/maven-settings-builder-3.2.5.pom (3 KB at 70.4 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings-builder/3.2.5/maven-settings-builder-3.2.5.pom (3 KB at 115.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.pom (2 KB at 48.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.pom (2 KB at 75.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.2.5/maven-repository-metadata-3.2.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.2.5/maven-repository-metadata-3.2.5.pom (3 KB at 28.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.2.5/maven-repository-metadata-3.2.5.pom (3 KB at 136.0 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.2.5/maven-artifact-3.2.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.2.5/maven-artifact-3.2.5.pom (3 KB at 49.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.2.5/maven-artifact-3.2.5.pom (3 KB at 127.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.2.5/maven-plugin-api-3.2.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.2.5/maven-plugin-api-3.2.5.pom (3 KB at 64.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.2.5/maven-plugin-api-3.2.5.pom (3 KB at 164.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.5/org.eclipse.sisu.plexus-0.3.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.5/org.eclipse.sisu.plexus-0.3.5.pom (5 KB at 119.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.5/org.eclipse.sisu.plexus-0.3.5.pom (5 KB at 209.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-plexus/0.3.5/sisu-plexus-0.3.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-plexus/0.3.5/sisu-plexus-0.3.5.pom (14 KB at 638.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-plexus/0.3.5/sisu-plexus-0.3.5.pom (14 KB at 837.8 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom (7 KB at 305.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom (7 KB at 400.9 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.pom (14 KB at 624.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.pom (14 KB at 874.5 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom (5 KB at 194.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom (5 KB at 246.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.2/cdi-api-1.2.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.2/cdi-api-1.2.pom (7 KB at 255.4 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.2/cdi-api-1.2.pom (7 KB at 408.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-parent/26/weld-parent-26.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-parent/26/weld-parent-26.pom (32 KB at 956.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jboss/weld/weld-parent/26/weld-parent-26.pom (32 KB at 1214.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.5/org.eclipse.sisu.inject-0.3.5.pom</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.5/org.eclipse.sisu.inject-0.3.5.pom (3 KB at 142.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/0.3.5/sisu-inject-0.3.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/0.3.5/sisu-inject-0.3.5.pom (15 KB at 740.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/0.3.5/sisu-inject-0.3.5.pom (15 KB at 879.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.pom (8 KB at 246.0 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.pom (8 KB at 419.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model-builder/3.2.5/maven-model-builder-3.2.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model-builder/3.2.5/maven-model-builder-3.2.5.pom (3 KB at 132.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model-builder/3.2.5/maven-model-builder-3.2.5.pom (3 KB at 182.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-aether-provider/3.2.5/maven-aether-provider-3.2.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-aether-provider/3.2.5/maven-aether-provider-3.2.5.pom (5 KB at 188.7 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-aether-provider/3.2.5/maven-aether-provider-3.2.5.pom (5 KB at 276.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.pom (2 KB at 92.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.pom (2 KB at 123.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether/1.0.0.v20140518/aether-1.0.0.v20140518.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether/1.0.0.v20140518/aether-1.0.0.v20140518.pom (30 KB at 1338.4 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether/1.0.0.v20140518/aether-1.0.0.v20140518.pom (30 KB at 1732.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-spi/1.0.0.v20140518/aether-spi-1.0.0.v20140518.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-spi/1.0.0.v20140518/aether-spi-1.0.0.v20140518.pom (3 KB at 91.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-spi/1.0.0.v20140518/aether-spi-1.0.0.v20140518.pom (3 KB at 95.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.pom (3 KB at 57.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.pom (3 KB at 142.8 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-impl/1.0.0.v20140518/aether-impl-1.0.0.v20140518.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-impl/1.0.0.v20140518/aether-impl-1.0.0.v20140518.pom (4 KB at 169.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-impl/1.0.0.v20140518/aether-impl-1.0.0.v20140518.pom (4 KB at 242.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/3.2.3/sisu-guice-3.2.3.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/3.2.3/sisu-guice-3.2.3.pom (11 KB at 464.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/3.2.3/sisu-guice-3.2.3.pom (11 KB at 667.5 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/sisu/inject/guice-parent/3.2.3/guice-parent-3.2.3.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/sisu/inject/guice-parent/3.2.3/guice-parent-3.2.3.pom (14 KB at 598.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/sisu/inject/guice-parent/3.2.3/guice-parent-3.2.3.pom (14 KB at 822.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/38/forge-parent-38.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/38/forge-parent-38.pom (19 KB at 871.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/38/forge-parent-38.pom (19 KB at 1016.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.pom (6 KB at 297.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.pom (6 KB at 372.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/16.0.1/guava-parent-16.0.1.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/16.0.1/guava-parent-16.0.1.pom (8 KB at 377.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/16.0.1/guava-parent-16.0.1.pom (8 KB at 447.8 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.pom (3 KB at 128.7 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.pom (3 KB at 136.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/15/maven-shared-components-15.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/15/maven-shared-components-15.pom (10 KB at 455.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/15/maven-shared-components-15.pom (10 KB at 396.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/16/maven-parent-16.pom</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/16/maven-parent-16.pom (23 KB at 1082.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/7/apache-7.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/7/apache-7.pom (15 KB at 640.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/7/apache-7.pom (15 KB at 782.9 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.pom (2 KB at 71.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.pom (2 KB at 84.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0/doxia-1.0.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0/doxia-1.0.pom (10 KB at 495.7 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0/doxia-1.0.pom (10 KB at 554.0 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/10/maven-parent-10.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/10/maven-parent-10.pom (31 KB at 1544.7 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/10/maven-parent-10.pom (31 KB at 1930.8 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.2/asm-commons-9.2.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.2/asm-commons-9.2.pom (3 KB at 152.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.2/asm-commons-9.2.pom (3 KB at 192.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.2/asm-tree-9.2.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.2/asm-tree-9.2.pom (3 KB at 133.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.2/asm-tree-9.2.pom (3 KB at 168.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.2/asm-analysis-9.2.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.2/asm-analysis-9.2.pom (3 KB at 134.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.2/asm-analysis-9.2.pom (3 KB at 170.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/net/sf/jtidy/jtidy/r938/jtidy-r938.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/net/sf/jtidy/jtidy/r938/jtidy-r938.pom (10 KB at 474.0 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/net/sf/jtidy/jtidy/r938/jtidy-r938.pom (10 KB at 600.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.3/asm-9.3.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.3/asm-9.3.pom (3 KB at 128.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.3/asm-9.3.pom (3 KB at 96.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.3/asm-commons-9.3.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.3/asm-commons-9.3.pom (3 KB at 131.4 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.3/asm-commons-9.3.pom (3 KB at 137.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.3/asm-tree-9.3.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.3/asm-tree-9.3.pom (3 KB at 140.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.3/asm-tree-9.3.pom (3 KB at 168.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.3/asm-analysis-9.3.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.3/asm-analysis-9.3.pom (3 KB at 127.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.3/asm-analysis-9.3.pom (3 KB at 170.5 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/3.1.1/maven-reporting-api-3.1.1.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/3.1.1/maven-reporting-api-3.1.1.pom (4 KB at 175.0 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/3.1.1/maven-reporting-api-3.1.1.pom (4 KB at 183.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-exec/1.6.0/maven-reporting-exec-1.6.0.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-exec/1.6.0/maven-reporting-exec-1.6.0.pom (14 KB at 565.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-exec/1.6.0/maven-reporting-exec-1.6.0.pom (14 KB at 847.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.1/plexus-interactivity-api-1.1.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.1/plexus-interactivity-api-1.1.pom (823 B at 30.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.1/plexus-interactivity-api-1.1.pom (823 B at 18.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity/1.1/plexus-interactivity-1.1.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity/1.1/plexus-interactivity-1.1.pom (2 KB at 80.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity/1.1/plexus-interactivity-1.1.pom (2 KB at 93.9 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/6.5/plexus-components-6.5.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/6.5/plexus-components-6.5.pom (3 KB at 131.4 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/6.5/plexus-components-6.5.pom (3 KB at 175.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.pom (9 KB at 243.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.pom (9 KB at 573.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom (5 KB at 213.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom (5 KB at 280.8 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream/1.4.19/xstream-1.4.19.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream/1.4.19/xstream-1.4.19.pom (24 KB at 1107.2 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream/1.4.19/xstream-1.4.19.pom (24 KB at 1367.8 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream-parent/1.4.19/xstream-parent-1.4.19.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream-parent/1.4.19/xstream-parent-1.4.19.pom (43 KB at 2014.4 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream-parent/1.4.19/xstream-parent-1.4.19.pom (43 KB at 2488.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/io/github/x-stream/mxparser/1.2.2/mxparser-1.2.2.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/io/github/x-stream/mxparser/1.2.2/mxparser-1.2.2.pom (24 KB at 1164.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/io/github/x-stream/mxparser/1.2.2/mxparser-1.2.2.pom (24 KB at 1552.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.pom (386 B at 19.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.pom (386 B at 25.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.6.4/maven-plugin-tools-generators-3.6.4.jar</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.6.4/maven-plugin-tools-api-3.6.4.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.jar</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/3.2.5/maven-model-3.2.5.jar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.jar</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/net/sf/jtidy/jtidy/r938/jtidy-r938.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.6.4/maven-plugin-tools-generators-3.6.4.jar (49 KB at 1206.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.6.4/maven-plugin-tools-generators-3.6.4.jar (49 KB at 2681.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.3/asm-9.3.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.6.4/maven-plugin-tools-api-3.6.4.jar (24 KB at 461.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.6.4/maven-plugin-tools-api-3.6.4.jar (24 KB at 1049.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.3/asm-commons-9.3.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.3/asm-9.3.jar (120 KB at 1988.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.3/asm-9.3.jar (120 KB at 3314.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.3/asm-tree-9.3.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.3/asm-commons-9.3.jar (72 KB at 986.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.3/asm-commons-9.3.jar (72 KB at 1775.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.3/asm-analysis-9.3.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.3/asm-tree-9.3.jar (52 KB at 547.2 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/3.2.5/maven-model-3.2.5.jar (158 KB at 2962.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.6/commons-io-2.6.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.3/asm-analysis-9.3.jar (34 KB at 341.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.3/asm-tree-9.3.jar (52 KB at 935.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/3.1.1/maven-reporting-api-3.1.1.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/3.2.5/maven-model-3.2.5.jar (158 KB at 1481.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.3/asm-analysis-9.3.jar (34 KB at 577.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-exec/1.6.0/maven-reporting-exec-1.6.0.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-exec/1.6.0/maven-reporting-exec-1.6.0.jar (31 KB at 247.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/3.1.1/maven-reporting-api-3.1.1.jar (11 KB at 143.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.2.5/maven-artifact-3.2.5.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/net/sf/jtidy/jtidy/r938/jtidy-r938.jar (245 KB at 1937.0 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-exec/1.6.0/maven-reporting-exec-1.6.0.jar (31 KB at 394.0 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.2.5/maven-core-3.2.5.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/3.1.1/maven-reporting-api-3.1.1.jar (11 KB at 81.2 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/net/sf/jtidy/jtidy/r938/jtidy-r938.jar (245 KB at 2940.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.2.5/maven-repository-metadata-3.2.5.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.6/commons-io-2.6.jar (210 KB at 1651.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-io/commons-io/2.6/commons-io-2.6.jar (210 KB at 2356.8 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model-builder/3.2.5/maven-model-builder-3.2.5.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.jar (547 KB at 4076.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.2.5/maven-artifact-3.2.5.jar (54 KB at 604.5 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-aether-provider/3.2.5/maven-aether-provider-3.2.5.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.2.5/maven-repository-metadata-3.2.5.jar (26 KB at 165.7 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.2.5/maven-repository-metadata-3.2.5.jar (26 KB at 258.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-spi/1.0.0.v20140518/aether-spi-1.0.0.v20140518.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model-builder/3.2.5/maven-model-builder-3.2.5.jar (167 KB at 1086.2 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-aether-provider/3.2.5/maven-aether-provider-3.2.5.jar (65 KB at 573.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-impl/1.0.0.v20140518/aether-impl-1.0.0.v20140518.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.2.5/maven-artifact-3.2.5.jar (54 KB at 344.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-spi/1.0.0.v20140518/aether-spi-1.0.0.v20140518.jar (31 KB at 263.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-aether-provider/3.2.5/maven-aether-provider-3.2.5.jar (65 KB at 411.7 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model-builder/3.2.5/maven-model-builder-3.2.5.jar (167 KB at 1408.4 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.jar (547 KB at 4514.5 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.5/org.eclipse.sisu.plexus-0.3.5.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-spi/1.0.0.v20140518/aether-spi-1.0.0.v20140518.jar (31 KB at 163.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.2.5/maven-core-3.2.5.jar (594 KB at 3193.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.jar (134 KB at 944.0 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.2/cdi-api-1.2.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.5/org.eclipse.sisu.plexus-0.3.5.jar (201 KB at 1012.6 KB/sec)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-impl/1.0.0.v20140518/aether-impl-1.0.0.v20140518.jar (168 KB at 842.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.2.5/maven-core-3.2.5.jar (594 KB at 3735.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.5/org.eclipse.sisu.inject-0.3.5.jar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.2/cdi-api-1.2.jar (70 KB at 398.9 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/3.2.3/sisu-guice-3.2.3-no_aop.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.jar (134 KB at 655.7 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.5/org.eclipse.sisu.plexus-0.3.5.jar (201 KB at 1132.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar (26 KB at 119.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar (26 KB at 135.5 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.2/cdi-api-1.2.jar (70 KB at 322.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-impl/1.0.0.v20140518/aether-impl-1.0.0.v20140518.jar (168 KB at 921.5 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.jar (52 KB at 212.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/3.2.3/sisu-guice-3.2.3-no_aop.jar (389 KB at 1774.0 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.2.5/maven-plugin-api-3.2.5.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.jar (61 KB at 247.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.5/org.eclipse.sisu.inject-0.3.5.jar (371 KB at 1683.9 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.2.5/maven-settings-3.2.5.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.2.5/maven-plugin-api-3.2.5.jar (46 KB at 171.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.jar (61 KB at 272.3 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.5/org.eclipse.sisu.inject-0.3.5.jar (371 KB at 1408.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.jar (52 KB at 218.0 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.1/plexus-interactivity-api-1.1.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/3.2.3/sisu-guice-3.2.3-no_aop.jar (389 KB at 1460.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.2.5/maven-plugin-api-3.2.5.jar (46 KB at 187.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.2.5/maven-settings-3.2.5.jar (43 KB at 152.8 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.2.5/maven-settings-3.2.5.jar (43 KB at 172.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.1/plexus-interactivity-api-1.1.jar (10 KB at 32.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.jar (143 KB at 567.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream/1.4.19/xstream-1.4.19.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.jar (143 KB at 496.2 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.1/plexus-interactivity-api-1.1.jar (10 KB at 34.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/io/github/x-stream/mxparser/1.2.2/mxparser-1.2.2.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.jar (262 KB at 861.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.4.2/plexus-utils-3.4.2.jar (262 KB at 966.9 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/io/github/x-stream/mxparser/1.2.2/mxparser-1.2.2.jar (29 KB at 92.9 KB/sec)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.jar (2176 KB at 6842.1 KB/sec)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream/1.4.19/xstream-1.4.19.jar (619 KB at 1932.2 KB/sec)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar (321 KB at 997.3 KB/sec)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar (8 KB at 21.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar (8 KB at 24.6 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar (321 KB at 1096.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/io/github/x-stream/mxparser/1.2.2/mxparser-1.2.2.jar (29 KB at 95.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/thoughtworks/xstream/xstream/1.4.19/xstream-1.4.19.jar (619 KB at 1981.7 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.jar (2176 KB at 6757.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ===============================================================================</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ========================= Platform Properties Details =========================</span>
@@ -441,7 +447,7 @@ require the use of a <code>JDK</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> CHROMEWEBDRIVER=/usr/local/share/chrome_driver</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_UNZIPCMD=/usr/bin/unzip</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_USER=runner</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RUN_NUMBER=14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RUN_NUMBER=15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_HOME=/usr/local/lib/android/sdk</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RETENTION_DAYS=90</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_WORKSPACE=/home/runner/work/rmaven/rmaven</span>
@@ -460,7 +466,7 @@ require the use of a <code>JDK</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> HOMEBREW_CELLAR=/home/linuxbrew/.linuxbrew/Cellar</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_NDK=/usr/local/lib/android/sdk/ndk/25.0.8775105</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GOROOT_1_18_X64=/opt/hostedtoolcache/go/1.18.5/x64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ENV=/home/runner/work/_temp/_runner_file_commands/set_env_c9be2e6d-00d3-425b-a52d-386bd30d0944</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ENV=/home/runner/work/_temp/_runner_file_commands/set_env_f34ece4b-1a11-4fd5-adbc-a90f8e802c4d</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GRAALVM_11_ROOT=/usr/local/graalvm/graalvm-ce-java11-22.2.0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_EVENT_PATH=/home/runner/work/_temp/_github_workflow/event.json</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SED=/usr/bin/sed</span>
@@ -482,7 +488,7 @@ require the use of a <code>JDK</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ANT_HOME=/usr/share/ant</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_SYSTEM_ABI=linux,gcc,gxx,gfortran,gfortran</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> JAVA_HOME_17_X64=/usr/lib/jvm/temurin-17-jdk-amd64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_STEP_SUMMARY=/home/runner/work/_temp/_runner_file_commands/step_summary_c9be2e6d-00d3-425b-a52d-386bd30d0944</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_STEP_SUMMARY=/home/runner/work/_temp/_runner_file_commands/step_summary_f34ece4b-1a11-4fd5-adbc-a90f8e802c4d</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_REPOSITORY=terminological/rmaven</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ACTION_REF=</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> HOMEBREW_REPOSITORY=/home/linuxbrew/.linuxbrew/Homebrew</span>
@@ -495,20 +501,19 @@ require the use of a <code>JDK</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LEIN_JAR=/usr/local/lib/lein/self-installs/leiningen-2.9.10-standalone.jar</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> MAVEN_PROJECTBASEDIR=/home/runner/.cache/rmaven</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_ARCH=X64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_KEEPALIVE=false</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_SHA=103f5d096e580616a15f8ecaa13f0d572071f060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_SHA=23bca81cb0e7bf8906ea493d0783154193151e8b</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ImageOS=ubuntu20</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ImageVersion=20220821.1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ACCEPT_EULA=Y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_PAT=ghs_2Rx06k5Lq0RDKt9u7zNJCLwnjjTZ6N0KcHB4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_PAT=ghs_kkLqp4hqzN7VGLoCyRPvxBXATknZ2W3qiU0p</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_PERFLOG=/home/runner/perflog</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_INCLUDE_DIR=/opt/R/4.2.1/lib/R/include</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PERFLOG_LOCATION_SETTING=RUNNER_PERFLOG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R_SESSION_TMPDIR=/tmp/RtmpQCO2S1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_TRACKING_ID=github_6339492e-6f5e-4139-80b0-c3834790ee8f</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R_SESSION_TMPDIR=/tmp/RtmpX355OR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_TRACKING_ID=github_779a5196-ede1-46ed-81d3-65ae42777275</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_WORKSPACE=/home/runner/work/rmaven</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_GZIPCMD=/usr/bin/gzip</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> INVOCATION_ID=6d42fe6a656e4aa490d06bd70ac3d8c8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> INVOCATION_ID=38d2427c39bb47dc8893bbe9fd4c06b4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TAR=/usr/bin/tar</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TZ=UTC</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_REF_PROTECTED=false</span>
@@ -520,10 +525,10 @@ require the use of a <code>JDK</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_PLATFORM=x86_64-pc-linux-gnu</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_BASE_REF=</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PIPX_HOME=/opt/pipx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> JOURNAL_STREAM=8:22892</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> JOURNAL_STREAM=8:22834</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_DOC_DIR=/opt/R/4.2.1/lib/R/doc</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LC_COLLATE=C</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_PATH=/home/runner/work/_temp/_runner_file_commands/add_path_c9be2e6d-00d3-425b-a52d-386bd30d0944</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_PATH=/home/runner/work/_temp/_runner_file_commands/add_path_f34ece4b-1a11-4fd5-adbc-a90f8e802c4d</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_EVENT_NAME=push</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_TRIGGERING_ACTOR=robchallen</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> CHROME_BIN=/usr/bin/google-chrome</span>
@@ -545,7 +550,6 @@ require the use of a <code>JDK</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ACTOR=robchallen</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GOROOT_1_19_X64=/opt/hostedtoolcache/go/1.19.0/x64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PIPX_BIN_DIR=/opt/pipx_bin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_PFS=true</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_LIBS_SITE=/opt/R/4.2.1/lib/R/site-library</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GECKOWEBDRIVER=/usr/local/share/gecko_driver</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> JAVA_HOME_8_X64=/usr/lib/jvm/temurin-8-jdk-amd64</span>
@@ -562,7 +566,7 @@ require the use of a <code>JDK</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> HOMEBREW_NO_AUTO_UPDATE=1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ACTION_REPOSITORY=</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_SDK_ROOT=/usr/local/lib/android/sdk</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RUN_ID=2920804909</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RUN_ID=2922684408</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> USER=runner</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> XDG_CONFIG_HOME=/home/runner/.config</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> EDITOR=vi</span>
@@ -577,10 +581,11 @@ require the use of a <code>JDK</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] BUILD SUCCESS</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Total time: 3.926 s</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Finished at: 2022-08-24T16:44:02+00:00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Final Memory: 13M/47M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Total time: 3.450 s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Finished at: 2022-08-24T22:29:18+00:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Final Memory: 13M/50M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>

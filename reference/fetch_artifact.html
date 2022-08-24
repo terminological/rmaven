@@ -28,6 +28,9 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -107,7 +110,10 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">fetch_artifact</span><span class="op">(</span>artifact<span class="op">=</span><span class="st">"com.google.guava:guava:31.1-jre"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># This code can take quite a while to run as has to</span></span></span>
+<span class="r-in"><span><span class="co"># download a lot of plugins, especially on first run</span></span></span>
+<span class="r-in"><span><span class="fu">fetch_artifact</span><span class="op">(</span>artifact<span class="op">=</span><span class="st">"com.google.guava:guava:31.1-jre"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> executing: /home/runner/.cache/rmaven/mvnw org.apache.maven.plugins:maven-dependency-plugin:3.3.0:get -Dartifact=com.google.guava:guava:31.1-jre -B</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Scanning for projects...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO]                                                                         </span>
@@ -118,49 +124,50 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] --- maven-dependency-plugin:3.3.0:get (default-cli) @ standalone-pom ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Resolving com.google.guava:guava:jar:31.1-jre with transitive dependencies</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/guava/31.1-jre/guava-31.1-jre.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava/31.1-jre/guava-31.1-jre.pom (11 KB at 45.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava/31.1-jre/guava-31.1-jre.pom (11 KB at 42.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/31.1-jre/guava-parent-31.1-jre.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/31.1-jre/guava-parent-31.1-jre.pom (15 KB at 553.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/31.1-jre/guava-parent-31.1-jre.pom (15 KB at 599.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.pom (3 KB at 102.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.pom (3 KB at 124.0 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/26.0-android/guava-parent-26.0-android.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/26.0-android/guava-parent-26.0-android.pom (10 KB at 414.2 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/26.0-android/guava-parent-26.0-android.pom (10 KB at 497.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom (3 KB at 79.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom (3 KB at 123.6 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom (5 KB at 161.0 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom (5 KB at 182.0 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.pom (3 KB at 61.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.pom (3 KB at 92.9 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.pom (3 KB at 96.0 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.pom (3 KB at 117.4 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.11.0/error_prone_parent-2.11.0.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.11.0/error_prone_parent-2.11.0.pom (11 KB at 419.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.11.0/error_prone_parent-2.11.0.pom (11 KB at 524.1 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.pom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.pom (3 KB at 96.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.pom (3 KB at 158.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/guava/31.1-jre/guava-31.1-jre.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar (3 KB at 17.5 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar (5 KB at 61.8 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar (5 KB at 36.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar (3 KB at 30.2 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar (20 KB at 147.5 KB/sec)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar (9 KB at 55.3 KB/sec)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.jar (16 KB at 95.1 KB/sec)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar (204 KB at 1035.2 KB/sec)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava/31.1-jre/guava-31.1-jre.jar (2891 KB at 8281.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar (20 KB at 207.1 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.jar (16 KB at 164.3 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar (9 KB at 84.9 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar (204 KB at 1906.0 KB/sec)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/guava/guava/31.1-jre/guava-31.1-jre.jar (2891 KB at 11158.7 KB/sec)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] BUILD SUCCESS</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Total time: 2.189 s</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Finished at: 2022-08-24T16:44:06+00:00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Final Memory: 15M/54M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Total time: 2.087 s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Finished at: 2022-08-24T22:29:21+00:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Final Memory: 15M/57M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> /home/runner/.m2/repository/com/google/guava/guava/31.1-jre/guava-31.1-jre.jar</span>
 <span class="r-in"><span><span class="fu">fetch_artifact</span><span class="op">(</span>coordinates <span class="op">=</span> <span class="fu"><a href="as.coordinates.html">as.coordinates</a></span><span class="op">(</span><span class="st">"org.junit.jupiter"</span>,<span class="st">"junit-jupiter-api"</span>,<span class="st">"5.9.0"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> /home/runner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.0/junit-jupiter-api-5.9.0.jar</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
