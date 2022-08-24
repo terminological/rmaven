@@ -2,7 +2,7 @@
 % Please edit documentation in R/maven.R
 \name{resolve_dependencies}
 \alias{resolve_dependencies}
-\title{Resolve the classpath for an artifact}
+\title{Resolve the \code{classpath} for an artifact}
 \usage{
 resolve_dependencies(
   groupId = NULL,
@@ -18,44 +18,47 @@ resolve_dependencies(
 )
 }
 \arguments{
-\item{groupId}{the maven groupId, optional}
+\item{groupId}{the maven \code{groupId}, optional}
 
-\item{artifactId}{the maven artifactId, optional}
+\item{artifactId}{the maven \code{artifactId}, optional}
 
 \item{version}{the maven version, optional}
 
 \item{...}{passed on to as.coordinates()}
 
-\item{coordinates}{the maven coordinates, optional (either groupId,artifactId and version must be specified, or coordinates, or artifact)}
+\item{coordinates}{the maven coordinates, optional (either \code{groupId},\code{artifactId} and 'version' must be specified, or 'coordinates', or 'artifact')}
 
 \item{artifact}{optional, coordinates as an artifact string \verb{groupId:artifactId:version[:packaging[:classifier]]} string}
 
 \item{path}{the path to the source directory, pom file or jar file. if blank the}
 
-\item{include_self}{do you want include this path in the classpath. optional, if missing the path will be included if it is a regular jar, or a fat jar, otherwise not.}
+\item{include_self}{do you want include this path in the \code{classpath}. optional, if missing the path will be included if it is a regular jar, or a fat jar, otherwise not.}
 
-\item{nocache}{do not used cached version, by default we use a cached version of the classpath unless the pom.xml is newer that the cached classpath.}
+\item{nocache}{do not used cached version, by default we use a cached version of the \code{classpath} unless the \code{pom.xml} is newer that the cached \code{classpath}.}
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 }
 \value{
-a character vector of the classpath jar files (including the current one if appropriate)
+a character vector of the \code{classpath} jar files (including the current one if appropriate)
 }
 \description{
 This calculates the dependencies for an artifact which may be specified either as a set of maven coordinates (in which case the
-artifact is downloaded) or as a path to a jar file containing a pom.xml (e.g. a compiled jar file, a compiled jar-with-dependencies, or a assembled src jar)
-The resulting file paths which will be in the maven local cache are checked on the filesystem.
+artifact is downloaded) or as a path to a jar file containing a pom.xml (e.g. a compiled jar file, a compiled jar-with-dependencies, or a assembled \code{...-src.jar})
+The resulting file paths which will be in the maven local cache are checked on the file system.
 }
 \examples{
+\donttest{
+# This code can take quite a while to run as has
+# to download a lot of plugins, especially on first run
 
 resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version="2.11.0")
 
-resolve_dependencies(artifact = "org.junit.jupiter:junit-jupiter-api:5.9.0")
+resolve_dependencies(artifact = "org.junit.jupiter:junit-jupiter-api:5.9.0", nocache=TRUE)
 
 resolve_dependencies(path=
-  system.file("testdata/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
+  system.file("java/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
 
 resolve_dependencies(path=
-  system.file("testdata/test-project-0.0.1-SNAPSHOT-src.jar",package="rmaven"))
-
+  system.file("java/test-project-0.0.1-SNAPSHOT-src.jar",package="rmaven"))
+}
 }

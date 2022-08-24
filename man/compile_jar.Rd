@@ -12,24 +12,28 @@ compile_jar(
 )
 }
 \arguments{
-\item{path}{the path to - a source code directory contining a pom.xml file, a ...-src.jar assembled by the maven assembly plugin, or a pom.xml file}
+\item{path}{the path to - a source code directory containing a pom.xml file, a \code{...-src.jar} assembled by the maven assembly plugin, or a \code{pom.xml} file}
 
-\item{nocache}{normally compilation is only performed if the input has changed. nocache forces recompilation}
+\item{nocache}{normally compilation is only performed if the input has changed. \code{nocache} forces recompilation}
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 
-\item{with_dependencies}{compile the Java code to a ...-jar-with-dependencies.jar including transitive dependencies which is easier to embed}
+\item{with_dependencies}{compile the Java code to a '...-jar-with-dependencies.jar' including transitive dependencies which is easier to embed}
 }
 \value{
-the path to the compiled jar file.
+the path to the compiled 'jar' file.
 }
 \description{
 Compilation will package the Java source code in to a Jar file for further use. It will resolve dependencies and
-optionally package them into a single 'uber' jar (using maven assembly).
+optionally package them into a single \verb{uber jar} (using maven assembly).
 }
 \examples{
+\donttest{
+# This code can take quite a while to run as has to
+# download a lot of plugins, especially on first run
 path = package_jars("rmaven","src")
 compile_jar(path,nocache=TRUE)
-path2 = system.file("testdata/test-project",package = "rmaven")
+path2 = system.file("java/test-project",package = "rmaven")
 compile_jar(path2,nocache=TRUE,with_dependencies=TRUE)
+}
 }

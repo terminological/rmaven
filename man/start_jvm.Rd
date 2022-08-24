@@ -2,22 +2,25 @@
 % Please edit documentation in R/maven.R
 \name{start_jvm}
 \alias{start_jvm}
-\title{Start an rJava JVM with or without debugging options}
+\title{Start an \code{rJava} \code{JVM} with or without debugging options}
 \usage{
 start_jvm(debug = FALSE, quiet = getOption("rmaven.quiet", FALSE))
 }
 \arguments{
 \item{debug}{turn on debugging}
 
-\item{quiet}{don't report messages (defaults to getOption("rmaven.quiet") or FALSE)}
+\item{quiet}{don't report messages (defaults to \code{getOption("rmaven.quiet")} or FALSE)}
 }
 \value{
 nothing - called for side effects
 }
 \description{
-This does not do anything if the JVM has already been started.
+This does not do anything if the \code{JVM} has already been started.
 }
 \examples{
 start_jvm()
-# start_jvm(debug = TRUE)
+\dontrun{
+# this may try to rebind debugging port
+start_jvm(debug = TRUE)
+}
 }

@@ -9,7 +9,7 @@ package_jars(package_name, types = c("all", "thin-jar", "fat-jar", "src"))
 \arguments{
 \item{package_name}{the R package name}
 
-\item{types}{the jar types to look for in the package: one of "all","thin-jar","fat-jar","src"}
+\item{types}{the jar types to look for in the package: one of \code{all},\code{thin-jar},\code{fat-jar},\code{src}}
 }
 \value{
 a vector of package jars

@@ -16,9 +16,9 @@ execute_maven(
 )
 }
 \arguments{
-\item{goal}{the goal of the mvn command ( can be multiple ) e.g. c("clean","compile")}
+\item{goal}{the goal of the \code{mvn} command ( can be multiple ) e.g. \code{c("clean","compile")}}
 
-\item{opts}{provided options in the form c("-Doption1=value2","-Doption2=value2")}
+\item{opts}{provided options in the form \code{c("-Doption1=value2","-Doption2=value2")}}
 
 \item{pom_path}{optional. the path to a pom.xml file for goals that operate on one}
 
@@ -28,16 +28,16 @@ execute_maven(
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 
-\item{require_jdk}{does the goal you are executing require a jdk (e.g. compilation)}
+\item{require_jdk}{does the goal you are executing require a \code{JDK} (e.g. compilation)}
 
-\item{...}{named parameters are passed to maven as options in the form -Dname=value}
+\item{...}{named parameters are passed to maven as options in the form \code{-Dname=value}}
 }
 \value{
 nothing, invisibly
 }
 \description{
 Maven goals may be executed with or without a pom.xml file. Some maven goals (e.g. compilation)
-require the use of a JDK. Goals can be
+require the use of a \code{JDK}.
 }
 \examples{
 execute_maven("help:system")

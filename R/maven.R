@@ -56,19 +56,22 @@
   }
 }
 
-#' Start an rJava JVM with or without debugging options
+#' Start an `rJava` `JVM` with or without debugging options
 #'
-#' This does not do anything if the JVM has already been started.
+#' This does not do anything if the `JVM` has already been started.
 #'
 #' @param debug turn on debugging
-#' @param quiet don't report messages (defaults to getOption("rmaven.quiet") or FALSE)
+#' @param quiet don't report messages (defaults to `getOption("rmaven.quiet")` or FALSE)
 #'
 #' @return nothing - called for side effects
 #' @export
 #'
 #' @examples
 #' start_jvm()
-#' # start_jvm(debug = TRUE)
+#' \dontrun{
+#' # this may try to rebind debugging port
+#' start_jvm(debug = TRUE)
+#' }
 start_jvm = function(debug = FALSE, quiet = getOption("rmaven.quiet",FALSE)) {
   tryCatch({
     if (!rJava::.jniInitialized) {
@@ -88,7 +91,7 @@ start_jvm = function(debug = FALSE, quiet = getOption("rmaven.quiet",FALSE)) {
 #' Find location of all the jars in a particular package
 #'
 #' @param package_name the R package name
-#' @param types the jar types to look for in the package: one of "all","thin-jar","fat-jar","src"
+#' @param types the jar types to look for in the package: one of `all`,`thin-jar`,`fat-jar`,`src`
 #'
 #' @return a vector of package jars
 #' @export
@@ -183,10 +186,10 @@ print.coordinates = function(x,...) {
 
 #' Maven coordinates
 #'
-#' @param groupId the maven groupId
-#' @param artifactId the maven artifactId
+#' @param groupId the maven `groupId`
+#' @param artifactId the maven `artifactId`
 #' @param version the maven version
-#' @param ... other params ignored apart from packaging (jar or ejb) and classifier (tests, client, sources, javadoc)
+#' @param ... other parameters ignored apart from packaging (`jar`,`war`,`pom` or `ejb`) and classifier (`tests`, `client`, `sources`, `javadoc`, `jar-with-dependencies`, `src`)
 #'
 #' @return a coordinates object containing the coordinates
 #' @export
@@ -369,16 +372,16 @@ as.coordinates = function(groupId, artifactId, version, ...) {
 #' Executes a maven goal
 #'
 #' Maven goals may be executed with or without a pom.xml file. Some maven goals (e.g. compilation)
-#' require the use of a JDK. Goals can be
+#' require the use of a `JDK`.
 #'
-#' @param goal the goal of the mvn command ( can be multiple ) e.g. c("clean","compile")
-#' @param opts provided options in the form c("-Doption1=value2","-Doption2=value2")
+#' @param goal the goal of the `mvn` command ( can be multiple ) e.g. `c("clean","compile")`
+#' @param opts provided options in the form `c("-Doption1=value2","-Doption2=value2")`
 #' @param pom_path optional. the path to a pom.xml file for goals that operate on one
 #' @param quiet should output from maven be suppressed? (-q flag)
 #' @param debug should output from maven be verbose? (-X flag)
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
-#' @param require_jdk does the goal you are executing require a jdk (e.g. compilation)
-#' @param ... named parameters are passed to maven as options in the form -Dname=value
+#' @param require_jdk does the goal you are executing require a `JDK` (e.g. compilation)
+#' @param ... named parameters are passed to maven as options in the form `-Dname=value`
 #'
 #' @return nothing, invisibly
 #' @export
@@ -435,16 +438,16 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
 #' Fetch an artifact from a repository into the local .m2 cache
 #'
 
-#' @param groupId optional, the maven groupId,
-#' @param artifactId optional, the maven artifactId,
+#' @param groupId optional, the maven `groupId`,
+#' @param artifactId optional, the maven `artifactId`,
 #' @param version optional, the maven version,
 #' @param ... other maven coordinates such as classifier or packaging
 #' @param coordinates optional, coordinates as a coordinates object,
 #' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
 #' @param repoUrl the URLs of the repositories to check (defaults to maven central)
-#' @param coordinates optional, but if not supplied groupId and artifactId must be, coordinates as a coordinates object (see as.coordinates())
+#' @param coordinates optional, but if not supplied `groupId` and `artifactId` must be, coordinates as a coordinates object (see as.coordinates())
 #' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
-#' @param nocache normally artifacts are only fetched if required, nocache forces fetching
+#' @param nocache normally artifacts are only fetched if required, `nocache` forces fetching
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
 #'
 #' @return the .m2 path of the artifact
@@ -498,15 +501,15 @@ fetch_artifact = function(
 
 #' Copy an artifact from a repository to a local directory
 #'
-#' @param groupId optional, the maven groupId,
-#' @param artifactId optional, the maven artifactId,
+#' @param groupId optional, the maven `groupId`,
+#' @param artifactId optional, the maven `artifactId`,
 #' @param version optional, the maven version,
 #' @param ... other maven coordinates such as classifier or packaging
 #' @param coordinates optional, coordinates as a coordinates object,
 #' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
-#' @param repoUrl the URLs of the repositories to check (defaults to maven central & sonatype snaphots)
+#' @param repoUrl the URLs of the repositories to check (defaults to maven central & `Sonatype snaphots`)
 #' @param outputDirectory optional path, defaults to the rmaven cache directory
-#' @param nocache normally artifacts are only fetched if required, nocache forces fetching
+#' @param nocache normally artifacts are only fetched if required, `nocache` forces fetching
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
 #'
 #' @return the output of the system2 call. 0 on success.
@@ -624,38 +627,41 @@ copy_artifact = function(
   return(classpath_string)
 }
 
-#' Resolve the classpath for an artifact
+#' Resolve the `classpath` for an artifact
 #'
 #' This calculates the dependencies for an artifact which may be specified either as a set of maven coordinates (in which case the
-#' artifact is downloaded) or as a path to a jar file containing a pom.xml (e.g. a compiled jar file, a compiled jar-with-dependencies, or a assembled src jar)
-#' The resulting file paths which will be in the maven local cache are checked on the filesystem.
+#' artifact is downloaded) or as a path to a jar file containing a pom.xml (e.g. a compiled jar file, a compiled jar-with-dependencies, or a assembled `...-src.jar`)
+#' The resulting file paths which will be in the maven local cache are checked on the file system.
 #'
-#' @param groupId the maven groupId, optional
-#' @param artifactId the maven artifactId, optional
+#' @param groupId the maven `groupId`, optional
+#' @param artifactId the maven `artifactId`, optional
 #' @param version the maven version, optional
 #' @param ... passed on to as.coordinates()
-#' @param coordinates the maven coordinates, optional (either groupId,artifactId and version must be specified, or coordinates, or artifact)
+#' @param coordinates the maven coordinates, optional (either `groupId`,`artifactId` and 'version' must be specified, or 'coordinates', or 'artifact')
 #' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
 #' @param path the path to the source directory, pom file or jar file. if blank the
-#' @param include_self do you want include this path in the classpath. optional, if missing the path will be included if it is a regular jar, or a fat jar, otherwise not.
-#' @param nocache do not used cached version, by default we use a cached version of the classpath unless the pom.xml is newer that the cached classpath.
+#' @param include_self do you want include this path in the `classpath`. optional, if missing the path will be included if it is a regular jar, or a fat jar, otherwise not.
+#' @param nocache do not used cached version, by default we use a cached version of the `classpath` unless the `pom.xml` is newer that the cached `classpath`.
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
 #'
-#' @return a character vector of the classpath jar files (including the current one if appropriate)
+#' @return a character vector of the `classpath` jar files (including the current one if appropriate)
 #' @export
 #'
 #' @examples
+#' \donttest{
+#' # This code can take quite a while to run as has
+#' # to download a lot of plugins, especially on first run
 #'
 #' resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version="2.11.0")
 #'
 #' resolve_dependencies(artifact = "org.junit.jupiter:junit-jupiter-api:5.9.0", nocache=TRUE)
 #'
 #' resolve_dependencies(path=
-#'   system.file("testdata/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
+#'   system.file("java/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
 #'
 #' resolve_dependencies(path=
-#'   system.file("testdata/test-project-0.0.1-SNAPSHOT-src.jar",package="rmaven"))
-#'
+#'   system.file("java/test-project-0.0.1-SNAPSHOT-src.jar",package="rmaven"))
+#' }
 resolve_dependencies = function(
     groupId = NULL,
     artifactId = NULL,
@@ -732,10 +738,10 @@ resolve_dependencies = function(
 
 # Compilation ----
 
-# path is a directory or a -src.jar file
+# path is a directory or a `...-src.jar` file
 # here::i_am("R/maven.R")
-# path = here::here("inst/testdata/test-project-0.0.1-SNAPSHOT-src.jar")
-# path = here::here("inst/testdata/test-project")
+# path = here::here("inst/java/test-project-0.0.1-SNAPSHOT-src.jar")
+# path = here::here("inst/java/test-project")
 # .extract_source_code
 .extract_source_code = function(path) {
 
@@ -806,21 +812,25 @@ resolve_dependencies = function(
 #' Compile and package Java code
 #'
 #' Compilation will package the Java source code in to a Jar file for further use. It will resolve dependencies and
-#' optionally package them into a single 'uber' jar (using maven assembly).
+#' optionally package them into a single `uber jar` (using maven assembly).
 #'
-#' @param path the path to - a source code directory contining a pom.xml file, a ...-src.jar assembled by the maven assembly plugin, or a pom.xml file
-#' @param nocache normally compilation is only performed if the input has changed. nocache forces recompilation
+#' @param path the path to - a source code directory containing a pom.xml file, a `...-src.jar` assembled by the maven assembly plugin, or a `pom.xml` file
+#' @param nocache normally compilation is only performed if the input has changed. `nocache` forces recompilation
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
-#' @param with_dependencies compile the Java code to a ...-jar-with-dependencies.jar including transitive dependencies which is easier to embed
+#' @param with_dependencies compile the Java code to a '...-jar-with-dependencies.jar' including transitive dependencies which is easier to embed
 #'
-#' @return the path to the compiled jar file.
+#' @return the path to the compiled 'jar' file.
 #' @export
 #'
 #' @examples
+#' \donttest{
+#' # This code can take quite a while to run as has to
+#' # download a lot of plugins, especially on first run
 #' path = package_jars("rmaven","src")
 #' compile_jar(path,nocache=TRUE)
-#' path2 = system.file("testdata/test-project",package = "rmaven")
+#' path2 = system.file("java/test-project",package = "rmaven")
 #' compile_jar(path2,nocache=TRUE,with_dependencies=TRUE)
+#' }
 compile_jar = function(path, nocache = FALSE, verbose = c("normal", "quiet", "debug"), with_dependencies = FALSE) {
 
   verbose = match.arg(verbose)

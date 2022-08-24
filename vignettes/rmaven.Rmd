@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 The purpose of `rmaven` is to simplify the process of including Java libraries into R code for use by `rJava`. Currently the 
 `rJava` infrastructure assumes jar files of compiled code, and all the dependencies thereof, are available locally and known to the programmer. This 
-works well if the `rJava` code is part of a package, but less well if the user is programming in a REPL loop, and simply wants to use a Java library. 
+works well if the `rJava` code is part of a package, but less well if the user is programming in a `REPL` loop, and simply wants to use a Java library. 
 
 Even when packaging Java libraries with `rJava` code into an R package, the transitive dependencies of a moderately complicated bit of Java code can 
 be complex, and distributing the `jar` files associated with that burdensome, particularly when the underlying libraries are updated. The bundling of jar files 
@@ -26,7 +26,7 @@ also may exceed the stringent CRAN policies for allowable package sizes, requiri
 To solve this `rmaven` manages some or all of this problem for you, by integrating Java's standard build and dependency management tool Apache Maven into R. 
 This allows Java libraries used within R to be specified as `Maven` artifacts and transitive dependencies downloaded dynamically from Maven repositories. 
 `rmaven` is pure R with minimal dependencies of its own, apart from the 
-existence of a Java runtime (JRE or JDK) installed on the system, and the location known to R. It doesn't even require `rJava` (although without it there
+existence of a Java runtime (`JRE` or `JDK`) installed on the system, and the location known to R. It doesn't even require `rJava` (although without it there
 doesn't seem much point).
 
 ```{r setup}
@@ -61,7 +61,7 @@ resolve_dependencies(
 )
 ```
 
-# Using local repository Jar files in rJava
+# Using local repository Jar files in `rJava`
 
 The second step is to add jars from the local `.m2` repository to the `rJava` class path, and using `rJava`, create an R interface to the Java class you want to use (in this case the `StringUtils` class). 
 
@@ -70,7 +70,7 @@ rJava::.jaddClassPath(dynamic_classpath)
 StringUtils = rJava::J("org.apache.commons.lang3.StringUtils")
 ```
 
-Finally you can call the static Java method, using rJava, in this case `StringUtils.rotate(String s, int distance)`.
+Finally you can call the static Java method, using `rJava`, in this case `StringUtils.rotate(String s, int distance)`.
 
 ```{r}
 StringUtils$rotate("ABCDEF",3L)
@@ -82,11 +82,11 @@ Apart from using Maven to download manage dependencies, it also allows us to com
 
 ## Step 0: write some java code 
 
-As part of your package write some Java code including a `pom.xml` Maven build file, such as the TestCass, in the example code bundled with this package.
+As part of your package write some Java code including a `pom.xml` Maven build file, such as the `TestCass`, in the example code bundled with this package.
 
 ```{r}
 # find the example bundled with this package
-source_directory = system.file("testdata/test-project",package = "rmaven")
+source_directory = system.file("java/test-project",package = "rmaven")
 fs::dir_tree(source_directory, invert=TRUE, glob = "*/target/*")
 ```
 
@@ -113,7 +113,7 @@ TestClass$sayHelloWorld()
 # What else could you do?
 
 * Run ant tasks. - using the `antrun` plugin
-* Initialise production web servers and apis. - using Jetty or Spring.
+* Initialize production web servers and 'APIs'. - using Jetty or Spring.
 * run any other maven plugin goal:
 
 ```{r}

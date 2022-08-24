@@ -7,13 +7,13 @@
 as.coordinates(groupId, artifactId, version, ...)
 }
 \arguments{
-\item{groupId}{the maven groupId}
+\item{groupId}{the maven \code{groupId}}
 
-\item{artifactId}{the maven artifactId}
+\item{artifactId}{the maven \code{artifactId}}
 
 \item{version}{the maven version}
 
-\item{...}{other params ignored apart from packaging (jar or ejb) and classifier (tests, client, sources, javadoc)}
+\item{...}{other parameters ignored apart from packaging (\code{jar},\code{war},\code{pom} or \code{ejb}) and classifier (\code{tests}, \code{client}, \code{sources}, \code{javadoc}, \code{jar-with-dependencies}, \code{src})}
 }
 \value{
 a coordinates object containing the coordinates

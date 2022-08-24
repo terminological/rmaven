@@ -17,21 +17,21 @@ fetch_artifact(
 )
 }
 \arguments{
-\item{groupId}{optional, the maven groupId,}
+\item{groupId}{optional, the maven \code{groupId},}
 
-\item{artifactId}{optional, the maven artifactId,}
+\item{artifactId}{optional, the maven \code{artifactId},}
 
 \item{version}{optional, the maven version,}
 
 \item{...}{other maven coordinates such as classifier or packaging}
 
-\item{coordinates}{optional, but if not supplied groupId and artifactId must be, coordinates as a coordinates object (see as.coordinates())}
+\item{coordinates}{optional, but if not supplied \code{groupId} and \code{artifactId} must be, coordinates as a coordinates object (see as.coordinates())}
 
 \item{artifact}{optional, coordinates as an artifact string \verb{groupId:artifactId:version[:packaging[:classifier]]} string}
 
 \item{repoUrl}{the URLs of the repositories to check (defaults to maven central)}
 
-\item{nocache}{normally artifacts are only fetched if required, nocache forces fetching}
+\item{nocache}{normally artifacts are only fetched if required, \code{nocache} forces fetching}
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 }

@@ -24,7 +24,7 @@ devtools::install_github("terminological/rmaven")
 When using `rmaven` the work-flow involved in using a Java library in R is to first fetch it from the Maven repositories. 
 The second step is to add jars from the local `.m2` repository to the `rJava` class path, and 
 third using `rJava`, create an R interface to the Java class you want to use (in this case the `StringUtils` class). 
-Finally you can call the static Java method, using rJava, in this case `StringUtils.rotate(String s, int distance)`.
+Finally you can call the static Java method, using `rJava`, in this case `StringUtils.rotate(String s, int distance)`.
 
 ```R
 library(rmaven)

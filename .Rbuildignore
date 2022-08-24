@@ -5,5 +5,5 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-inst/testdata/test-project/target
+inst/java/test-project/target
 ^cran-comments\.md$

@@ -18,9 +18,9 @@ copy_artifact(
 )
 }
 \arguments{
-\item{groupId}{optional, the maven groupId,}
+\item{groupId}{optional, the maven \code{groupId},}
 
-\item{artifactId}{optional, the maven artifactId,}
+\item{artifactId}{optional, the maven \code{artifactId},}
 
 \item{version}{optional, the maven version,}
 
@@ -32,9 +32,9 @@ copy_artifact(
 
 \item{outputDirectory}{optional path, defaults to the rmaven cache directory}
 
-\item{repoUrl}{the URLs of the repositories to check (defaults to maven central & sonatype snaphots)}
+\item{repoUrl}{the URLs of the repositories to check (defaults to maven central & \verb{Sonatype snaphots})}
 
-\item{nocache}{normally artifacts are only fetched if required, nocache forces fetching}
+\item{nocache}{normally artifacts are only fetched if required, \code{nocache} forces fetching}
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 }

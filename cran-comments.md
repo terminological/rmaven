@@ -22,7 +22,10 @@ GitHub actions test environments:
 a deliberate side effect of the library, enabling users to locally install Java libraries and use them from within R, thus removing the need to
 distribute Java `jar` files with R packages, in line with CRAN best practice.
 
-* Maven relies heavily on downloading jar files from the internet. Some examples will take a long time to run on first use. This package will not work offline
-however in general Maven will fail gracefully and retry next time.
+* Maven relies heavily on downloading jar files from the internet. Some examples will take a long time to run on first use and have been surrounded by \donttest. 
+This package will not work offline however in general Maven will fail gracefully and retry next time.
 
 * This is a new release.
+
+* This package in a compilation tool. It includes very simple .java, .class and .jar files as testing data in the inst/java directory. These are used during automated testing of the package, 
+which checks the package can install these java files, or resolve their dependencies. They are not a functional part of the package, and only get executed in the getting started vignette.
