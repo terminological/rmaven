@@ -69,9 +69,9 @@
 
     
     
-<p>The purpose of <code>rmaven</code> is to simplify the process of including Java libraries into R code for use by <code>rJava</code>. Currently the <code>rJava</code> infrastructure assumes jar files of compiled code, and all the dependencies thereof, are available locally and known to the programmer. This works well if the <code>rJava</code> code is part of a package, but less well if the user is programming in a REPL loop, and simply wants to use a Java library.</p>
+<p>The purpose of <code>rmaven</code> is to simplify the process of including Java libraries into R code for use by <code>rJava</code>. Currently the <code>rJava</code> infrastructure assumes jar files of compiled code, and all the dependencies thereof, are available locally and known to the programmer. This works well if the <code>rJava</code> code is part of a package, but less well if the user is programming in a <code>REPL</code> loop, and simply wants to use a Java library.</p>
 <p>Even when packaging Java libraries with <code>rJava</code> code into an R package, the transitive dependencies of a moderately complicated bit of Java code can be complex, and distributing the <code>jar</code> files associated with that burdensome, particularly when the underlying libraries are updated. The bundling of jar files also may exceed the stringent CRAN policies for allowable package sizes, requiring a complex distribution mechanism for the dependencies.</p>
-<p>To solve this <code>rmaven</code> manages some or all of this problem for you, by integrating Java’s standard build and dependency management tool Apache Maven into R. This allows Java libraries used within R to be specified as <code>Maven</code> artifacts and transitive dependencies downloaded dynamically from Maven repositories. <code>rmaven</code> is pure R with minimal dependencies of its own, apart from the existence of a Java runtime (JRE or JDK) installed on the system, and the location known to R. It doesn’t even require <code>rJava</code> (although without it there doesn’t seem much point).</p>
+<p>To solve this <code>rmaven</code> manages some or all of this problem for you, by integrating Java’s standard build and dependency management tool Apache Maven into R. This allows Java libraries used within R to be specified as <code>Maven</code> artifacts and transitive dependencies downloaded dynamically from Maven repositories. <code>rmaven</code> is pure R with minimal dependencies of its own, apart from the existence of a Java runtime (<code>JRE</code> or <code>JDK</code>) installed on the system, and the location known to R. It doesn’t even require <code>rJava</code> (although without it there doesn’t seem much point).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://terminological.github.io/rmaven/">rmaven</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/start_jvm.html">start_jvm</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -95,91 +95,91 @@
 <span><span class="co">#&gt; [INFO] </span></span>
 <span><span class="co">#&gt; [INFO] --- maven-dependency-plugin:3.3.0:get (default-cli) @ standalone-pom ---</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar (574 KB at 1546.2 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar (574 KB at 1611.3 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Resolving org.apache.commons:commons-lang3:jar:3.12.0 with transitive dependencies</span></span>
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
 <span><span class="co">#&gt; [INFO] BUILD SUCCESS</span></span>
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">#&gt; [INFO] Total time: 1.657 s</span></span>
-<span><span class="co">#&gt; [INFO] Finished at: 2022-08-22T17:09:49+00:00</span></span>
+<span><span class="co">#&gt; [INFO] Total time: 1.631 s</span></span>
+<span><span class="co">#&gt; [INFO] Finished at: 2022-08-24T16:44:30+00:00</span></span>
 <span><span class="co">#&gt; [INFO] Final Memory: 15M/54M</span></span>
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
 <span><span class="co">#&gt; executing: /home/runner/.cache/rmaven/mvnw dependency:build-classpath -Dmdep.outputFile=classpath.txt -DincludeScope=runtime -B</span></span>
 <span><span class="co">#&gt; [INFO] Scanning for projects...</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-javadoc-plugin/3.2.0/maven-javadoc-plugin-3.2.0.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-javadoc-plugin/3.2.0/maven-javadoc-plugin-3.2.0.pom (20 KB at 70.3 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-javadoc-plugin/3.2.0/maven-javadoc-plugin-3.2.0.pom (20 KB at 74.1 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-javadoc-plugin/3.2.0/maven-javadoc-plugin-3.2.0.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-javadoc-plugin/3.2.0/maven-javadoc-plugin-3.2.0.jar (481 KB at 5111.7 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-javadoc-plugin/3.2.0/maven-javadoc-plugin-3.2.0.jar (481 KB at 5398.8 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs-maven-plugin/4.2.0/spotbugs-maven-plugin-4.2.0.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs-maven-plugin/4.2.0/spotbugs-maven-plugin-4.2.0.pom (33 KB at 679.6 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs-maven-plugin/4.2.0/spotbugs-maven-plugin-4.2.0.pom (33 KB at 1165.1 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/com/github/hazendaz/base-parent/27/base-parent-27.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/github/hazendaz/base-parent/27/base-parent-27.pom (85 KB at 2112.7 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/github/hazendaz/base-parent/27/base-parent-27.pom (85 KB at 1878.0 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs-maven-plugin/4.2.0/spotbugs-maven-plugin-4.2.0.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs-maven-plugin/4.2.0/spotbugs-maven-plugin-4.2.0.jar (140 KB at 2119.0 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs-maven-plugin/4.2.0/spotbugs-maven-plugin-4.2.0.jar (140 KB at 3779.8 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO]                                                                         </span></span>
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
 <span><span class="co">#&gt; [INFO] Building Apache Commons Lang 3.12.0</span></span>
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.7.1/junit-jupiter-5.7.1.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.7.1/junit-jupiter-5.7.1.pom (4 KB at 80.1 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.7.1/junit-jupiter-5.7.1.pom (4 KB at 97.6 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.1/junit-jupiter-api-5.7.1.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.1/junit-jupiter-api-5.7.1.pom (4 KB at 86.3 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.1/junit-jupiter-api-5.7.1.pom (4 KB at 124.2 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.1/junit-platform-commons-1.7.1.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.1/junit-platform-commons-1.7.1.pom (3 KB at 79.0 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.1/junit-platform-commons-1.7.1.pom (3 KB at 115.2 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.7.1/junit-jupiter-params-5.7.1.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.7.1/junit-jupiter-params-5.7.1.pom (3 KB at 83.9 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.7.1/junit-jupiter-params-5.7.1.pom (3 KB at 122.3 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.1/junit-jupiter-engine-5.7.1.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.1/junit-jupiter-engine-5.7.1.pom (4 KB at 71.0 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.1/junit-jupiter-engine-5.7.1.pom (4 KB at 115.7 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.1/junit-platform-engine-1.7.1.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.1/junit-platform-engine-1.7.1.pom (4 KB at 91.9 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.1/junit-platform-engine-1.7.1.pom (4 KB at 125.0 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit-pioneer/junit-pioneer/1.3.0/junit-pioneer-1.3.0.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit-pioneer/junit-pioneer/1.3.0/junit-pioneer-1.3.0.pom (6 KB at 149.5 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit-pioneer/junit-pioneer/1.3.0/junit-pioneer-1.3.0.pom (6 KB at 209.3 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.5.2/junit-bom-5.5.2.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.5.2/junit-bom-5.5.2.pom (5 KB at 116.6 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.5.2/junit-bom-5.5.2.pom (5 KB at 100.4 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.1/junit-platform-launcher-1.7.1.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.1/junit-platform-launcher-1.7.1.pom (3 KB at 82.1 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.1/junit-platform-launcher-1.7.1.pom (3 KB at 109.4 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest/2.2/hamcrest-2.2.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest/2.2/hamcrest-2.2.pom (2 KB at 29.8 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest/2.2/hamcrest-2.2.pom (2 KB at 39.3 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/easymock/easymock/4.2/easymock-4.2.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/easymock/easymock/4.2/easymock-4.2.pom (11 KB at 278.1 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/easymock/easymock/4.2/easymock-4.2.pom (11 KB at 264.2 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/easymock/easymock-parent/4.2/easymock-parent-4.2.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/easymock/easymock-parent/4.2/easymock-parent-4.2.pom (19 KB at 525.5 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/easymock/easymock-parent/4.2/easymock-parent-4.2.pom (19 KB at 766.3 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/objenesis/objenesis/3.1/objenesis-3.1.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/objenesis/objenesis/3.1/objenesis-3.1.pom (4 KB at 104.3 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/objenesis/objenesis/3.1/objenesis-3.1.pom (4 KB at 137.7 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/objenesis/objenesis-parent/3.1/objenesis-parent-3.1.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/objenesis/objenesis-parent/3.1/objenesis-parent-3.1.pom (18 KB at 430.9 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/objenesis/objenesis-parent/3.1/objenesis-parent-3.1.pom (18 KB at 594.3 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-core/1.27/jmh-core-1.27.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-core/1.27/jmh-core-1.27.pom (10 KB at 158.9 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-core/1.27/jmh-core-1.27.pom (10 KB at 260.5 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-parent/1.27/jmh-parent-1.27.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-parent/1.27/jmh-parent-1.27.pom (12 KB at 303.3 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-parent/1.27/jmh-parent-1.27.pom (12 KB at 415.6 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-generator-annprocess/1.27/jmh-generator-annprocess-1.27.pom</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-generator-annprocess/1.27/jmh-generator-annprocess-1.27.pom (4 KB at 110.2 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-generator-annprocess/1.27/jmh-generator-annprocess-1.27.pom (4 KB at 149.9 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.7.1/junit-jupiter-5.7.1.jar</span></span>
+<span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.1/junit-jupiter-api-5.7.1.jar</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.7.1/junit-jupiter-params-5.7.1.jar</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.1/junit-jupiter-engine-5.7.1.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.1/junit-jupiter-api-5.7.1.jar</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.1/junit-platform-engine-1.7.1.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.7.1/junit-jupiter-5.7.1.jar (7 KB at 121.8 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.7.1/junit-jupiter-5.7.1.jar (7 KB at 95.6 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit-pioneer/junit-pioneer/1.3.0/junit-pioneer-1.3.0.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit-pioneer/junit-pioneer/1.3.0/junit-pioneer-1.3.0.jar (111 KB at 1284.7 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit-pioneer/junit-pioneer/1.3.0/junit-pioneer-1.3.0.jar (111 KB at 1188.0 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.1/junit-platform-commons-1.7.1.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.1/junit-jupiter-api-5.7.1.jar (172 KB at 1453.2 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.1/junit-platform-commons-1.7.1.jar (98 KB at 748.2 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.1/junit-platform-launcher-1.7.1.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.1/junit-platform-engine-1.7.1.jar (177 KB at 1391.1 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.1/junit-jupiter-api-5.7.1.jar (172 KB at 1174.5 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.1/junit-jupiter-engine-5.7.1.jar (208 KB at 1574.8 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.1/junit-platform-engine-1.7.1.jar (177 KB at 1218.4 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/easymock/easymock/4.2/easymock-4.2.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.1/junit-platform-commons-1.7.1.jar (98 KB at 759.9 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.7.1/junit-jupiter-params-5.7.1.jar (555 KB at 3769.1 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/objenesis/objenesis/3.1/objenesis-3.1.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/objenesis/objenesis/3.1/objenesis-3.1.jar (60 KB at 335.3 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.1/junit-jupiter-engine-5.7.1.jar (208 KB at 1395.2 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-core/1.27/jmh-core-1.27.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar (121 KB at 680.6 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/objenesis/objenesis/3.1/objenesis-3.1.jar (60 KB at 333.4 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] Downloading: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-generator-annprocess/1.27/jmh-generator-annprocess-1.27.jar</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.1/junit-platform-launcher-1.7.1.jar (134 KB at 724.0 KB/sec)</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.7.1/junit-jupiter-params-5.7.1.jar (555 KB at 2870.7 KB/sec)</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/easymock/easymock/4.2/easymock-4.2.jar (564 KB at 2684.9 KB/sec)</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-generator-annprocess/1.27/jmh-generator-annprocess-1.27.jar (31 KB at 135.5 KB/sec)</span></span>
-<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-core/1.27/jmh-core-1.27.jar (533 KB at 2015.6 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar (121 KB at 673.0 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.1/junit-platform-launcher-1.7.1.jar (134 KB at 731.9 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-generator-annprocess/1.27/jmh-generator-annprocess-1.27.jar (31 KB at 146.7 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/easymock/easymock/4.2/easymock-4.2.jar (564 KB at 2551.3 KB/sec)</span></span>
+<span><span class="co">#&gt; [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-core/1.27/jmh-core-1.27.jar (533 KB at 2264.3 KB/sec)</span></span>
 <span><span class="co">#&gt; [INFO] </span></span>
 <span><span class="co">#&gt; [INFO] --- maven-dependency-plugin:3.1.1:build-classpath (default-cli) @ commons-lang3 ---</span></span>
 <span><span class="co">#&gt; [INFO] No dependencies found.</span></span>
@@ -187,8 +187,8 @@
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
 <span><span class="co">#&gt; [INFO] BUILD SUCCESS</span></span>
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">#&gt; [INFO] Total time: 2.984 s</span></span>
-<span><span class="co">#&gt; [INFO] Finished at: 2022-08-22T17:09:53+00:00</span></span>
+<span><span class="co">#&gt; [INFO] Total time: 2.772 s</span></span>
+<span><span class="co">#&gt; [INFO] Finished at: 2022-08-24T16:44:35+00:00</span></span>
 <span><span class="co">#&gt; [INFO] Final Memory: 20M/70M</span></span>
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
 <span><span class="va">dynamic_classpath</span></span>
@@ -207,13 +207,13 @@
 <span><span class="co">#&gt; [1] "/home/runner/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar"</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="using-local-repository-jar-files-in-rjava">Using local repository Jar files in rJava<a class="anchor" aria-label="anchor" href="#using-local-repository-jar-files-in-rjava"></a>
+<h2 id="using-local-repository-jar-files-in-rjava">Using local repository Jar files in <code>rJava</code><a class="anchor" aria-label="anchor" href="#using-local-repository-jar-files-in-rjava"></a>
 </h2>
 <p>The second step is to add jars from the local <code>.m2</code> repository to the <code>rJava</code> class path, and using <code>rJava</code>, create an R interface to the Java class you want to use (in this case the <code>StringUtils</code> class).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">rJava</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rJava/man/loader.html" class="external-link">.jaddClassPath</a></span><span class="op">(</span><span class="va">dynamic_classpath</span><span class="op">)</span></span>
 <span><span class="va">StringUtils</span> <span class="op">=</span> <span class="fu">rJava</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rJava/man/J.html" class="external-link">J</a></span><span class="op">(</span><span class="st">"org.apache.commons.lang3.StringUtils"</span><span class="op">)</span></span></code></pre></div>
-<p>Finally you can call the static Java method, using rJava, in this case <code>StringUtils.rotate(String s, int distance)</code>.</p>
+<p>Finally you can call the static Java method, using <code>rJava</code>, in this case <code>StringUtils.rotate(String s, int distance)</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">StringUtils</span><span class="op">$</span><span class="fu">rotate</span><span class="op">(</span><span class="st">"ABCDEF"</span>,<span class="fl">3L</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "DEFABC"</span></span></code></pre></div>
@@ -225,12 +225,12 @@
 <div class="section level3">
 <h3 id="step-0-write-some-java-code">Step 0: write some java code<a class="anchor" aria-label="anchor" href="#step-0-write-some-java-code"></a>
 </h3>
-<p>As part of your package write some Java code including a <code>pom.xml</code> Maven build file, such as the TestCass, in the example code bundled with this package.</p>
+<p>As part of your package write some Java code including a <code>pom.xml</code> Maven build file, such as the <code>TestCass</code>, in the example code bundled with this package.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># find the example bundled with this package</span></span>
-<span><span class="va">source_directory</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testdata/test-project"</span>,package <span class="op">=</span> <span class="st">"rmaven"</span><span class="op">)</span></span>
+<span><span class="va">source_directory</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"java/test-project"</span>,package <span class="op">=</span> <span class="st">"rmaven"</span><span class="op">)</span></span>
 <span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html" class="external-link">dir_tree</a></span><span class="op">(</span><span class="va">source_directory</span>, invert<span class="op">=</span><span class="cn">TRUE</span>, glob <span class="op">=</span> <span class="st">"*/target/*"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; /home/runner/work/_temp/Library/rmaven/testdata/test-project</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/rmaven/java/test-project</span></span>
 <span><span class="co">#&gt; ├── pom.xml</span></span>
 <span><span class="co">#&gt; └── src</span></span>
 <span><span class="co">#&gt;     └── main</span></span>
@@ -290,9 +290,9 @@
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
 <span><span class="co">#&gt; [INFO] BUILD SUCCESS</span></span>
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">#&gt; [INFO] Total time: 2.061 s</span></span>
-<span><span class="co">#&gt; [INFO] Finished at: 2022-08-22T17:09:57+00:00</span></span>
-<span><span class="co">#&gt; [INFO] Final Memory: 14M/50M</span></span>
+<span><span class="co">#&gt; [INFO] Total time: 2.263 s</span></span>
+<span><span class="co">#&gt; [INFO] Finished at: 2022-08-24T16:44:38+00:00</span></span>
+<span><span class="co">#&gt; [INFO] Final Memory: 20M/67M</span></span>
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
 <span><span class="va">compiled_jar</span></span>
 <span><span class="co">#&gt; /home/runner/.cache/rmaven/org.example_test-project_0.0.1-SNAPSHOT/test-project-0.0.1-SNAPSHOT/target/test-project-0.0.1-SNAPSHOT-jar-with-dependencies.jar</span></span></code></pre></div>
@@ -313,7 +313,7 @@
 </h2>
 <ul>
 <li>Run ant tasks. - using the <code>antrun</code> plugin</li>
-<li>Initialise production web servers and apis. - using Jetty or Spring.</li>
+<li>Initialize production web servers and ‘APIs’. - using Jetty or Spring.</li>
 <li>run any other maven plugin goal:</li>
 </ul>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -398,14 +398,13 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</span></span>
 <span><span class="co">#&gt; GITHUB_REPOSITORY_OWNER=terminological</span></span>
-<span><span class="co">#&gt; PROCESSX_PS1X1NGTXN5Z_1661188185=YES</span></span>
 <span><span class="co">#&gt; SWIFT_PATH=/usr/share/swift/usr/bin</span></span>
 <span><span class="co">#&gt; SGX_AESM_ADDR=1</span></span>
 <span><span class="co">#&gt; R_STRIP_SHARED_LIB=strip --strip-unneeded</span></span>
 <span><span class="co">#&gt; CHROMEWEBDRIVER=/usr/local/share/chrome_driver</span></span>
 <span><span class="co">#&gt; R_UNZIPCMD=/usr/bin/unzip</span></span>
 <span><span class="co">#&gt; RUNNER_USER=runner</span></span>
-<span><span class="co">#&gt; GITHUB_RUN_NUMBER=13</span></span>
+<span><span class="co">#&gt; GITHUB_RUN_NUMBER=14</span></span>
 <span><span class="co">#&gt; ANDROID_HOME=/usr/local/lib/android/sdk</span></span>
 <span><span class="co">#&gt; GITHUB_WORKSPACE=/home/runner/work/rmaven/rmaven</span></span>
 <span><span class="co">#&gt; GITHUB_RETENTION_DAYS=90</span></span>
@@ -425,7 +424,7 @@
 <span><span class="co">#&gt; HOMEBREW_CELLAR=/home/linuxbrew/.linuxbrew/Cellar</span></span>
 <span><span class="co">#&gt; ANDROID_NDK=/usr/local/lib/android/sdk/ndk/25.0.8775105</span></span>
 <span><span class="co">#&gt; GOROOT_1_18_X64=/opt/hostedtoolcache/go/1.18.5/x64</span></span>
-<span><span class="co">#&gt; GITHUB_ENV=/home/runner/work/_temp/_runner_file_commands/set_env_b176f752-a6a7-46ae-a9b0-c5c93264fc74</span></span>
+<span><span class="co">#&gt; GITHUB_ENV=/home/runner/work/_temp/_runner_file_commands/set_env_c9be2e6d-00d3-425b-a52d-386bd30d0944</span></span>
 <span><span class="co">#&gt; GRAALVM_11_ROOT=/usr/local/graalvm/graalvm-ce-java11-22.2.0</span></span>
 <span><span class="co">#&gt; GITHUB_EVENT_PATH=/home/runner/work/_temp/_github_workflow/event.json</span></span>
 <span><span class="co">#&gt; SED=/usr/bin/sed</span></span>
@@ -449,7 +448,7 @@
 <span><span class="co">#&gt; ANT_HOME=/usr/share/ant</span></span>
 <span><span class="co">#&gt; R_SYSTEM_ABI=linux,gcc,gxx,gfortran,gfortran</span></span>
 <span><span class="co">#&gt; JAVA_HOME_17_X64=/usr/lib/jvm/temurin-17-jdk-amd64</span></span>
-<span><span class="co">#&gt; GITHUB_STEP_SUMMARY=/home/runner/work/_temp/_runner_file_commands/step_summary_b176f752-a6a7-46ae-a9b0-c5c93264fc74</span></span>
+<span><span class="co">#&gt; GITHUB_STEP_SUMMARY=/home/runner/work/_temp/_runner_file_commands/step_summary_c9be2e6d-00d3-425b-a52d-386bd30d0944</span></span>
 <span><span class="co">#&gt; GITHUB_REPOSITORY=terminological/rmaven</span></span>
 <span><span class="co">#&gt; GITHUB_ACTION_REF=</span></span>
 <span><span class="co">#&gt; HOMEBREW_REPOSITORY=/home/linuxbrew/.linuxbrew/Homebrew</span></span>
@@ -463,19 +462,20 @@
 <span><span class="co">#&gt; MAVEN_PROJECTBASEDIR=/home/runner/.cache/rmaven</span></span>
 <span><span class="co">#&gt; RUNNER_ARCH=X64</span></span>
 <span><span class="co">#&gt; STATS_KEEPALIVE=false</span></span>
-<span><span class="co">#&gt; GITHUB_SHA=206edaae667bbaf7bd13db2d69fa88904a79d2ec</span></span>
+<span><span class="co">#&gt; GITHUB_SHA=103f5d096e580616a15f8ecaa13f0d572071f060</span></span>
 <span><span class="co">#&gt; ImageOS=ubuntu20</span></span>
-<span><span class="co">#&gt; ImageVersion=20220814.1</span></span>
+<span><span class="co">#&gt; ImageVersion=20220821.1</span></span>
 <span><span class="co">#&gt; ACCEPT_EULA=Y</span></span>
-<span><span class="co">#&gt; GITHUB_PAT=ghs_0P04etPFGTOXNNAlNSRjWrqJltVJmX2D5Jie</span></span>
+<span><span class="co">#&gt; GITHUB_PAT=ghs_2Rx06k5Lq0RDKt9u7zNJCLwnjjTZ6N0KcHB4</span></span>
 <span><span class="co">#&gt; RUNNER_PERFLOG=/home/runner/perflog</span></span>
+<span><span class="co">#&gt; PROCESSX_PSFC1UEB3U2H_1661359466=YES</span></span>
 <span><span class="co">#&gt; R_INCLUDE_DIR=/opt/R/4.2.1/lib/R/include</span></span>
 <span><span class="co">#&gt; PERFLOG_LOCATION_SETTING=RUNNER_PERFLOG</span></span>
-<span><span class="co">#&gt; R_SESSION_TMPDIR=/tmp/RtmpdR6fsU</span></span>
-<span><span class="co">#&gt; RUNNER_TRACKING_ID=github_2f1effe0-e395-4255-9bba-c9c9c8f73e7e</span></span>
+<span><span class="co">#&gt; R_SESSION_TMPDIR=/tmp/Rtmpywoaqa</span></span>
+<span><span class="co">#&gt; RUNNER_TRACKING_ID=github_6339492e-6f5e-4139-80b0-c3834790ee8f</span></span>
 <span><span class="co">#&gt; RUNNER_WORKSPACE=/home/runner/work/rmaven</span></span>
 <span><span class="co">#&gt; R_GZIPCMD=/usr/bin/gzip</span></span>
-<span><span class="co">#&gt; INVOCATION_ID=d305fbdce2d44845b56ccab46a882359</span></span>
+<span><span class="co">#&gt; INVOCATION_ID=6d42fe6a656e4aa490d06bd70ac3d8c8</span></span>
 <span><span class="co">#&gt; TAR=/usr/bin/tar</span></span>
 <span><span class="co">#&gt; TZ=UTC</span></span>
 <span><span class="co">#&gt; GITHUB_REF_PROTECTED=false</span></span>
@@ -487,9 +487,9 @@
 <span><span class="co">#&gt; R_PLATFORM=x86_64-pc-linux-gnu</span></span>
 <span><span class="co">#&gt; GITHUB_BASE_REF=</span></span>
 <span><span class="co">#&gt; PIPX_HOME=/opt/pipx</span></span>
-<span><span class="co">#&gt; JOURNAL_STREAM=8:22560</span></span>
+<span><span class="co">#&gt; JOURNAL_STREAM=8:22892</span></span>
 <span><span class="co">#&gt; R_DOC_DIR=/opt/R/4.2.1/lib/R/doc</span></span>
-<span><span class="co">#&gt; GITHUB_PATH=/home/runner/work/_temp/_runner_file_commands/add_path_b176f752-a6a7-46ae-a9b0-c5c93264fc74</span></span>
+<span><span class="co">#&gt; GITHUB_PATH=/home/runner/work/_temp/_runner_file_commands/add_path_c9be2e6d-00d3-425b-a52d-386bd30d0944</span></span>
 <span><span class="co">#&gt; GITHUB_EVENT_NAME=push</span></span>
 <span><span class="co">#&gt; GITHUB_TRIGGERING_ACTOR=robchallen</span></span>
 <span><span class="co">#&gt; CHROME_BIN=/usr/bin/google-chrome</span></span>
@@ -530,7 +530,7 @@
 <span><span class="co">#&gt; HOMEBREW_NO_AUTO_UPDATE=1</span></span>
 <span><span class="co">#&gt; GITHUB_ACTION_REPOSITORY=</span></span>
 <span><span class="co">#&gt; ANDROID_SDK_ROOT=/usr/local/lib/android/sdk</span></span>
-<span><span class="co">#&gt; GITHUB_RUN_ID=2905734181</span></span>
+<span><span class="co">#&gt; GITHUB_RUN_ID=2920804909</span></span>
 <span><span class="co">#&gt; USER=runner</span></span>
 <span><span class="co">#&gt; XDG_CONFIG_HOME=/home/runner/.config</span></span>
 <span><span class="co">#&gt; EDITOR=vi</span></span>
@@ -547,8 +547,8 @@
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
 <span><span class="co">#&gt; [INFO] BUILD SUCCESS</span></span>
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span>
-<span><span class="co">#&gt; [INFO] Total time: 0.665 s</span></span>
-<span><span class="co">#&gt; [INFO] Finished at: 2022-08-22T17:09:58+00:00</span></span>
+<span><span class="co">#&gt; [INFO] Total time: 0.820 s</span></span>
+<span><span class="co">#&gt; [INFO] Finished at: 2022-08-24T16:44:40+00:00</span></span>
 <span><span class="co">#&gt; [INFO] Final Memory: 10M/37M</span></span>
 <span><span class="co">#&gt; [INFO] ------------------------------------------------------------------------</span></span></code></pre></div>
 </div>

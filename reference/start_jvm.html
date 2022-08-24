@@ -37,13 +37,13 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Start an rJava JVM with or without debugging options</h1>
+    <h1>Start an <code>rJava</code> <code>JVM</code> with or without debugging options</h1>
     
     <div class="hidden name"><code>start_jvm.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This does not do anything if the JVM has already been started.</p>
+    <p>This does not do anything if the <code>JVM</code> has already been started.</p>
     </div>
 
     <div id="ref-usage">
@@ -57,7 +57,7 @@
 
 
 <dt>quiet</dt>
-<dd><p>don't report messages (defaults to getOption("rmaven.quiet") or FALSE)</p></dd>
+<dd><p>don't report messages (defaults to <code>getOption("rmaven.quiet")</code> or FALSE)</p></dd>
 
 </dl></div>
     <div id="value">
@@ -70,7 +70,10 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">start_jvm</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># start_jvm(debug = TRUE)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># this may try to rebind debugging port</span></span></span>
+<span class="r-in"><span><span class="fu">start_jvm</span><span class="op">(</span>debug <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
