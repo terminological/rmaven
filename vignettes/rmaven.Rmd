@@ -32,6 +32,10 @@ doesn't seem much point).
 ```{r setup}
 library(rmaven)
 start_jvm()
+
+opts = options("rmaven.allow.cache.delete"=TRUE)
+clear_rmaven_cache()
+options(opts)
 ```
 
 # Download jar files using Maven

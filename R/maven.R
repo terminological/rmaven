@@ -544,8 +544,8 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
 
   args = c(goal, opts, opts2,
     "-B", # batch mode
-    paste0("-s '",settings,"'") # user setting file location
-  ) #, paste0("-f '",pomPath,"'"))
+    paste0("-s \"",settings,"\"") # user setting file location
+  ) #, paste0("-f \"",pomPath,"\""))
   if (quiet) args = c(args, "-q")
   if (debug) args = c(args, "-X")
   .java_home(quiet=TRUE)

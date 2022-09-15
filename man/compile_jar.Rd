@@ -8,7 +8,8 @@ compile_jar(
   path,
   nocache = FALSE,
   verbose = c("normal", "quiet", "debug"),
-  with_dependencies = FALSE
+  with_dependencies = FALSE,
+  ...
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ compile_jar(
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 
 \item{with_dependencies}{compile the Java code to a '...-jar-with-dependencies.jar' including transitive dependencies which is easier to embed}
+
+\item{...}{passed to execute_maven(...), e.g. could include settings parameter}
 }
 \value{
 the path to the compiled 'jar' file.
