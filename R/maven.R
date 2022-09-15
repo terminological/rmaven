@@ -529,6 +529,8 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
   verbose = match.arg(verbose)
   mvn_path = .load_maven_wrapper()
   named = rlang::dots_list(..., .homonyms = "error")
+  # the following is not used but calling it forces checking and creation of the file if missing.
+  repo_loc = get_repository_location(settings_path = settings)
   # filter out unnamed
   # named = list(1,x=2,y="",z=NULL)
   if (length(named) > 0) {
@@ -948,7 +950,8 @@ resolve_dependencies = function(
       goal = goal,
       opts = opts,
       verbose = verbose,
-      require_jdk = TRUE
+      require_jdk = TRUE,
+      ...
     )
   }
 
@@ -967,6 +970,7 @@ resolve_dependencies = function(
 #' @param nocache normally compilation is only performed if the input has changed. `nocache` forces recompilation
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
 #' @param with_dependencies compile the Java code to a '...-jar-with-dependencies.jar' including transitive dependencies which is easier to embed
+#' @param ... passed to execute_maven(...), e.g. could include settings parameter
 #'
 #' @return the path to the compiled 'jar' file.
 #' @export
@@ -980,7 +984,7 @@ resolve_dependencies = function(
 #' path2 = system.file("testdata/test-project",package = "rmaven")
 #' compile_jar(path2,nocache=TRUE,with_dependencies=TRUE)
 #' }
-compile_jar = function(path, nocache = FALSE, verbose = c("normal", "quiet", "debug"), with_dependencies = FALSE) {
+compile_jar = function(path, nocache = FALSE, verbose = c("normal", "quiet", "debug"), with_dependencies = FALSE, ...) {
 
   verbose = match.arg(verbose)
 
@@ -994,7 +998,8 @@ compile_jar = function(path, nocache = FALSE, verbose = c("normal", "quiet", "de
       path = path,
       classifier = "jar-with-dependencies",
       nocache = nocache,
-      verbose = verbose
+      verbose = verbose,
+      ...
     )
   } else {
     target_jar = .do_compile(
@@ -1002,7 +1007,8 @@ compile_jar = function(path, nocache = FALSE, verbose = c("normal", "quiet", "de
       opts = c(),
       path = path,
       nocache = nocache,
-      verbose = verbose
+      verbose = verbose,
+      ...
     )
   }
 
