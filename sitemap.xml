@@ -28,6 +28,9 @@
     <loc>https://terminological.github.io/rmaven/reference/as.coordinates.html</loc>
   </url>
   <url>
+    <loc>https://terminological.github.io/rmaven/reference/clear_rmaven_cache.html</loc>
+  </url>
+  <url>
     <loc>https://terminological.github.io/rmaven/reference/compile_jar.html</loc>
   </url>
   <url>
@@ -38,6 +41,9 @@
   </url>
   <url>
     <loc>https://terminological.github.io/rmaven/reference/fetch_artifact.html</loc>
+  </url>
+  <url>
+    <loc>https://terminological.github.io/rmaven/reference/get_repository_location.html</loc>
   </url>
   <url>
     <loc>https://terminological.github.io/rmaven/reference/index.html</loc>
@@ -53,6 +59,9 @@
   </url>
   <url>
     <loc>https://terminological.github.io/rmaven/reference/resolve_dependencies.html</loc>
+  </url>
+  <url>
+    <loc>https://terminological.github.io/rmaven/reference/set_repository_location.html</loc>
   </url>
   <url>
     <loc>https://terminological.github.io/rmaven/reference/start_jvm.html</loc>
