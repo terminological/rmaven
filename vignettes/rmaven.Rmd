@@ -37,7 +37,7 @@ start_jvm()
 # Download jar files using Maven
 
 When using `rmaven` the first step to using a Java library in R is to fetch it from the Maven repositories. The artifact coordinates (i.e. `groupId`, `artifactId` and `version`) of
-an specific Java library are easily found on the internet. Maven manages bootstrapping the download of libraries. Maven manages a local repository in the `.m2` subdirectory of the users home.
+an specific Java library are easily found on the internet. Maven manages bootstrapping the download of libraries. 
 
 ```{r}
 dynamic_classpath = resolve_dependencies(
@@ -49,11 +49,17 @@ dynamic_classpath = resolve_dependencies(
 dynamic_classpath
 ```
 
+
+In Java development Maven manages a local repository in the `.m2/repository/` 
+subdirectory of the users home. In `rmaven` however changing directories in the user space conflicts with CRAN policies. As the purpose of this library is to support Java use in R, it makes sense
+to move the `.m2/repository/` cache directory to a CRAN approved location, however this can be changed through configuration (see `set_repository_location(...)` function).
+
 # Caching of Java libraries
 
 `rmaven` bootstraps loading of Maven itself and any plugins required. When doing this the code above triggers a significant download. Maven is good at handling the caching of downloads, and sharing reused artifacts. Repeated invocation of `rmaven` will not require additional downloads.
 
 ```{r}
+# does not need additional downloads
 resolve_dependencies(
   groupId = "org.apache.commons", 
   artifactId = "commons-lang3", 
@@ -126,4 +132,4 @@ execute_maven("help:system")
 * Maven shade plugin
 * Simplify multiple dependencies 
 * Support creation of `pom.xml` files from R
-* Configurable maven repository with tools to create and maintain maven `settings.xml`
+* Tools to maintain maven `settings.xml`

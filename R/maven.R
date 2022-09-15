@@ -317,7 +317,7 @@ as.coordinates = function(groupId, artifactId, version, ...) {
 .m2_path = function(coordinates) {
   groupPath = stringr::str_replace_all(coordinates$groupId, stringr::fixed("."), "/")
   repoPath = sprintf("%s/%s/%s/%s",groupPath,coordinates$artifactId,coordinates$version,.filename(coordinates))
-  return(fs::path_expand(get_repository_location(), repoPath))
+  return(fs::path(get_repository_location(), repoPath))
 }
 
 ## Settings.xml ----
@@ -341,9 +341,9 @@ as.coordinates = function(groupId, artifactId, version, ...) {
 #' This writes a maven repository location to a temporary 'settings.xml' file which persists only for the R session.
 #' The location of the maven repository is either specified here, or can be defined by the 'options("rmaven.m2.repository"=...)' option.
 #' If neither of these is provided, the location will revert to a default location within the 'rmaven' cache. (Approved by CRAN for a local cache location)
-#' e.g. on linux this will default to '~/.cache/rmaven/.m2/repository/'
+#' e.g. on 'Linux' this will default to '~/.cache/rmaven/.m2/repository/'
 #'
-#' @param repository_location a file path (which will be expanded to a full path) where the repository should be based, e.g. '~/.m2/repository/'. Defaults to a sub-directory of rmaven's cache.
+#' @param repository_location a file path (which will be expanded to a full path) where the repository should be based, e.g. '~/.m2/repository/'. Defaults to a sub-directory of the 'rmaven' cache.
 #' @param settings_path the file path of the settings.xml to update (generally the supplied default is what you want to use)
 #'
 #' @return the new repository location (expanded)
@@ -383,8 +383,10 @@ set_repository_location = function(
 #' In general this function is mainly for internal use but maybe handy for debugging.
 #' The maven repository location can be defined by 'set_repository_location(...)' or through the option
 #' 'options("rmaven.m2.repository"=...)' option but defaults to a '.m2/repository' directory in the 'rmaven' cache directory.
-#' This is not the default location for Maven when used from Java as programmatically accessing the default directory is
-#' forbidden by CRAN policies. The result of this is that using 'rmaven'
+#' This is not the default location for Maven when used from Java writing to the default Maven directory in user space is
+#' forbidden by CRAN policies. The result of this is that 'rmaven' will have to unnecessarily download additional copies of java
+#' libraries, onto the users computer and cannot re-use already cached copies. This is more of an issue for developers rather
+#' than users.
 #'
 #' @param settings_path the file path of the settings.xml to update (generally the supplied default is what you want to use)
 #' @export

@@ -12,6 +12,7 @@ execute_maven(
   debug = .debug(verbose),
   verbose = c("normal", "debug", "quiet"),
   require_jdk = FALSE,
+  settings = .settings_path(),
   ...
 )
 }
@@ -29,6 +30,8 @@ execute_maven(
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 
 \item{require_jdk}{does the goal you are executing require a \code{JDK} (e.g. compilation)}
+
+\item{settings}{the path to a settings.xml file controlling Maven. The default is a configuration with a local repository in the 'rmaven' cache directory (and not the Java maven repository).}
 
 \item{...}{named parameters are passed to maven as options in the form \code{-Dname=value}}
 }
