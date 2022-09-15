@@ -2,6 +2,7 @@
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/terminological/rmaven/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/terminological/rmaven/actions/workflows/R-CMD-check.yaml)
+[![DOI](https://zenodo.org/badge/525325654.svg)](https://zenodo.org/badge/latestdoi/525325654)
 <!-- badges: end -->
 
 Execute Java's build tools, Apache Maven, from within R. This enables users to locally install Java libraries and use them from within R, and compile Java code from source, all as part
@@ -9,7 +10,11 @@ of R package development.
 
 ## Installation
 
-`rmaven` is in early development. It is not yet available on CRAN.
+`rmaven` is available on CRAN.
+
+```r
+install.packages("rmaven")
+```
 
 The development version is available from [GitHub](https://github.com/)
 with:

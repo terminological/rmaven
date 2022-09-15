@@ -22,7 +22,7 @@ jobs:
         config:
           - {os: ubuntu-20.04, r: '4.1.0', java: 11, distribution: zulu}
           - {os: macOS-11, r: '4.1.0', java: 11, distribution: zulu}
-          - {os: windows-2022, r: '4.1.0', java: 11, distribution: zulu}
+          - {os: windows-2022, r: '4.2.0', java: 11, distribution: zulu}
           - {os: ubuntu-20.04, r: '3.6.1', java: 8, distribution: zulu}
           - {os: ubuntu-20.04, r: '4.2.0', java: 17, distribution: zulu}
           - {os: ubuntu-20.04, r: 'devel', java: 17, distribution: zulu, http-user-agent: 'release'}

@@ -317,7 +317,137 @@ as.coordinates = function(groupId, artifactId, version, ...) {
 .m2_path = function(coordinates) {
   groupPath = stringr::str_replace_all(coordinates$groupId, stringr::fixed("."), "/")
   repoPath = sprintf("%s/%s/%s/%s",groupPath,coordinates$artifactId,coordinates$version,.filename(coordinates))
-  return(fs::path_expand(fs::path("~/.m2/repository/", repoPath)))
+  return(fs::path_expand(get_repository_location(), repoPath))
+}
+
+## Settings.xml ----
+
+.settings_path = function() {
+  out = fs::path(tempdir(),"rmaven/settings.xml")
+  fs::dir_create(fs::path_dir(out))
+  return(out)
+}
+
+# # get or create a temporary settings.xml file
+# .settings_xml = function() {
+#   # get the file from its expected location
+#   settings_path = fs::path(tempdir(),"rmaven/settings.xml")
+#   if (!fs::file_exists(settings_path)) set_repository_location()
+#   return(settings_path)
+# }
+
+#' Sets the local maven repository location
+#'
+#' This writes a maven repository location to a temporary 'settings.xml' file which persists only for the R session.
+#' The location of the maven repository is either specified here, or can be defined by the 'options("rmaven.m2.repository"=...)' option.
+#' If neither of these is provided, the location will revert to a default location within the 'rmaven' cache. (Approved by CRAN for a local cache location)
+#' e.g. on linux this will default to '~/.cache/rmaven/.m2/repository/'
+#'
+#' @param repository_location a file path (which will be expanded to a full path) where the repository should be based, e.g. '~/.m2/repository/'. Defaults to a sub-directory of rmaven's cache.
+#' @param settings_path the file path of the settings.xml to update (generally the supplied default is what you want to use)
+#'
+#' @return the new repository location (expanded)
+#' @export
+#'
+#' @examples
+#' # set the repository location to the usual location for java development
+#' set_repository_location("~/.m2/repository")
+#' # set the repository location back to the CRAN approved default location
+#' set_repository_location()
+set_repository_location = function(
+    repository_location = getOption("rmaven.m2.repository",default = .working_dir(subpath=".m2/repository/")),
+    settings_path = .settings_path()
+  ) {
+  repository_location = fs::path_expand(repository_location)
+  if (fs::file_exists(settings_path)) {
+    settings_list = xml2::read_xml(settings_path) %>% xml2::as_list()
+    # If no change to setting then short circuit this
+    if (settings_list$settings$localRepository[[1]] == repository_location) return(repository_location)
+    settings_list$settings$localRepository[[1]] = fs::path_expand(repository_location)
+  } else {
+    # default settings
+    settings_list = list(settings=structure(
+      list(localRepository=list(repository_location)),
+      xmlns="http://maven.apache.org/SETTINGS/1.0.0",
+      "xmlns:xsi"="http://www.w3.org/2001/XMLSchema-instance",
+      "xsi:schemaLocation"="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd"
+    ))
+  }
+  settings_xml = xml2::as_xml_document(settings_list)
+  xml2::write_xml(settings_xml, settings_path, options=c("format"))
+  return(repository_location)
+}
+
+#' Get the location of the Maven repository
+#'
+#' In general this function is mainly for internal use but maybe handy for debugging.
+#' The maven repository location can be defined by 'set_repository_location(...)' or through the option
+#' 'options("rmaven.m2.repository"=...)' option but defaults to a '.m2/repository' directory in the 'rmaven' cache directory.
+#' This is not the default location for Maven when used from Java as programmatically accessing the default directory is
+#' forbidden by CRAN policies. The result of this is that using 'rmaven'
+#'
+#' @param settings_path the file path of the settings.xml to update (generally the supplied default is what you want to use)
+#' @export
+#'
+#' @examples
+#' # the default location:
+#' get_repository_location()
+#' # change the location to the Java default. This change will not persist between sessions.
+#' opt = options("rmaven.m2.repository"="~/.m2/repository/")
+#' set_repository_location()
+#' get_repository_location()
+#' # revert to rmaven defaults
+#' options(opt)
+#' set_repository_location()
+get_repository_location = function(settings_path = .settings_path()) {
+  if (fs::file_exists(settings_path)) {
+    settings_list = xml2::read_xml(settings_path) %>% xml2::as_list()
+    return(fs::path(settings_list$settings$localRepository[[1]]))
+  } else {
+    # make sure a settings.xml exists
+    # and return the default
+    return(set_repository_location())
+  }
+}
+
+
+#' Clear out the 'rmaven' cache
+#'
+#' Deletes all content in the 'rmaven' cache. This should not be necessary, but never
+#' say never, and if there is really a problem with the cache, then deleting it may be the
+#' best thing.
+#'
+#' @return nothing, called for side effects
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' # need to set the following option to allow cache to be deleted in non interactive session
+#' opts = options("rmaven.allow.cache.delete"=TRUE)
+#' clear_rmaven_cache()
+#' options(opts)
+#' }
+clear_rmaven_cache = function() {
+  dir = .working_dir()
+  if (!interactive()) {
+    if (getOption("rmaven.allow.cache.delete",FALSE)) {
+      fs::dir_delete(dir)
+    } else {
+      message("the option rmaven.allow.cache.delete was not TRUE (or not set)")
+      message("so we can't delete the rmaven cache in an unattended script")
+    }
+  } else {
+
+    cat("You are about to delete all cached rmaven content including compiled and downloaded jar files.\n")
+    cat("In theory this can all be rebuilt but it may take some time and bandwidth.\n")
+    cat("If you want you could maybe do this in a more targetted way manually by looking at:",dir,"\n")
+    sure = utils::menu(c("Yes","No"), title="Are you sure?")
+    if (sure == 1) {
+      message("deleting cached content in: ", dir)
+      fs::dir_delete(dir)
+    }
+
+  }
 }
 
 ## Maven command functions ----
@@ -381,6 +511,7 @@ as.coordinates = function(groupId, artifactId, version, ...) {
 #' @param debug should output from maven be verbose? (-X flag)
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
 #' @param require_jdk does the goal you are executing require a `JDK` (e.g. compilation)
+#' @param settings the path to a settings.xml file controlling Maven. The default is a configuration with a local repository in the 'rmaven' cache directory (and not the Java maven repository).
 #' @param ... named parameters are passed to maven as options in the form `-Dname=value`
 #'
 #' @return nothing, invisibly
@@ -392,7 +523,7 @@ as.coordinates = function(groupId, artifactId, version, ...) {
 #' # download a lot of plugins, especially on first run
 #' execute_maven("help:system")
 #' }
-execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose), debug=.debug(verbose), verbose = c("normal","debug","quiet"), require_jdk=FALSE, ...) {
+execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose), debug=.debug(verbose), verbose = c("normal","debug","quiet"), require_jdk=FALSE, settings = .settings_path(), ...) {
   verbose = match.arg(verbose)
   mvn_path = .load_maven_wrapper()
   named = rlang::dots_list(..., .homonyms = "error")
@@ -406,7 +537,11 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
   } else {
     opts2 = NULL
   }
-  args = c(goal, opts, opts2, "-B") #, paste0("-f '",pomPath,"'"))
+
+  args = c(goal, opts, opts2,
+    "-B", # batch mode
+    paste0("-s '",settings,"'") # user setting file location
+  ) #, paste0("-f '",pomPath,"'"))
   if (quiet) args = c(args, "-q")
   if (debug) args = c(args, "-X")
   .java_home(quiet=TRUE)
