@@ -17,9 +17,9 @@ start_jvm(
 
 \item{quiet}{don't report messages (defaults to \code{getOption("rmaven.quiet")} or TRUE)}
 
-\item{max_heap}{optional. if a string like \code{"2048m"} the \code{-Xmx} option value to start the JVM - if a string like \code{"75\%"} the \code{-XX:MaxRAMPercentage}, if a numeric - number of megabytes.}
+\item{max_heap}{optional. if a string like \code{"2048m"} the \code{-Xmx} option value to start the \code{JVM} - if a string like \code{"75\%"} the \code{-XX:MaxRAMPercentage}, if a numeric - number of megabytes.}
 
-\item{thread_stack}{optional. sensible values range from "1m" to "128m" (max is "1Gb"). Can be important with serialising deeply nested structures.}
+\item{thread_stack}{optional. sensible values range from '1m' to '128m' (max is '1g'). Can be important with deeply nested structures.}
 
 \item{...}{any other named parameters are passes as \code{-name} or \code{-name=value} if value is a character}
 }

@@ -66,8 +66,8 @@
 #'
 #' @param debug turn on debugging
 #' @param quiet don't report messages (defaults to `getOption("rmaven.quiet")` or TRUE)
-#' @param max_heap optional. if a string like `"2048m"` the `-Xmx` option value to start the JVM - if a string like `"75%"` the `-XX:MaxRAMPercentage`, if a numeric - number of megabytes.
-#' @param thread_stack optional. sensible values range from "1m" to "128m" (max is "1Gb"). Can be important with serialising deeply nested structures.
+#' @param max_heap optional. if a string like `"2048m"` the `-Xmx` option value to start the `JVM` - if a string like `"75%"` the `-XX:MaxRAMPercentage`, if a numeric - number of megabytes.
+#' @param thread_stack optional. sensible values range from '1m' to '128m' (max is '1g'). Can be important with deeply nested structures.
 #' @param ... any other named parameters are passes as `-name` or `-name=value` if value is a character
 #'
 #' @return nothing - called for side effects
@@ -551,7 +551,7 @@ clear_rmaven_cache = function() {
 
 #' Executes a maven goal
 #'
-#' Maven goals are defined either as lifecycle goals (e.g. "clean", "compile") or as plugin goals (e.g. "help:system"). Some Maven goals may be executed without a `pom.xml` file, others require one.
+#' Maven goals are defined either as life-cycle goals (e.g. "clean", "compile") or as plugin goals (e.g. "help:system"). Some Maven goals may be executed without a `pom.xml` file, others require one.
 #' Some maven goals (e.g. compilation) require the use of a `JDK`.
 #'
 #' @param goal the goal of the `mvn` command ( can be multiple ) e.g. `c("clean","compile")`
@@ -560,7 +560,7 @@ clear_rmaven_cache = function() {
 #' @param quiet should output from maven be suppressed? (`-q` flag)
 #' @param debug should output from maven be verbose? (`-X` flag)
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
-#' @param require_jdk does the goal you are executing require a `JDK` (e.g. compilation does, fetching artifacts and calculating classpaths does not)
+#' @param require_jdk does the goal you are executing require a `JDK` (e.g. compilation does, fetching artifacts and calculating class path does not)
 #' @param settings the path to a `settings.xml` file controlling Maven. The default is a configuration with a local repository in the `rmaven` cache directory (and not the Java maven repository).
 #' @param ... non-empty named parameters are passed to maven as options in the form `-Dname=value`
 #'
@@ -625,8 +625,8 @@ execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose
 #' @param ... other maven coordinates such as classifier or packaging
 #' @param coordinates optional, coordinates as a coordinates object,
 #' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
-#' @param repoUrl the URLs of the repositories to check (defaults to maven central, sonatype snapshots and jitpack, defined in options("rmaven.default_repos"))
-#' @param coordinates optional, but if not supplied `groupId` and `artifactId` must be, coordinates as a coordinates object (see as.coordinates())
+#' @param repoUrl the URLs of the repositories to check (defaults to Maven central, 'Sonatype' snapshots and 'jitpack', defined in `options("rmaven.default_repos"))`
+#' @param coordinates optional, but if not supplied `groupId` and `artifactId` must be, coordinates as a coordinates object (see `as.coordinates()`)
 #' @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
 #' @param nocache normally artifacts are only fetched if required, `nocache` forces fetching
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
@@ -1017,7 +1017,7 @@ resolve_dependencies = function(
 #' @param nocache normally compilation is only performed if the input has changed. `nocache` forces recompilation
 #' @param verbose how much output from maven, one of "normal", "quiet", "debug"
 #' @param with_dependencies compile the Java code to a '...-jar-with-dependencies.jar' including transitive dependencies which may be easier to embed into R code
-#' as does not need a classpath (however may be large if there are a lot of dependencies)
+#' as does not need a class path (however may be large if there are a lot of dependencies)
 #' @param ... passed to `execute_maven(...)`, e.g. could include `settings` parameter
 #'
 #' @return the path to the compiled 'jar' file. If this is a fat jar this can be passed straight to `rJava`, otherwise an additional `resolve_dependencies(...)` call is required

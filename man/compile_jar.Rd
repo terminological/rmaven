@@ -20,7 +20,7 @@ compile_jar(
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 
 \item{with_dependencies}{compile the Java code to a '...-jar-with-dependencies.jar' including transitive dependencies which may be easier to embed into R code
-as does not need a classpath (however may be large if there are a lot of dependencies)}
+as does not need a class path (however may be large if there are a lot of dependencies)}
 
 \item{...}{passed to \code{execute_maven(...)}, e.g. could include \code{settings} parameter}
 }

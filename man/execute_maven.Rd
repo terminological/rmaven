@@ -29,7 +29,7 @@ execute_maven(
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 
-\item{require_jdk}{does the goal you are executing require a \code{JDK} (e.g. compilation does, fetching artifacts and calculating classpaths does not)}
+\item{require_jdk}{does the goal you are executing require a \code{JDK} (e.g. compilation does, fetching artifacts and calculating class path does not)}
 
 \item{settings}{the path to a \code{settings.xml} file controlling Maven. The default is a configuration with a local repository in the \code{rmaven} cache directory (and not the Java maven repository).}
 
@@ -39,7 +39,7 @@ execute_maven(
 nothing, invisibly
 }
 \description{
-Maven goals are defined either as lifecycle goals (e.g. "clean", "compile") or as plugin goals (e.g. "help:system"). Some Maven goals may be executed without a \code{pom.xml} file, others require one.
+Maven goals are defined either as life-cycle goals (e.g. "clean", "compile") or as plugin goals (e.g. "help:system"). Some Maven goals may be executed without a \code{pom.xml} file, others require one.
 Some maven goals (e.g. compilation) require the use of a \code{JDK}.
 }
 \examples{

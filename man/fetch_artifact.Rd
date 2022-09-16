@@ -25,11 +25,11 @@ fetch_artifact(
 
 \item{...}{other maven coordinates such as classifier or packaging}
 
-\item{coordinates}{optional, but if not supplied \code{groupId} and \code{artifactId} must be, coordinates as a coordinates object (see as.coordinates())}
+\item{coordinates}{optional, but if not supplied \code{groupId} and \code{artifactId} must be, coordinates as a coordinates object (see \code{as.coordinates()})}
 
 \item{artifact}{optional, coordinates as an artifact string \verb{groupId:artifactId:version[:packaging[:classifier]]} string}
 
-\item{repoUrl}{the URLs of the repositories to check (defaults to maven central, sonatype snapshots and jitpack, defined in options("rmaven.default_repos"))}
+\item{repoUrl}{the URLs of the repositories to check (defaults to Maven central, 'Sonatype' snapshots and 'jitpack', defined in \verb{options("rmaven.default_repos"))}}
 
 \item{nocache}{normally artifacts are only fetched if required, \code{nocache} forces fetching}
 
