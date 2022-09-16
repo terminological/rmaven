@@ -80,20 +80,25 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>When using <code>rmaven</code> the work-flow involved in using a Java library in R is to first fetch it from the Maven repositories. The second step is to add jars from the local <code>.m2</code> repository to the <code>rJava</code> class path, and third using <code>rJava</code>, create an R interface to the Java class you want to use (in this case the <code>StringUtils</code> class). Finally you can call the static Java method, using <code>rJava</code>, in this case <code>StringUtils.rotate(String s, int distance)</code>.</p>
+<p>When using <code>rmaven</code> the work-flow involved in using a Java library in R is to first fetch it from the Maven repositories. The second step is to add jars from the local Maven repository to the <code>rJava</code> class path, and third using <code>rJava</code>, create an R interface to the Java class you want to use (in this case the <code>StringUtils</code> class). Finally you can call the static Java method, using <code>rJava</code>, in this case <code>StringUtils.rotate(String s, int distance)</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://terminological.github.io/rmaven/">rmaven</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/start_jvm.html">start_jvm</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># step 1</span></span>
 <span><span class="va">dynamic_classpath</span> <span class="op">=</span> <span class="fu"><a href="reference/resolve_dependencies.html">resolve_dependencies</a></span><span class="op">(</span></span>
 <span>  groupId <span class="op">=</span> <span class="st">"org.apache.commons"</span>, </span>
 <span>  artifactId <span class="op">=</span> <span class="st">"commons-lang3"</span>, </span>
 <span>  version<span class="op">=</span><span class="st">"3.12.0"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># step 2</span></span>
 <span><span class="fu">rJava</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rJava/man/loader.html" class="external-link">.jaddClassPath</a></span><span class="op">(</span><span class="va">dynamic_classpath</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># step 3</span></span>
 <span><span class="va">StringUtils</span> <span class="op">=</span> <span class="fu">rJava</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rJava/man/J.html" class="external-link">J</a></span><span class="op">(</span><span class="st">"org.apache.commons.lang3.StringUtils"</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># step 4devtoo</span></span>
 <span><span class="va">StringUtils</span><span class="op">$</span><span class="fu">rotate</span><span class="op">(</span><span class="st">"ABCDEF"</span>,<span class="fl">3L</span><span class="op">)</span></span></code></pre></div>
 <p>Check <a href="https://terminological.github.io/rmaven/">the documentation</a> for more examples.</p>
 </div>
