@@ -2,7 +2,7 @@
 % Please edit documentation in R/maven.R
 \name{fetch_artifact}
 \alias{fetch_artifact}
-\title{Fetch an artifact from a repository into the local .m2 cache}
+\title{Fetch an artifact from a remote repository into the local .m2 cache}
 \usage{
 fetch_artifact(
   groupId = NULL,
@@ -11,7 +11,7 @@ fetch_artifact(
   ...,
   coordinates = NULL,
   artifact = NULL,
-  repoUrl = getOption("rmaven.default_repos"),
+  repoUrl = .default_repos(),
   nocache = FALSE,
   verbose = c("normal", "quiet", "debug")
 )
@@ -29,17 +29,17 @@ fetch_artifact(
 
 \item{artifact}{optional, coordinates as an artifact string \verb{groupId:artifactId:version[:packaging[:classifier]]} string}
 
-\item{repoUrl}{the URLs of the repositories to check (defaults to maven central)}
+\item{repoUrl}{the URLs of the repositories to check (defaults to maven central, sonatype snapshots and jitpack, defined in options("rmaven.default_repos"))}
 
 \item{nocache}{normally artifacts are only fetched if required, \code{nocache} forces fetching}
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 }
 \value{
-the .m2 path of the artifact
+the path of the artifact within the local maven cache
 }
 \description{
-Fetch an artifact from a repository into the local .m2 cache
+Fetch an artifact from a remote repository into the local .m2 cache
 }
 \examples{
 \donttest{

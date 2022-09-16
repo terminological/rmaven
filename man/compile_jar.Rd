@@ -13,18 +13,19 @@ compile_jar(
 )
 }
 \arguments{
-\item{path}{the path to - a source code directory containing a pom.xml file, a \code{...-src.jar} assembled by the maven assembly plugin, or a \code{pom.xml} file}
+\item{path}{the path to - either a java source code directory containing a \code{pom.xml} file, the \code{pom.xml} file itself, or a \code{...-src.jar} assembled by the maven assembly plugin,}
 
 \item{nocache}{normally compilation is only performed if the input has changed. \code{nocache} forces recompilation}
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 
-\item{with_dependencies}{compile the Java code to a '...-jar-with-dependencies.jar' including transitive dependencies which is easier to embed}
+\item{with_dependencies}{compile the Java code to a '...-jar-with-dependencies.jar' including transitive dependencies which may be easier to embed into R code
+as does not need a classpath (however may be large if there are a lot of dependencies)}
 
-\item{...}{passed to execute_maven(...), e.g. could include settings parameter}
+\item{...}{passed to \code{execute_maven(...)}, e.g. could include \code{settings} parameter}
 }
 \value{
-the path to the compiled 'jar' file.
+the path to the compiled 'jar' file. If this is a fat jar this can be passed straight to \code{rJava}, otherwise an additional \code{resolve_dependencies(...)} call is required
 }
 \description{
 Compilation will package the Java source code in to a Jar file for further use. It will resolve dependencies and

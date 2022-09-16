@@ -2,7 +2,7 @@
 % Please edit documentation in R/maven.R
 \name{clear_rmaven_cache}
 \alias{clear_rmaven_cache}
-\title{Clear out the 'rmaven' cache}
+\title{Clear out the \code{rmaven} cache}
 \usage{
 clear_rmaven_cache()
 }
@@ -10,9 +10,11 @@ clear_rmaven_cache()
 nothing, called for side effects
 }
 \description{
-Deletes all content in the 'rmaven' cache. This should not be necessary, but never
+Deletes all content in the \code{rmaven} cache. This should not be necessary, but never
 say never, and if there is really a problem with the cache, then deleting it may be the
-best thing.
+best thing. This will wait for confirmation from the user. If running unattended the
+\code{options("rmaven.allow.cache.delete"=TRUE)} must be set for the action to occur, otherwise
+it will generate a warning and do nothing.
 }
 \examples{
 \donttest{

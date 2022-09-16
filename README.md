@@ -27,7 +27,7 @@ devtools::install_github("terminological/rmaven")
 ## Example
 
 When using `rmaven` the work-flow involved in using a Java library in R is to first fetch it from the Maven repositories. 
-The second step is to add jars from the local `.m2` repository to the `rJava` class path, and 
+The second step is to add jars from the local Maven repository to the `rJava` class path, and 
 third using `rJava`, create an R interface to the Java class you want to use (in this case the `StringUtils` class). 
 Finally you can call the static Java method, using `rJava`, in this case `StringUtils.rotate(String s, int distance)`.
 
@@ -35,15 +35,20 @@ Finally you can call the static Java method, using `rJava`, in this case `String
 library(rmaven)
 start_jvm()
 
+# step 1
 dynamic_classpath = resolve_dependencies(
   groupId = "org.apache.commons", 
   artifactId = "commons-lang3", 
   version="3.12.0"
 )
 
+# step 2
 rJava::.jaddClassPath(dynamic_classpath)
+
+# step 3
 StringUtils = rJava::J("org.apache.commons.lang3.StringUtils")
 
+# step 4devtoo
 StringUtils$rotate("ABCDEF",3L)
 ```
 

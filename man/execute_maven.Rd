@@ -21,31 +21,31 @@ execute_maven(
 
 \item{opts}{provided options in the form \code{c("-Doption1=value2","-Doption2=value2")}}
 
-\item{pom_path}{optional. the path to a pom.xml file for goals that operate on one}
+\item{pom_path}{optional. the path to a \code{pom.xml} file for goals that need one.}
 
-\item{quiet}{should output from maven be suppressed? (-q flag)}
+\item{quiet}{should output from maven be suppressed? (\code{-q} flag)}
 
-\item{debug}{should output from maven be verbose? (-X flag)}
+\item{debug}{should output from maven be verbose? (\code{-X} flag)}
 
 \item{verbose}{how much output from maven, one of "normal", "quiet", "debug"}
 
-\item{require_jdk}{does the goal you are executing require a \code{JDK} (e.g. compilation)}
+\item{require_jdk}{does the goal you are executing require a \code{JDK} (e.g. compilation does, fetching artifacts and calculating classpaths does not)}
 
-\item{settings}{the path to a settings.xml file controlling Maven. The default is a configuration with a local repository in the 'rmaven' cache directory (and not the Java maven repository).}
+\item{settings}{the path to a \code{settings.xml} file controlling Maven. The default is a configuration with a local repository in the \code{rmaven} cache directory (and not the Java maven repository).}
 
-\item{...}{named parameters are passed to maven as options in the form \code{-Dname=value}}
+\item{...}{non-empty named parameters are passed to maven as options in the form \code{-Dname=value}}
 }
 \value{
 nothing, invisibly
 }
 \description{
-Maven goals may be executed with or without a pom.xml file. Some maven goals (e.g. compilation)
-require the use of a \code{JDK}.
+Maven goals are defined either as lifecycle goals (e.g. "clean", "compile") or as plugin goals (e.g. "help:system"). Some Maven goals may be executed without a \code{pom.xml} file, others require one.
+Some maven goals (e.g. compilation) require the use of a \code{JDK}.
 }
 \examples{
 \donttest{
 # This code can take quite a while to run as has to
-# download a lot of plugins, especially on first run
+# download a lot of plugins, especially on first run on a clean system
 execute_maven("help:system")
 }
 }

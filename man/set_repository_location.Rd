@@ -11,7 +11,7 @@ set_repository_location(
 )
 }
 \arguments{
-\item{repository_location}{a file path (which will be expanded to a full path) where the repository should be based, e.g. '~/.m2/repository/'. Defaults to a sub-directory of the 'rmaven' cache.}
+\item{repository_location}{a file path (which will be expanded to a full path) where the repository should be based, e.g. \verb{~/.m2/repository/}. Defaults to a sub-directory of the \code{rmaven} cache.}
 
 \item{settings_path}{the file path of the settings.xml to update (generally the supplied default is what you want to use)}
 }
@@ -19,10 +19,10 @@ set_repository_location(
 the new repository location (expanded)
 }
 \description{
-This writes a maven repository location to a temporary 'settings.xml' file which persists only for the R session.
-The location of the maven repository is either specified here, or can be defined by the 'options("rmaven.m2.repository"=...)' option.
-If neither of these is provided, the location will revert to a default location within the 'rmaven' cache. (Approved by CRAN for a local cache location)
-e.g. on 'Linux' this will default to '~/.cache/rmaven/.m2/repository/'
+This writes a maven repository location to a temporary \code{settings.xml} file which persists only for the R session.
+The location of the maven repository is either specified here, or can be defined by the \code{options("rmaven.m2.repository"=...)} option.
+If neither of these is provided, the location will revert to a default location within the \code{rmaven} cache. (Approved by CRAN for a local cache location)
+e.g. on 'Linux' this will default to \verb{~/.cache/rmaven/.m2/repository/}
 }
 \examples{
 # set the repository location to the usual location for java development

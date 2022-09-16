@@ -36,6 +36,8 @@ start_jvm()
 opts = options("rmaven.allow.cache.delete"=TRUE)
 clear_rmaven_cache()
 options(opts)
+
+
 ```
 
 # Download jar files using Maven
@@ -47,10 +49,11 @@ an specific Java library are easily found on the internet. Maven manages bootstr
 dynamic_classpath = resolve_dependencies(
   groupId = "org.apache.commons", 
   artifactId = "commons-lang3", 
-  version="3.12.0",
-  nocache = TRUE
+  version="3.12.0"
 )
-dynamic_classpath
+
+sprintf("Locally cached classpath of commons-lang3: %s",dynamic_classpath)
+sprintf("Jar files found in repository: %1.0f", fs::dir_ls(get_repository_location(),recurse = TRUE,glob="*.jar") %>% length())
 ```
 
 
@@ -69,6 +72,9 @@ resolve_dependencies(
   artifactId = "commons-lang3", 
   version="3.12.0"
 )
+
+sprintf("Unchanged locally cached classpath of commons-lang3: %s",dynamic_classpath)
+sprintf("Jar files found in repository: %1.0f", fs::dir_ls(get_repository_location(),recurse = TRUE,glob="*.jar") %>% length())
 ```
 
 # Using local repository Jar files in `rJava`
@@ -106,8 +112,11 @@ We use `rmaven` to compile the java source code. This could possibly be done in 
 
 ```{r}
 # In this configuration rmaven will compile a single `fat-jar`
-compiled_jar = rmaven::compile_jar(source_directory, with_dependencies = TRUE)
-compiled_jar
+compiled_jar = compile_jar(source_directory, with_dependencies = TRUE)
+
+sprintf("Location of compiled jar from test source code in this repository: %s",compiled_jar)
+sprintf("Jar files found in repository: %1.0f", fs::dir_ls(get_repository_location(),recurse = TRUE,glob="*.jar") %>% length())
+
 ```
 
 ## Step 2: use the jar
@@ -127,9 +136,50 @@ TestClass$sayHelloWorld()
 * run any other maven plugin goal:
 
 ```{r}
-execute_maven("help:system")
+execute_maven("help:system",quiet = FALSE)
 ```
 
+# Options and configuration
+
+Various options exist to control behaviour of the library
+
+```R
+# Set the level of information returned by Maven. Maven can be very verbose when downloading a lot
+# of content so rmaven defaults to "quiet" mode
+options("rmaven.quiet"=FALSE)
+
+# Set the default repository URLs for fetching artifacts.
+# these can also be specified as options for the fetch_artifact() and copy_artifact() functions.
+# E.g. to restrict to maven central:
+options("rmaven.default_repos" = c("https://repo1.maven.org/maven2/"))
+# N.b. plan is to integrate this with settings.xml
+
+# Manually set JAVA_HOME for Maven to use. 
+# The home directory of the Java installation is detected automatically by firstly checking this option, 
+# then the JAVA_HOME enviroment variable, then the LD_LIBRARY_PATH environment variable, then asking 'rJava'.
+options("rmaven.java_home"="/usr/lib/jvm/java-9-oracle")
+
+# Provide custom options to the JVM on startup, e.g. enabling profiling: 
+options("java.parameters"=c("-Xprof","-Xrunhprof"))
+# this needs to be set before start_jvm() to have any effect
+
+# the following option has the dual effect of:
+# starting the JVM in debug mode (JVM flags: -Xdebug -Xrunjdwp:transport=dt_socket,address=8998,server=y,suspend=n ), and 
+# asking Maven to print debugging output (Maven flags: -X -e)
+options("rmaven.debug"=TRUE)
+# this needs to be set before start_jvm() to have any effect
+
+# Configure location of the local m2 repository, e.g. to use the Java default package location
+options("rmaven.m2.repository"="~/.m2/repository/")
+# If you using rmaven in a package you intend to submit to CRAN this will invoke their ire.
+
+# Allow rmaven to programmatically delete all cached files
+options("rmaven.allow.cache.delete"=TRUE)
+# combined with clear_rmaven_cache()
+# this will involve a lot of downloading from maven central.
+# generally only required on a development machine where you want to make sure everything runs from scratch
+
+```
 
 # Further work
 

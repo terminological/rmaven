@@ -7,14 +7,14 @@
 get_repository_location(settings_path = .settings_path())
 }
 \arguments{
-\item{settings_path}{the file path of the settings.xml to update (generally the supplied default is what you want to use)}
+\item{settings_path}{the file path of the \code{settings.xml} to update (generally the supplied default is what you want to use)}
 }
 \description{
 In general this function is mainly for internal use but maybe handy for debugging.
-The maven repository location can be defined by 'set_repository_location(...)' or through the option
-'options("rmaven.m2.repository"=...)' option but defaults to a '.m2/repository' directory in the 'rmaven' cache directory.
+The maven repository location can be defined by \code{set_repository_location(...)} or through the option
+\code{options("rmaven.m2.repository"=...)} option but defaults to a \code{.m2/repository} directory in the \code{rmaven} cache directory.
 This is not the default location for Maven when used from Java writing to the default Maven directory in user space is
-forbidden by CRAN policies. The result of this is that 'rmaven' will have to unnecessarily download additional copies of java
+forbidden by CRAN policies. The result of this is that \code{rmaven} will have to unnecessarily download additional copies of java
 libraries, onto the users computer and cannot re-use already cached copies. This is more of an issue for developers rather
 than users.
 }

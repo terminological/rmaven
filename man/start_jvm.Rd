@@ -4,18 +4,31 @@
 \alias{start_jvm}
 \title{Start an \code{rJava} \code{JVM} with or without debugging options}
 \usage{
-start_jvm(debug = FALSE, quiet = getOption("rmaven.quiet", FALSE))
+start_jvm(
+  debug = FALSE,
+  quiet = getOption("rmaven.quiet", TRUE),
+  max_heap = NULL,
+  thread_stack = NULL,
+  ...
+)
 }
 \arguments{
 \item{debug}{turn on debugging}
 
-\item{quiet}{don't report messages (defaults to \code{getOption("rmaven.quiet")} or FALSE)}
+\item{quiet}{don't report messages (defaults to \code{getOption("rmaven.quiet")} or TRUE)}
+
+\item{max_heap}{optional. if a string like \code{"2048m"} the \code{-Xmx} option value to start the JVM - if a string like \code{"75\%"} the \code{-XX:MaxRAMPercentage}, if a numeric - number of megabytes.}
+
+\item{thread_stack}{optional. sensible values range from "1m" to "128m" (max is "1Gb"). Can be important with serialising deeply nested structures.}
+
+\item{...}{any other named parameters are passes as \code{-name} or \code{-name=value} if value is a character}
 }
 \value{
 nothing - called for side effects
 }
 \description{
-This does not do anything if the \code{JVM} has already been started.
+This does not do anything if the \code{JVM} has already been started. Otherwise starts the JVM via \code{rJava} with a set of options
+Additional JVM options (beyond debugging) can be set with the \code{options("java.parameters"=c("-Xprof","-Xrunhprof"))}
 }
 \examples{
 start_jvm()

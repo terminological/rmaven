@@ -12,7 +12,7 @@ copy_artifact(
   coordinates = NULL,
   artifact = NULL,
   outputDirectory = .working_dir(artifact),
-  repoUrl = getOption("rmaven.default_repos"),
+  repoUrl = .default_repos(),
   nocache = FALSE,
   verbose = c("normal", "quiet", "debug")
 )
@@ -30,9 +30,9 @@ copy_artifact(
 
 \item{artifact}{optional, coordinates as an artifact string \verb{groupId:artifactId:version[:packaging[:classifier]]} string}
 
-\item{outputDirectory}{optional path, defaults to the rmaven cache directory}
+\item{outputDirectory}{optional path, defaults to the \code{rmaven} cache directory}
 
-\item{repoUrl}{the URLs of the repositories to check (defaults to maven central & \verb{Sonatype snaphots})}
+\item{repoUrl}{the URLs of the repositories to check (defaults to maven central, \verb{Sonatype snaphots} and \code{jitpack})}
 
 \item{nocache}{normally artifacts are only fetched if required, \code{nocache} forces fetching}
 
@@ -42,7 +42,7 @@ copy_artifact(
 the output of the system2 call. 0 on success.
 }
 \description{
-Copy an artifact from a repository to a local directory
+This essentially runs a \code{maven-dependency-plugin:copy} goal to copy a JAR file from a remote repository to a local directory.
 }
 \examples{
 \donttest{

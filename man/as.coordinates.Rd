@@ -13,10 +13,10 @@ as.coordinates(groupId, artifactId, version, ...)
 
 \item{version}{the maven version}
 
-\item{...}{other parameters ignored apart from packaging (\code{jar},\code{war},\code{pom} or \code{ejb}) and classifier (\code{tests}, \code{client}, \code{sources}, \code{javadoc}, \code{jar-with-dependencies}, \code{src})}
+\item{...}{other parameters ignored apart from \code{packaging} (one of \code{jar},\code{war},\code{pom} or \code{ejb}) and \code{classifier} (one of \code{tests}, \code{client}, \code{sources}, \code{javadoc}, \code{jar-with-dependencies}, \code{src})}
 }
 \value{
-a coordinates object containing the coordinates
+a coordinates object containing the Maven artifact coordinates
 }
 \description{
 Maven coordinates

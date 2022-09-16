@@ -2,7 +2,7 @@
 % Please edit documentation in R/maven.R
 \name{package_jars}
 \alias{package_jars}
-\title{Find location of all the jars in a particular package}
+\title{Find location of all the jars in a particular package.}
 \usage{
 package_jars(package_name, types = c("all", "thin-jar", "fat-jar", "src"))
 }
@@ -12,10 +12,10 @@ package_jars(package_name, types = c("all", "thin-jar", "fat-jar", "src"))
 \item{types}{the jar types to look for in the package: one of \code{all},\code{thin-jar},\code{fat-jar},\code{src}}
 }
 \value{
-a vector of package jars
+a vector of paths to jar files in the package
 }
 \description{
-Find location of all the jars in a particular package
+Find location of all the jars in a particular package.
 }
 \examples{
 package_jars("rmaven")

@@ -30,7 +30,7 @@ resolve_dependencies(
 
 \item{artifact}{optional, coordinates as an artifact string \verb{groupId:artifactId:version[:packaging[:classifier]]} string}
 
-\item{path}{the path to the source directory, pom file or jar file. if blank the}
+\item{path}{the path to the source directory, pom file or jar file. if not given \code{rmaven} will get the artifact from the maven central repositories}
 
 \item{include_self}{do you want include this path in the \code{classpath}. optional, if missing the path will be included if it is a regular jar, or a fat jar, otherwise not.}
 
@@ -43,7 +43,8 @@ a character vector of the \code{classpath} jar files (including the current one 
 }
 \description{
 This calculates the dependencies for an artifact which may be specified either as a set of maven coordinates (in which case the
-artifact is downloaded) or as a path to a jar file containing a pom.xml (e.g. a compiled jar file, a compiled jar-with-dependencies, or a assembled \code{...-src.jar})
+artifact is downloaded, and included in the \code{classpath}) or as a path to a jar file containing a pom.xml (e.g. a compiled jar file,
+a compiled jar-with-dependencies, or a assembled \code{...-src.jar})
 The resulting file paths which will be in the maven local cache are checked on the file system.
 }
 \examples{
@@ -51,13 +52,17 @@ The resulting file paths which will be in the maven local cache are checked on t
 # This code can take quite a while to run as has
 # to download a lot of plugins, especially on first run
 
+# classpath would be cached if possible
 resolve_dependencies(groupId = "commons-io", artifactId = "commons-io", version="2.11.0")
 
+# forcing download and classpath calculation of an artifact
 resolve_dependencies(artifact = "org.junit.jupiter:junit-jupiter-api:5.9.0", nocache=TRUE)
 
+# find the test jar in this package and calculate its stated dependencies
 resolve_dependencies(path=
   system.file("testdata/test-project-0.0.1-SNAPSHOT.jar",package="rmaven"))
 
+# find the test source code jar in this package and calculate its stated dependencies
 resolve_dependencies(path=
   system.file("testdata/test-project-0.0.1-SNAPSHOT-src.jar",package="rmaven"))
 }
