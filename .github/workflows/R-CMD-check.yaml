@@ -67,6 +67,6 @@ jobs:
 
       - name: Deploy
         if: ${{ success() }}
-        uses: terminological/deploy-to-drat@v0.1.5-alpha
+        uses: terminological/deploy-to-drat@v0.1.6-alpha
 
 
