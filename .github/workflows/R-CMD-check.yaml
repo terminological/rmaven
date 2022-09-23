@@ -64,9 +64,3 @@ jobs:
         with:
           args: 'c("--no-manual", "--no-multiarch", "--as-cran")'
           upload-snapshots: true
-
-      - name: Deploy
-        if: ${{ success() }}
-        uses: terminological/deploy-to-drat@v0.1.7-alpha
-
-
