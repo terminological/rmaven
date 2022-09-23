@@ -575,7 +575,9 @@ manually by looking at: ",dir,"\n",sep="")
     "-B", # batch mode
     paste0("-s \"",settings,"\"") # user setting file location
   )
-  if (!is.null(pom_path)) args = c(args, paste0("-f \"",pom_path,"\""))
+  # This is not needed as we set WD to the pom path or maven path below
+  # due to some windows Mvnw.cmd issue.
+  # if (!is.null(pom_path)) args = c(args, paste0("-f \"",pom_path,"\""))
   if (quiet) args = c(args, "-q")
   else if (debug) args = c(args, "-X")
   else {
@@ -588,21 +590,20 @@ manually by looking at: ",dir,"\n",sep="")
   # make sure JAVA_HOME is set
   .java_home(quiet=TRUE)
 
-  # # changing the wd is required due to an issue in Mvnw.cmd on windows.
-  # # N.b. this is probably not true as may just have been a quotes issue
-  # wd = getwd()
-  # # change the working directory
-  # if(!is.null(pom_path)) {
-  #   setwd(fs::path_dir(pom_path))
-  # } else {
-  #   setwd(fs::path_dir(mvn_path))
-  # }
+  # changing the wd is required due to an issue in Mvnw.cmd on windows.
+  wd = getwd()
+  # change the working directory
+  if(!is.null(pom_path)) {
+    setwd(fs::path_dir(pom_path))
+  } else {
+    setwd(fs::path_dir(mvn_path))
+  }
 
   args = unique(args)
   if (debug) message("executing: ",mvn_path," ",paste0(args,collapse=" "))
   out = system2(mvn_path, args, stdout = TRUE)
   if (!quiet) cat(paste0(c(out,""),collapse="\n"))
-  # setwd(wd)
+  setwd(wd)
   invisible(NULL)
 }
 
