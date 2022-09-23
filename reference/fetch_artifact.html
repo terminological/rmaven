@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rmaven</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
       </span>
     </div>
 
@@ -31,7 +31,13 @@
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
-      </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
+      </ul><ul class="nav navbar-nav navbar-right"><li>
+  <a href="https://github.com/terminological/rmaven/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
@@ -41,7 +47,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Fetch an artifact from a remote repository into the local .m2 cache</h1>
-    
+    <small class="dont-index">Source: <a href="https://github.com/terminological/rmaven/blob/HEAD/R/cran-interface.R" class="external-link"><code>R/cran-interface.R</code></a></small>
     <div class="hidden name"><code>fetch_artifact.Rd</code></div>
     </div>
 
@@ -82,19 +88,24 @@
 
 
 <dt>coordinates</dt>
-<dd><p>optional, but if not supplied <code>groupId</code> and <code>artifactId</code> must be, coordinates as a coordinates object (see <code><a href="as.coordinates.html">as.coordinates()</a></code>)</p></dd>
+<dd><p>optional, but if not supplied <code>groupId</code> and <code>artifactId</code>
+must be, coordinates as a coordinates object (see <code><a href="as.coordinates.html">as.coordinates()</a></code>)</p></dd>
 
 
 <dt>artifact</dt>
-<dd><p>optional, coordinates as an artifact string <code>groupId:artifactId:version[:packaging[:classifier]]</code> string</p></dd>
+<dd><p>optional, coordinates as an artifact string
+<code>groupId:artifactId:version[:packaging[:classifier]]</code> string</p></dd>
 
 
 <dt>repoUrl</dt>
-<dd><p>the URLs of the repositories to check (defaults to Maven central, 'Sonatype' snapshots and 'jitpack', defined in <code>options("rmaven.default_repos"))</code></p></dd>
+<dd><p>the URLs of the repositories to check (defaults to Maven
+central, 'Sonatype' snapshots and 'jitpack', defined in
+<code>options("rmaven.default_repos"))</code></p></dd>
 
 
 <dt>nocache</dt>
-<dd><p>normally artifacts are only fetched if required, <code>nocache</code> forces fetching</p></dd>
+<dd><p>normally artifacts are only fetched if required, <code>nocache</code>
+forces fetching</p></dd>
 
 
 <dt>verbose</dt>
@@ -114,8 +125,24 @@
 <span class="r-in"><span><span class="co"># This code can take quite a while to run as has to</span></span></span>
 <span class="r-in"><span><span class="co"># download a lot of plugins, especially on first run</span></span></span>
 <span class="r-in"><span><span class="fu">fetch_artifact</span><span class="op">(</span>artifact<span class="op">=</span><span class="st">"com.google.guava:guava:31.1-jre"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Scanning for projects...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO]                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Building Maven Stub Project (No POM) 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] --- maven-dependency-plugin:3.3.0:get (default-cli) @ standalone-pom ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Resolving com.google.guava:guava:jar:31.1-jre with transitive dependencies</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] BUILD SUCCESS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Total time: 2.348 s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Finished at: 2022-09-23T14:27:13+00:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Final Memory: 15M/54M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> /home/runner/.cache/rmaven/.m2/repository/com/google/guava/guava/31.1-jre/guava-31.1-jre.jar</span>
-<span class="r-in"><span><span class="fu">fetch_artifact</span><span class="op">(</span>coordinates <span class="op">=</span> <span class="fu"><a href="as.coordinates.html">as.coordinates</a></span><span class="op">(</span><span class="st">"org.junit.jupiter"</span>,<span class="st">"junit-jupiter-api"</span>,<span class="st">"5.9.0"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">fetch_artifact</span><span class="op">(</span>coordinates <span class="op">=</span> <span class="fu"><a href="as.coordinates.html">as.coordinates</a></span><span class="op">(</span><span class="st">"org.junit.jupiter"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"junit-jupiter-api"</span>,<span class="st">"5.9.0"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> /home/runner/.cache/rmaven/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.0/junit-jupiter-api-5.9.0.jar</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
