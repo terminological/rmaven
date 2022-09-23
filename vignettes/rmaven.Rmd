@@ -15,37 +15,51 @@ knitr::opts_chunk$set(
 )
 ```
 
-The purpose of `rmaven` is to simplify the process of including Java libraries into R code for use by `rJava`. Currently the 
-`rJava` infrastructure assumes jar files of compiled code, and all the dependencies thereof, are available locally and known to the programmer. This 
-works well if the `rJava` code is part of a package, but less well if the user is programming in a `REPL` loop, and simply wants to use a Java library. 
+The purpose of `rmaven` is to simplify the process of including Java libraries
+into R code for use by `rJava`. Currently the `rJava` infrastructure assumes jar
+files of compiled code, and all the dependencies thereof, are available locally
+and known to the programmer. This works well if the `rJava` code is part of a
+package, but less well if the user is programming in a `REPL` loop, and simply
+wants to use a Java library.
 
-Even when packaging Java libraries with `rJava` code into an R package, the transitive dependencies of a moderately complicated bit of Java code can 
-be complex, and distributing the `jar` files associated with that burdensome, particularly when the underlying libraries are updated. The bundling of jar files 
-also may exceed the stringent CRAN policies for allowable package sizes, requiring a complex distribution mechanism for the dependencies.
+Even when packaging Java libraries with `rJava` code into an R package, the
+transitive dependencies of a moderately complicated bit of Java code can be
+complex, and distributing the `jar` files associated with that burdensome,
+particularly when the underlying libraries are updated. The bundling of jar
+files also may exceed the stringent CRAN policies for allowable package sizes,
+requiring a complex distribution mechanism for the dependencies.
 
-To solve this `rmaven` manages some or all of this problem for you, by integrating Java's standard build and dependency management tool Apache Maven into R. 
-This allows Java libraries used within R to be specified as `Maven` artifacts and transitive dependencies downloaded dynamically from Maven repositories. 
-`rmaven` is pure R with minimal dependencies of its own, apart from the 
-existence of a Java runtime (`JRE` or `JDK`) installed on the system, and the location known to R. It doesn't even require `rJava` (although without it there
-doesn't seem much point).
+To solve this `rmaven` manages some or all of this problem for you, by
+integrating Java's standard build and dependency management tool Apache Maven
+into R. This allows Java libraries used within R to be specified as `Maven`
+artifacts and transitive dependencies downloaded dynamically from Maven
+repositories. `rmaven` is pure R with minimal dependencies of its own, apart
+from the existence of a Java runtime (`JRE` or `JDK`) installed on the system,
+and the location known to R. It doesn't even require `rJava` (although without
+it there doesn't seem much point).
 
 ```{r setup}
 library(rmaven)
 start_jvm()
 
+# The following 3 lines clears the local rmaven cache and is here to 
+# create a clean slate before executing the rest of the vignette.
+# In normal use you would not call this in a non-interactive setting
 opts = options("rmaven.allow.cache.delete"=TRUE)
 clear_rmaven_cache()
 options(opts)
-
 
 ```
 
 # Download jar files using Maven
 
-When using `rmaven` the first step to using a Java library in R is to fetch it from the Maven repositories. The artifact coordinates (i.e. `groupId`, `artifactId` and `version`) of
-an specific Java library are easily found on the internet. Maven manages bootstrapping the download of libraries. 
+When using `rmaven` the first step to using a Java library in R is to fetch it
+from the Maven repositories. The artifact coordinates (i.e. `groupId`,
+`artifactId` and `version`) of an specific Java library are easily found on the
+internet. Maven manages bootstrapping the download of libraries.
 
 ```{r}
+# cache apache commons lang3 
 dynamic_classpath = resolve_dependencies(
   groupId = "org.apache.commons", 
   artifactId = "commons-lang3", 
@@ -53,17 +67,26 @@ dynamic_classpath = resolve_dependencies(
 )
 
 sprintf("Locally cached classpath of commons-lang3: %s",dynamic_classpath)
-sprintf("Jar files found in repository: %1.0f", fs::dir_ls(get_repository_location(),recurse = TRUE,glob="*.jar") %>% length())
+
+# to get the one jar file many others are donloaded and cached as part of
+# bootstrapping the Java build tools
+sprintf("Jar files found in repository: %1.0f", 
+        fs::dir_ls(get_repository_location(),recurse = TRUE,glob="*.jar") %>% length())
 ```
 
-
-In Java development Maven manages a local repository in the `.m2/repository/` 
-subdirectory of the users home. In `rmaven` however changing directories in the user space conflicts with CRAN policies. As the purpose of this library is to support Java use in R, it makes sense
-to move the `.m2/repository/` cache directory to a CRAN approved location, however this can be changed through configuration (see `set_repository_location(...)` function).
+In Java development Maven manages a local repository in the `.m2/repository/`
+subdirectory of the users home. In `rmaven` however changing directories in the
+user space conflicts with CRAN policies. As the purpose of this library is to
+support Java use in R, it makes sense to move the `.m2/repository/` cache
+directory to a CRAN approved location, however this can be changed through
+configuration (see `set_repository_location(...)` function).
 
 # Caching of Java libraries
 
-`rmaven` bootstraps loading of Maven itself and any plugins required. When doing this the code above triggers a significant download. Maven is good at handling the caching of downloads, and sharing reused artifacts. Repeated invocation of `rmaven` will not require additional downloads.
+As we saw above `rmaven` bootstraps loading of Maven itself and any plugins
+required. When doing this the code above triggers a significant download. Maven
+is good at handling the caching of downloads, and sharing reused artifacts.
+Repeated invocation of `rmaven` will not require additional downloads.
 
 ```{r}
 # does not need additional downloads
@@ -74,19 +97,25 @@ resolve_dependencies(
 )
 
 sprintf("Unchanged locally cached classpath of commons-lang3: %s",dynamic_classpath)
-sprintf("Jar files found in repository: %1.0f", fs::dir_ls(get_repository_location(),recurse = TRUE,glob="*.jar") %>% length())
+
+# no additional downloads once cache populated
+sprintf("Jar files found in repository: %1.0f", 
+        fs::dir_ls(get_repository_location(),recurse = TRUE,glob="*.jar") %>% length())
 ```
 
 # Using local repository Jar files in `rJava`
 
-The second step is to add jars from the local `.m2` repository to the `rJava` class path, and using `rJava`, create an R interface to the Java class you want to use (in this case the `StringUtils` class). 
+The second step is to add jars from the local `.m2` repository to the `rJava`
+class path, and using `rJava`, create an R interface to the Java class you want
+to use (in this case the `StringUtils` class).
 
 ```{r}
 rJava::.jaddClassPath(dynamic_classpath)
 StringUtils = rJava::J("org.apache.commons.lang3.StringUtils")
 ```
 
-Finally you can call the static Java method, using `rJava`, in this case `StringUtils.rotate(String s, int distance)`.
+Finally you can call the static Java method, using `rJava`, in this case
+`StringUtils.rotate(String s, int distance)`.
 
 ```{r}
 StringUtils$rotate("ABCDEF",3L)
@@ -94,28 +123,38 @@ StringUtils$rotate("ABCDEF",3L)
 
 # Java compilation
 
-Apart from using Maven to download manage dependencies, it also allows us to compile Java code and integrate dependencies, specified in a `pom.xml` file. By including Java code in an R project and using Maven to compile code we raise the possibility of integrating Java and R code in a manner similar to the way `RCpp` and `C++`.
+Apart from using Maven to download manage dependencies, it also allows us to
+compile Java code and integrate dependencies, specified in a `pom.xml` file. By
+including Java code in an R project and using Maven to compile code we raise the
+possibility of integrating Java and R code in a manner similar to the way `RCpp`
+and `C++`.
 
 ## Step 0: write some java code 
 
-As part of your package write some Java code including a `pom.xml` Maven build file, such as the `TestCass`, in the example code bundled with this package.
+As part of your package write some Java code including a `pom.xml` Maven build
+file, such as the `TestCass`, in the example code bundled with this package.
 
 ```{r}
-# find the example bundled with this package
+# find the java source code example bundled with this package
 source_directory = system.file("testdata/test-project",package = "rmaven")
 fs::dir_tree(source_directory, invert=TRUE, glob = "*/target/*")
 ```
 
 ## Step 1: compile the jar
 
-We use `rmaven` to compile the java source code. This could possibly be done in an `.onLoad()` package function:
+We use `rmaven` to compile the java source code. This could possibly be done in
+an `.onLoad()` package function, if you were developing a package which includes
+Java source code:
 
 ```{r}
 # In this configuration rmaven will compile a single `fat-jar`
 compiled_jar = compile_jar(source_directory, with_dependencies = TRUE)
 
 sprintf("Location of compiled jar from test source code in this repository: %s",compiled_jar)
-sprintf("Jar files found in repository: %1.0f", fs::dir_ls(get_repository_location(),recurse = TRUE,glob="*.jar") %>% length())
+
+# More plugins are required to perform the compilation
+sprintf("Jar files found in repository: %1.0f", 
+        fs::dir_ls(get_repository_location(),recurse = TRUE,glob="*.jar") %>% length())
 
 ```
 
@@ -129,57 +168,95 @@ TestClass = rJava::J("org.example.TestClass")
 TestClass$sayHelloWorld()
 ```
 
+# Options and configuration
+
+Various options exist to control behaviour of the library. N.B. None of the
+options in this section are executed as part of the vignette, they are just here
+to document the options.
+
+Set the level of information returned by Maven. Maven can be very verbose so 
+defaulting `rmaven` to "quiet" mode is often a good idea.
+
+```R
+options("rmaven.quiet"=TRUE)
+```
+
+Set the default repository URLs for fetching artifacts.
+these can also be specified as options for the `fetch_artifact()` and
+`copy_artifact()` functions.
+E.g. to restrict to Maven central:
+
+```R
+options("rmaven.default_repos" = c("https://repo1.maven.org/maven2/"))
+# N.b. plan is to integrate this with settings.xml
+```
+
+Manually set `JAVA_HOME` for Maven to use. The home directory of the Java
+installation is detected automatically by firstly checking this option, then the
+`JAVA_HOME` environment variable, then the `LD_LIBRARY_PATH` environment
+variable, then by asking `rJava`.
+
+```R
+options("rmaven.java_home"="/usr/lib/jvm/java-9-oracle")
+```
+
+Provide custom options to the JVM on startup, e.g. enabling profiling, 
+this needs to be set before `start_jvm()` to have any effect: 
+
+```R
+options("java.parameters"=c("-Xprof","-Xrunhprof"))
+```
+
+Enable debug mode option has the dual effect of:
+starting the JVM in debug mode (JVM flags: 
+`-Xdebug -Xrunjdwp:transport=dt_socket,address=8998,server=y,suspend=n` 
+), and asking Maven to print debugging output (Maven flags: `-X -e`). 
+This needs to be set before `start_jvm()` to have any effect.
+
+```R
+options("rmaven.debug"=TRUE)
+```
+
+Configure location of the local m2 repository, e.g. to use the Java default 
+package location:
+
+You might want to do this if you are a Java developer and 
+you have a maven cache already populated with locally built Java libraries
+from a Java IDE and you are working to develop an R package pending deployment.
+If you using `rmaven` for dependency management in a package and
+you intend to submit it to CRAN, altering this setting
+for the `rmaven` repository location will cause issues during CRAN submission
+as the resulting package will touch the userspace and hence violate CRAN's 
+policies.
+
+```R
+# THIS IS NOT RUN (and nore are any of the other options documented 
+# in this section)
+# options("rmaven.m2.repository"="~/.m2/repository/")
+```
+
+Allow `rmaven` to programmatically delete all cached files. 
+This will involve a lot of downloading from maven central and generally only 
+required on a development machine where you want to make sure everything runs 
+from scratch (like in this vignette).
+
+```R
+options("rmaven.allow.cache.delete"=TRUE)
+# combined with clear_rmaven_cache()
+```
+
 # What else could you do?
 
 * Run ant tasks. - using the `antrun` plugin
 * Initialize production web servers and 'APIs'. - using Jetty or Spring.
-* run any other maven plugin goal:
+* run any other maven plugin goal, for example:
 
 ```{r}
-execute_maven("help:system",quiet = FALSE)
-```
-
-# Options and configuration
-
-Various options exist to control behaviour of the library
-
-```R
-# Set the level of information returned by Maven. Maven can be very verbose when downloading a lot
-# of content so rmaven defaults to "quiet" mode
-options("rmaven.quiet"=FALSE)
-
-# Set the default repository URLs for fetching artifacts.
-# these can also be specified as options for the fetch_artifact() and copy_artifact() functions.
-# E.g. to restrict to maven central:
-options("rmaven.default_repos" = c("https://repo1.maven.org/maven2/"))
-# N.b. plan is to integrate this with settings.xml
-
-# Manually set JAVA_HOME for Maven to use. 
-# The home directory of the Java installation is detected automatically by firstly checking this option, 
-# then the JAVA_HOME enviroment variable, then the LD_LIBRARY_PATH environment variable, then asking 'rJava'.
-options("rmaven.java_home"="/usr/lib/jvm/java-9-oracle")
-
-# Provide custom options to the JVM on startup, e.g. enabling profiling: 
-options("java.parameters"=c("-Xprof","-Xrunhprof"))
-# this needs to be set before start_jvm() to have any effect
-
-# the following option has the dual effect of:
-# starting the JVM in debug mode (JVM flags: -Xdebug -Xrunjdwp:transport=dt_socket,address=8998,server=y,suspend=n ), and 
-# asking Maven to print debugging output (Maven flags: -X -e)
-options("rmaven.debug"=TRUE)
-# this needs to be set before start_jvm() to have any effect
-
-# Configure location of the local m2 repository, e.g. to use the Java default package location
-options("rmaven.m2.repository"="~/.m2/repository/")
-# If you using rmaven in a package you intend to submit to CRAN this will invoke their ire.
-
-# Allow rmaven to programmatically delete all cached files
-options("rmaven.allow.cache.delete"=TRUE)
-# combined with clear_rmaven_cache()
-# this will involve a lot of downloading from maven central.
-# generally only required on a development machine where you want to make sure everything runs from scratch
+# Here we execute a maven help goal
+execute_maven("help:system")
 
 ```
+
 
 # Further work
 

@@ -6,7 +6,9 @@
   if (is.na(jh)) jh = Sys.getenv("JAVA_HOME", unset=NA)
   if (is.na(jh)) {
     if (!rJava::.jniInitialized) {
-      warning("Initialising rJava with default parameters to check for JAVA_HOME. This probably should have been called after rJava::.jinit() or rmaven::start_jvm()")
+      warning(
+      "Initialising rJava with default parameters to check for JAVA_HOME. ",
+      "This probably should have been called after rJava::.jinit() or rmaven::start_jvm()")
       try({start_jvm(quiet = TRUE)},silent=TRUE)
     }
     jh = tryCatch({rJava::.jcall( 'java/lang/System', 'S', 'getProperty', 'java.home' )},error = function(e) NA)
@@ -24,7 +26,8 @@
 
   if (!.is_jdk_home(jh)) {
 
-    if (require_jdk) stop("Couldn't find 'bin/javac' in any parent directories starting at ",jh_orig,", do you have a JDK installed?")
+    if (require_jdk) stop("Couldn't find 'bin/javac' in any parent directories starting at ",
+                          jh_orig,", do you have a JDK installed?")
     # settle for a jre if we can find one
     jh = jh_orig
     jh_parent = fs::path_dir(jh)
@@ -33,7 +36,8 @@
       jh = jh_parent
       jh_parent = fs::path_dir(jh)
     }
-    stop("Couldn't find 'bin/javac(.exe)' or 'bin/java(.exe)' in any parent directories starting at ",jh_orig,", please set options('rmaven.java_home'=...) to the root of a JDK (the directory containing 'bin/javac').")
+    stop("Couldn't find 'bin/javac(.exe)' or 'bin/java(.exe)' in any parent directories starting at ",
+         jh_orig,", please set options('rmaven.java_home'=...) to the root of a JDK (the directory containing 'bin/javac').")
   }
   if (set) Sys.setenv("JAVA_HOME"=jh)
   return(jh)
@@ -61,15 +65,21 @@
 
 # Start an `rJava` `JVM` with or without debugging options
 #
-# This does not do anything if the `JVM` has already been started. Otherwise starts the JVM via `rJava` with a set of options
-# Additional JVM options (beyond debugging) can be set with the `options("java.parameters"=c("-Xprof","-Xrunhprof"))`
+# This does not do anything if the `JVM` has already been started. Otherwise
+# starts the JVM via `rJava` with a set of options Additional JVM options
+# (beyond debugging) can be set with the
+# `options("java.parameters"=c("-Xprof","-Xrunhprof"))`
 #
 # debug turn on debugging
 # quiet don't report messages (defaults to `getOption("rmaven.quiet")` or TRUE)
-# max_heap optional. if a string like `"2048m"` the `-Xmx` option value to start the `JVM` - if a string like `"75%"` the `-XX:MaxRAMPercentage`, if a numeric - number of megabytes.
-# thread_stack optional. sensible values range from '1m' to '128m' (max is '1g'). Can be important with deeply nested structures.
-# ... any other named parameters are passes as `-name` or `-name=value` if value is a character
-.start_jvm = function(debug = FALSE, quiet = getOption("rmaven.quiet",TRUE), max_heap = NULL, thread_stack = NULL, ...) {
+# max_heap optional. if a string like `"2048m"` the `-Xmx` option value to start
+# the `JVM` - if a string like `"75%"` the `-XX:MaxRAMPercentage`, if a numeric
+# - number of megabytes. thread_stack optional. sensible values range from '1m'
+# to '128m' (max is '1g'). Can be important with deeply nested structures. ...
+# any other named parameters are passes as `-name` or `-name=value` if value is
+# a character
+.start_jvm = function(debug = FALSE, quiet = getOption("rmaven.quiet",TRUE),
+                      max_heap = NULL, thread_stack = NULL, ...) {
   opts = getOption("java.parameters")
   if (!is.null(max_heap)) {
     # get rid of startup Xmx option
@@ -112,7 +122,8 @@
         rJava::.jinit(parameters=opts,silent = TRUE, force.init = FALSE)
       }
     } else {
-      if(!quiet) warning("The JVM was already initialised when start_jvm(...) was called. The following parameters were not applied: ", opts)
+      if(!quiet) warning("The JVM was already initialised when start_jvm(...) was called. ",
+                         "The following parameters were not applied: ", opts)
     }
   }, error = function(e) {
     warning("")
@@ -124,10 +135,11 @@
 
 # Find location of all the jars in a particular package.
 #
-# @param package_name the R package name
-# @param types the jar types to look for in the package: one of `all`,`thin-jar`,`fat-jar`,`src`
+# package_name the R package name
+# types the jar types to look for in the package: one of
+#   `all`,`thin-jar`,`fat-jar`,`src`
 #
-# @return a vector of paths to jar files in the package
+# a vector of paths to jar files in the package
 .package_jars = function(package_name, types = c("all","thin-jar","fat-jar","src")) {
   types = match.arg(types)
   pkgloc = system.file(package = package_name)
@@ -212,7 +224,9 @@
 # @param groupId the maven `groupId`
 # @param artifactId the maven `artifactId`
 # @param version the maven version
-# @param ... other parameters ignored apart from `packaging` (one of `jar`,`war`,`pom` or `ejb`) and `classifier` (one of `tests`, `client`, `sources`, `javadoc`, `jar-with-dependencies`, `src`)
+# @param ... other parameters ignored apart from `packaging` (one of
+#   `jar`,`war`,`pom` or `ejb`) and `classifier` (one of `tests`, `client`,
+#   `sources`, `javadoc`, `jar-with-dependencies`, `src`)
 .as.coordinates = function(groupId, artifactId, version, ...) {
   out = list(
     groupId = groupId,
@@ -224,10 +238,12 @@
   class(out) = c("coordinates",class(out))
   coordinates = rlang::list2(...)
   if (is.null(coordinates$packaging)) coordinates$packaging = "jar"
-  if (!coordinates$packaging %in% .packaging_opts) stop('if packaging given it must be one of ',paste0(.packaging_opts, collapse=", "))
+  if (!coordinates$packaging %in% .packaging_opts)
+    stop('if packaging given it must be one of ',paste0(.packaging_opts, collapse=", "))
   out$packaging = coordinates$packaging
   if (!is.null(coordinates$classifier)) {
-    if (!coordinates$classifier %in% .classifier_opts) stop('if classifier option is given it must be one of',paste0(.classifier_opts, collapse=", "))
+    if (!coordinates$classifier %in% .classifier_opts)
+      stop('if classifier option is given it must be one of',paste0(.classifier_opts, collapse=", "))
     out$classifier = coordinates$classifier
   }
   return(out)
@@ -236,7 +252,8 @@
 # internal function
 # get maven artifact coordinates from groupId, artifactId, etc.
 .artifact = function(coordinates) {
-  out = sprintf("%s:%s:%s", coordinates$groupId, coordinates$artifactId, coordinates$version)
+  out = sprintf("%s:%s:%s", coordinates$groupId, coordinates$artifactId,
+                coordinates$version)
   if (
     # packaging is present
     !is.null(coordinates$packaging) &&
@@ -277,7 +294,10 @@
 
     # If there is only one pom.xml return that, or if there are multiple, return first that matches the artifactId
     # NB this might under match a bit e.g. r6-generator, could match r6-generator, r6-generator-docs, r6-generator-runtime
-    if (length(pom_paths) == 1 || stringr::str_starts(fs::path_file(jar_path), unlist(coords$artifactId))) {
+    if (
+      length(pom_paths) == 1 |
+      stringr::str_starts(fs::path_file(jar_path), unlist(coords$artifactId))
+    ) {
 
       if (stringr::str_starts(pom_path,"META-INF/maven")) {
         if (stringr::str_ends(jar_path,"jar-with-dependencies.jar")) coords$classifier = "jar-with-dependencies"
@@ -308,9 +328,11 @@
 # this is the filename part of a path from maven coordinates
 .filename = function(coordinates) {
   if(is.null(coordinates$classifier)) {
-    return(sprintf("%s-%s.%s", coordinates$artifactId, coordinates$version, coordinates$packaging))
+    return(sprintf("%s-%s.%s", coordinates$artifactId, coordinates$version,
+                   coordinates$packaging))
   } else {
-    return(sprintf("%s-%s-%s.%s", coordinates$artifactId, coordinates$version, coordinates$classifier, coordinates$packaging))
+    return(sprintf("%s-%s-%s.%s", coordinates$artifactId, coordinates$version,
+                   coordinates$classifier, coordinates$packaging))
   }
 }
 
@@ -320,13 +342,16 @@
     is.null(coordinates$classifier) # a normal jar file
     || coordinates$classifier == "jar-with-dependencies" # a fat jar file
   ) {
-    return(sprintf("META-INF/maven/%s/%s/pom.xml", coordinates$groupId, coordinates$artifactId))
+    return(sprintf("META-INF/maven/%s/%s/pom.xml", coordinates$groupId,
+                   coordinates$artifactId))
   } else if (
     coordinates$classifier == "src" # a maven assembly source archive file
   ) {
     return(sprintf("%s-%s/pom.xml", coordinates$artifactId, coordinates$version))
   } else {
-    stop("there is no pom.xml stored in ",sprintf("-%s-%s-%s.%s", coordinates$artifactId, coordinates$version, coordinates$classifier, coordinates$packaging))
+    stop("there is no pom.xml stored in ",
+         sprintf("-%s-%s-%s.%s", coordinates$artifactId, coordinates$version,
+                 coordinates$classifier, coordinates$packaging))
   }
 }
 
@@ -345,23 +370,23 @@
   return(out)
 }
 
-# # get or create a temporary settings.xml file
-# .settings_xml = function() {
-#   # get the file from its expected location
-#   settings_path = fs::path(tempdir(),"rmaven/settings.xml")
-#   if (!fs::file_exists(settings_path)) set_repository_location()
-#   return(settings_path)
-# }
+
 
 # Sets the local maven repository location
 #
-# This writes a maven repository location to a temporary `settings.xml` file which persists only for the R session.
-# The location of the maven repository is either specified here, or can be defined by the `options("rmaven.m2.repository"=...)` option.
-# If neither of these is provided, the location will revert to a default location within the `rmaven` cache. (Approved by CRAN for a local cache location)
-# e.g. on 'Linux' this will default to `~/.cache/rmaven/.m2/repository/`
+# This writes a maven repository location to a temporary `settings.xml` file
+# which persists only for the R session. The location of the maven repository is
+# either specified here, or can be defined by the
+# `options("rmaven.m2.repository"=...)` option. If neither of these is provided,
+# the location will revert to a default location within the `rmaven` cache.
+# (Approved by CRAN for a local cache location) e.g. on 'Linux' this will
+# default to `~/.cache/rmaven/.m2/repository/`
 #
-# @param repository_location a file path (which will be expanded to a full path) where the repository should be based, e.g. `~/.m2/repository/`. Defaults to a sub-directory of the `rmaven` cache.
-# @param settings_path the file path of the settings.xml to update (generally the supplied default is what you want to use)
+# @param repository_location a file path (which will be expanded to a full path)
+#   where the repository should be based, e.g. `~/.m2/repository/`. Defaults to
+#   a sub-directory of the `rmaven` cache.
+# @param settings_path the file path of the settings.xml to update (generally
+#   the supplied default is what you want to use)
 .set_repository_location = function(
     repository_location = getOption("rmaven.m2.repository",default = .working_dir(subpath=".m2/repository/")),
     settings_path = .settings_path()
@@ -377,8 +402,9 @@
     settings_list = list(settings=structure(
       list(localRepository=list(repository_location)),
       xmlns="http://maven.apache.org/SETTINGS/1.0.0",
-      "xmlns:xsi"="http://www.w3.org/2001/XMLSchema-instance",
-      "xsi:schemaLocation"="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd"
+      "xmlns:xsi"="http://www.w3.org/2001/XMLSchema-instance" #,
+      # Not sure why but this is throwing a warning in maven:
+      # "xsi:schemaLocation"="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd"
     ))
   }
   settings_xml = xml2::as_xml_document(settings_list)
@@ -388,13 +414,16 @@
 
 # Get the location of the Maven repository
 #
-# In general this function is mainly for internal use but maybe handy for debugging.
-# The maven repository location can be defined by `set_repository_location(...)` or through the option
-# `options("rmaven.m2.repository"=...)` option but defaults to a `.m2/repository` directory in the `rmaven` cache directory.
-# This is not the default location for Maven when used from Java writing to the default Maven directory in user space is
-# forbidden by CRAN policies. The result of this is that `rmaven` will have to unnecessarily download additional copies of java
-# libraries, onto the users computer and cannot re-use already cached copies. This is more of an issue for developers rather
-# than users.
+# In general this function is mainly for internal use but maybe handy for
+# debugging. The maven repository location can be defined by
+# `set_repository_location(...)` or through the option
+# `options("rmaven.m2.repository"=...)` option but defaults to a
+# `.m2/repository` directory in the `rmaven` cache directory. This is not the
+# default location for Maven when used from Java writing to the default Maven
+# directory in user space is forbidden by CRAN policies. The result of this is
+# that `rmaven` will have to unnecessarily download additional copies of java
+# libraries, onto the users computer and cannot re-use already cached copies.
+# This is more of an issue for developers rather than users.
 .get_repository_location = function(settings_path = .settings_path()) {
   if (fs::file_exists(settings_path)) {
     settings_list = xml2::read_xml(settings_path) %>% xml2::as_list()
@@ -409,11 +438,12 @@
 
 # Clear out the `rmaven` cache
 #
-# Deletes all content in the `rmaven` cache. This should not be necessary, but never
-# say never, and if there is really a problem with the cache, then deleting it may be the
-# best thing. This will wait for confirmation from the user. If running unattended the
-# `options("rmaven.allow.cache.delete"=TRUE)` must be set for the action to occur, otherwise
-# it will generate a warning and do nothing.
+# Deletes all content in the `rmaven` cache. This should not be necessary, but
+# never say never, and if there is really a problem with the cache, then
+# deleting it may be the best thing. This will wait for confirmation from the
+# user. If running unattended the `options("rmaven.allow.cache.delete"=TRUE)`
+# must be set for the action to occur, otherwise it will generate a warning and
+# do nothing.
 #
 .clear_rmaven_cache = function() {
   dir = .working_dir()
@@ -426,9 +456,11 @@
     }
   } else {
 
-    cat("You are about to delete all cached rmaven content including compiled and downloaded jar files.\n")
-    cat("In theory this can all be rebuilt but it may take some time and bandwidth.\n")
-    cat("If you want you could maybe do this in a more targetted way manually by looking at:",dir,"\n")
+    cat("
+You are about to delete all cached rmaven content including compiled and
+downloaded jar files. In theory this can all be rebuilt but it may take some
+time and bandwidth. If you want you can do this in a more targetted way
+manually by looking at: ",dir,"\n",sep="")
     sure = utils::menu(c("Yes","No"), title="Are you sure?")
     if (sure == 1) {
       message("deleting cached content in: ", dir)
@@ -478,7 +510,7 @@
 .quietly = function(verbose = "normal") {
   if (verbose == "quiet") return(TRUE)
   if (verbose == "debug") return(FALSE)
-  return(getOption("rmaven.quiet",TRUE))
+  return(getOption("rmaven.quiet",FALSE))
 }
 
 # debug settings
@@ -491,23 +523,42 @@
 
 # Executes a maven goal
 #
-# Maven goals are defined either as life-cycle goals (e.g. "clean", "compile") or as plugin goals (e.g. "help:system"). Some Maven goals may be executed without a `pom.xml` file, others require one.
-# Some maven goals (e.g. compilation) require the use of a `JDK`.
+# Maven goals are defined either as life-cycle goals (e.g. "clean", "compile")
+# or as plugin goals (e.g. "help:system"). Some Maven goals may be executed
+# without a `pom.xml` file, others require one. Some maven goals (e.g.
+# compilation) require the use of a `JDK`.
 #
-# @param goal the goal of the `mvn` command ( can be multiple ) e.g. `c("clean","compile")`
-# @param opts provided options in the form `c("-Doption1=value2","-Doption2=value2")`
-# @param pom_path optional. the path to a `pom.xml` file for goals that need one.
+# @param goal the goal of the `mvn` command ( can be multiple ) e.g.
+#   `c("clean","compile")`
+# @param opts provided options in the form
+#   `c("-Doption1=value2","-Doption2=value2")`
+# @param pom_path optional. the path to a `pom.xml` file for goals that need
+#   one.
 # @param quiet should output from maven be suppressed? (`-q` flag)
 # @param debug should output from maven be verbose? (`-X` flag)
 # @param verbose how much output from maven, one of "normal", "quiet", "debug"
-# @param require_jdk does the goal you are executing require a `JDK` (e.g. compilation does, fetching artifacts and calculating class path does not)
-# @param settings the path to a `settings.xml` file controlling Maven. The default is a configuration with a local repository in the `rmaven` cache directory (and not the Java maven repository).
-# @param ... non-empty named parameters are passed to maven as options in the form `-Dname=value`
-.execute_maven = function(goal, opts = c(), pom_path=NULL, quiet=.quietly(verbose), debug=.debug(verbose), verbose = c("normal","debug","quiet"), require_jdk=FALSE, settings = .settings_path(), ...) {
+# @param require_jdk does the goal you are executing require a `JDK` (e.g.
+#   compilation does, fetching artifacts and calculating class path does not)
+# @param settings the path to a `settings.xml` file controlling Maven. The
+#   default is a configuration with a local repository in the `rmaven` cache
+#   directory (and not the Java maven repository).
+# @param ... non-empty named parameters are passed to maven as options in the
+#   form `-Dname=value`
+.execute_maven = function(
+  goal, opts = c(),
+  pom_path=NULL,
+  quiet=.quietly(verbose),
+  debug=.debug(verbose),
+  verbose = c("normal","debug","quiet"),
+  require_jdk=FALSE,
+  settings = .settings_path(),
+  ...
+) {
   verbose = match.arg(verbose)
   mvn_path = .load_maven_wrapper()
   named = rlang::dots_list(..., .homonyms = "error")
-  # the following is not used but calling it forces checking and creation of the file if missing.
+  # the following is not used but calling it forces checking and creation of
+  # the file if missing.
   repo_loc = get_repository_location(settings_path = settings)
   # filter out unnamed
   # named = list(1,x=2,y="",z=NULL)
@@ -523,27 +574,35 @@
   args = c(goal, opts, opts2,
     "-B", # batch mode
     paste0("-s \"",settings,"\"") # user setting file location
-  ) #, paste0("-f \"",pomPath,"\""))
+  )
+  if (!is.null(pom_path)) args = c(args, paste0("-f \"",pom_path,"\""))
   if (quiet) args = c(args, "-q")
-  if (debug) args = c(args, "-X")
+  else if (debug) args = c(args, "-X")
+  else {
+    # not quiet or debug.
+    # we will go for the option which displays maven output but removes the
+    # download indicators and details.
+    # https://stackoverflow.com/questions/21638697/disable-maven-download-progress-indication
+    args = c(args,"-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn")
+  }
   # make sure JAVA_HOME is set
   .java_home(quiet=TRUE)
 
-  # changing the wd is required due to an issue in Mvnw.cmd on windows.
-  # N.b. this is probably not true as may just have been a quotes issue
-  wd = getwd()
-  # change the working directory
-  if(!is.null(pom_path)) {
-    setwd(fs::path_dir(pom_path))
-  } else {
-    setwd(fs::path_dir(mvn_path))
-  }
+  # # changing the wd is required due to an issue in Mvnw.cmd on windows.
+  # # N.b. this is probably not true as may just have been a quotes issue
+  # wd = getwd()
+  # # change the working directory
+  # if(!is.null(pom_path)) {
+  #   setwd(fs::path_dir(pom_path))
+  # } else {
+  #   setwd(fs::path_dir(mvn_path))
+  # }
 
   args = unique(args)
-  if (!quiet) message("executing: ",mvn_path," ",paste0(args,collapse=" "))
+  if (debug) message("executing: ",mvn_path," ",paste0(args,collapse=" "))
   out = system2(mvn_path, args, stdout = TRUE)
   if (!quiet) cat(paste0(c(out,""),collapse="\n"))
-  setwd(wd)
+  # setwd(wd)
   invisible(NULL)
 }
 
@@ -554,11 +613,17 @@
 # @param version optional, the maven version,
 # @param ... other maven coordinates such as classifier or packaging
 # @param coordinates optional, coordinates as a coordinates object,
-# @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
-# @param repoUrl the URLs of the repositories to check (defaults to Maven central, 'Sonatype' snapshots and 'jitpack', defined in `options("rmaven.default_repos"))`
-# @param coordinates optional, but if not supplied `groupId` and `artifactId` must be, coordinates as a coordinates object (see `as.coordinates()`)
-# @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
-# @param nocache normally artifacts are only fetched if required, `nocache` forces fetching
+# @param artifact optional, coordinates as an artifact string
+#   `groupId:artifactId:version[:packaging[:classifier]]` string
+# @param repoUrl the URLs of the repositories to check (defaults to Maven
+#   central, 'Sonatype' snapshots and 'jitpack', defined in
+#   `options("rmaven.default_repos"))`
+# @param coordinates optional, but if not supplied `groupId` and `artifactId`
+#   must be, coordinates as a coordinates object (see `as.coordinates()`)
+# @param artifact optional, coordinates as an artifact string
+#   `groupId:artifactId:version[:packaging[:classifier]]` string
+# @param nocache normally artifacts are only fetched if required, `nocache`
+#   forces fetching
 # @param verbose how much output from maven, one of "normal", "quiet", "debug"
 .fetch_artifact = function(
     groupId = NULL,
@@ -605,17 +670,21 @@
 
 # Copy an artifact from a repository to a local directory
 #
-# This essentially runs a `maven-dependency-plugin:copy` goal to copy a JAR file from a remote repository to a local directory.
+# This essentially runs a `maven-dependency-plugin:copy` goal to copy a JAR file
+# from a remote repository to a local directory.
 #
 # @param groupId optional, the maven `groupId`,
 # @param artifactId optional, the maven `artifactId`,
 # @param version optional, the maven version,
 # @param ... other maven coordinates such as classifier or packaging
 # @param coordinates optional, coordinates as a coordinates object,
-# @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
-# @param repoUrl the URLs of the repositories to check (defaults to maven central, `Sonatype snaphots` and `jitpack`)
+# @param artifact optional, coordinates as an artifact string
+#   `groupId:artifactId:version[:packaging[:classifier]]` string
+# @param repoUrl the URLs of the repositories to check (defaults to maven
+#   central, `Sonatype snaphots` and `jitpack`)
 # @param outputDirectory optional path, defaults to the `rmaven` cache directory
-# @param nocache normally artifacts are only fetched if required, `nocache` forces fetching
+# @param nocache normally artifacts are only fetched if required, `nocache`
+#   forces fetching
 # @param verbose how much output from maven, one of "normal", "quiet", "debug"
 .copy_artifact = function(
     groupId = NULL,
@@ -728,23 +797,34 @@
 
 # Resolve the `classpath` for an artifact
 #
-# This calculates the dependencies for an artifact which may be specified either as a set of maven coordinates (in which case the
-# artifact is downloaded, and included in the `classpath`) or as a path to a jar file containing a pom.xml (e.g. a compiled jar file,
-# a compiled jar-with-dependencies, or a assembled `...-src.jar`)
-# The resulting file paths which will be in the maven local cache are checked on the file system.
+# This calculates the dependencies for an artifact which may be specified either
+# as a set of maven coordinates (in which case the artifact is downloaded, and
+# included in the `classpath`) or as a path to a jar file containing a pom.xml
+# (e.g. a compiled jar file, a compiled jar-with-dependencies, or a assembled
+# `...-src.jar`) The resulting file paths which will be in the maven local cache
+# are checked on the file system.
 #
 # @param groupId the maven `groupId`, optional
 # @param artifactId the maven `artifactId`, optional
 # @param version the maven version, optional
 # @param ... passed on to as.coordinates()
-# @param coordinates the maven coordinates, optional (either `groupId`,`artifactId` and 'version' must be specified, or 'coordinates', or 'artifact')
-# @param artifact optional, coordinates as an artifact string `groupId:artifactId:version[:packaging[:classifier]]` string
-# @param path the path to the source directory, pom file or jar file. if not given `rmaven` will get the artifact from the maven central repositories
-# @param include_self do you want include this path in the `classpath`. optional, if missing the path will be included if it is a regular jar, or a fat jar, otherwise not.
-# @param nocache do not used cached version, by default we use a cached version of the `classpath` unless the `pom.xml` is newer that the cached `classpath`.
+# @param coordinates the maven coordinates, optional (either
+#   `groupId`,`artifactId` and 'version' must be specified, or 'coordinates', or
+#   'artifact')
+# @param artifact optional, coordinates as an artifact string
+#   `groupId:artifactId:version[:packaging[:classifier]]` string
+# @param path the path to the source directory, pom file or jar file. if not
+#   given `rmaven` will get the artifact from the maven central repositories
+# @param include_self do you want include this path in the `classpath`.
+#   optional, if missing the path will be included if it is a regular jar, or a
+#   fat jar, otherwise not.
+# @param nocache do not used cached version, by default we use a cached version
+#   of the `classpath` unless the `pom.xml` is newer that the cached
+#   `classpath`.
 # @param verbose how much output from maven, one of "normal", "quiet", "debug"
 #
-# @return a character vector of the `classpath` jar files (including the current one if appropriate)
+# @return a character vector of the `classpath` jar files (including the current
+#   one if appropriate)
 .resolve_dependencies = function(
     groupId = NULL,
     artifactId = NULL,
@@ -852,7 +932,10 @@
 
 }
 
-.do_compile = function(goal, opts, path, classifier = NULL, nocache = FALSE, verbose = c("normal", "quiet", "debug"), ...) {
+.do_compile = function(
+  goal, opts, path, classifier = NULL, nocache = FALSE,
+  verbose = c("normal", "quiet", "debug"), ...
+) {
 
   verbose = match.arg(verbose)
 
@@ -897,16 +980,29 @@
 
 # Compile and package Java code
 #
-# Compilation will package the Java source code in to a Jar file for further use. It will resolve dependencies and
-# optionally package them into a single `uber jar` (using maven assembly).
+# Compilation will package the Java source code in to a Jar file for further
+# use. It will resolve dependencies and optionally package them into a single
+# `uber jar` (using maven assembly).
 #
-# @param path the path to - either a java source code directory containing a `pom.xml` file, the `pom.xml` file itself, or a `...-src.jar` assembled by the maven assembly plugin,
-# @param nocache normally compilation is only performed if the input has changed. `nocache` forces recompilation
+# @param path the path to - either a java source code directory containing a
+#   `pom.xml` file, the `pom.xml` file itself, or a `...-src.jar` assembled by
+#   the maven assembly plugin,
+# @param nocache normally compilation is only performed if the input has
+#   changed. `nocache` forces recompilation
 # @param verbose how much output from maven, one of "normal", "quiet", "debug"
-# @param with_dependencies compile the Java code to a '...-jar-with-dependencies.jar' including transitive dependencies which may be easier to embed into R code
-# as does not need a class path (however may be large if there are a lot of dependencies)
-# @param ... passed to `execute_maven(...)`, e.g. could include `settings` parameter
-.compile_jar = function(path, nocache = FALSE, verbose = c("normal", "quiet", "debug"), with_dependencies = FALSE, ...) {
+# @param with_dependencies compile the Java code to a
+#   '...-jar-with-dependencies.jar' including transitive dependencies which may
+#   be easier to embed into R code as does not need a class path (however may be
+#   large if there are a lot of dependencies)
+# @param ... passed to `execute_maven(...)`, e.g. could include `settings`
+#   parameter
+.compile_jar = function(
+  path,
+  nocache = FALSE,
+  verbose = c("normal", "quiet", "debug"),
+  with_dependencies = FALSE,
+  ...
+) {
 
   verbose = match.arg(verbose)
 
