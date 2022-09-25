@@ -15,3 +15,21 @@
 * options documentation.
 * rmaven cache clear in getting stared vignette. 
 * default verbosity level reduced to "quiet" as potential to be used as an end user tool than a developer tool.
+
+# rmaven 0.1.2
+
+* Addressed CRAN regression 
+* Improved documentation
+* Changed defaults around verbose output plus removed downloading messages
+by default
+* Re-organised to allow backend to be embedded without relying on CRAN.
+* Deployed to 'r-universe'
+
+# rmaven 0.1.3
+
+* Explicit documentation for embedding.
+* Fixes for empty or non functional JAVA_HOME specification as ween on windows
+hosts with multiarch setup.
+* TODO: identify JAVA_HOME in mulitarch systems
+* TODO: search for artifact pom in multiple jars
+
