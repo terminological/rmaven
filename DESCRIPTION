@@ -1,6 +1,6 @@
 Package: rmaven
 Title: Run Java Build Tool Maven from R
-Version: 0.1.2
+Version: 0.1.2.9000
 Authors@R: 
     person("Robert", "Challen", , "rob@terminological.co.uk", 
         role = c("aut", "cre"),

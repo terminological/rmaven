@@ -25,7 +25,7 @@ by default
 * Re-organised to allow backend to be embedded without relying on CRAN.
 * Deployed to 'r-universe'
 
-# rmaven 0.1.3
+# rmaven 0.1.2.9000
 
 * Explicit documentation for embedding.
 * Fixes for empty or non functional JAVA_HOME specification as ween on windows
