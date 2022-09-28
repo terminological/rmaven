@@ -80,8 +80,12 @@
 <h2 class="page-header" data-toc-text="0.1.2.9000" id="rmaven-0129000">rmaven 0.1.2.9000<a class="anchor" aria-label="anchor" href="#rmaven-0129000"></a></h2>
 <ul><li>Explicit documentation for embedding.</li>
 <li>Fixes for empty or non functional JAVA_HOME specification as ween on windows hosts with multiarch setup.</li>
-<li>TODO: identify JAVA_HOME in mulitarch systems</li>
+<li>TODO: identify JAVA_HOME in mulitarch systems (?utils::readRegistry)</li>
+<li>HKEY_LOCAL_MACHINE but when running on 64-bit versions of windows, the value is under</li>
+<li>HKEY_LOCAL_MACHINE6432Node. But my application still looks for a value in</li>
+<li>HKEY_LOCAL_MACHINE<br></li>
 <li>TODO: search for artifact pom in multiple jars</li>
+<li>readlink -f /usr/bin/java</li>
 </ul></div>
   </div>
 
