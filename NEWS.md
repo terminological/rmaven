@@ -30,6 +30,9 @@ by default
 * Explicit documentation for embedding.
 * Fixes for empty or non functional JAVA_HOME specification as ween on windows
 hosts with multiarch setup.
-* TODO: identify JAVA_HOME in mulitarch systems
+* TODO: identify JAVA_HOME in mulitarch systems (?utils::readRegistry)
+* HKEY_LOCAL_MACHINE\Software\MyApp\ but when running on 64-bit versions of windows, the value is under 
+* HKEY_LOCAL_MACHINE\Software\Wow6432Node\MyApp. But my application still looks for a value in 
+* HKEY_LOCAL_MACHINE\Software\MyApp\
 * TODO: search for artifact pom in multiple jars
-
+* readlink -f /usr/bin/java

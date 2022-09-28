@@ -1,0 +1,11 @@
+c(
+	bibentry(bibtype = "Manual",
+		title = "rmaven: Run Java Build Tool Maven from R",
+		year = 2022,
+		note = "R package version 0.1.2.9000",
+		url = "https://terminological.github.io/rmaven/",
+		doi = "https://doi.org/10.5281/zenodo.7081467",
+		author = c(
+			person(given = "Rob",family = "Challen",email = "rob.challen@bristol.ac.uk",comment = structure("0000-0002-5504-7768", .Names = "ORCID"),role = c("aut", "cre"))		)
+	)
+)
