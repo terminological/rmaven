@@ -114,6 +114,7 @@ passed straight to <code>rJava</code>, otherwise an additional
 <span class="r-in"><span><span class="co"># download a lot of plugins, especially on first run</span></span></span>
 <span class="r-in"><span><span class="va">path</span> <span class="op">=</span> <span class="fu"><a href="package_jars.html">package_jars</a></span><span class="op">(</span><span class="st">"rmaven"</span>,<span class="st">"src"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">compile_jar</span><span class="op">(</span><span class="va">path</span>,nocache<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Compiling Java library, please be patient.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Scanning for projects...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO]                                                                         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
@@ -153,13 +154,14 @@ passed straight to <code>rJava</code>, otherwise an additional
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] BUILD SUCCESS</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Total time: 10.585 s</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Finished at: 2022-09-28T22:16:24+00:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Total time: 7.735 s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Finished at: 2022-10-06T16:06:11+00:00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Final Memory: 23M/80M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> /home/runner/.cache/rmaven/org.example_test-project_0.0.1-SNAPSHOT_jar_src/test-project-0.0.1-SNAPSHOT/target/test-project-0.0.1-SNAPSHOT.jar</span>
 <span class="r-in"><span><span class="va">path2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testdata/test-project"</span>,package <span class="op">=</span> <span class="st">"rmaven"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">compile_jar</span><span class="op">(</span><span class="va">path2</span>,nocache<span class="op">=</span><span class="cn">TRUE</span>,with_dependencies<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Compiling Java library, please be patient.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Scanning for projects...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO]                                                                         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
@@ -203,8 +205,8 @@ passed straight to <code>rJava</code>, otherwise an additional
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] BUILD SUCCESS</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Total time: 2.540 s</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Finished at: 2022-09-28T22:16:28+00:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Total time: 2.281 s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Finished at: 2022-10-06T16:06:14+00:00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Final Memory: 15M/54M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> /home/runner/.cache/rmaven/org.example_test-project_0.0.1-SNAPSHOT/test-project-0.0.1-SNAPSHOT/target/test-project-0.0.1-SNAPSHOT-jar-with-dependencies.jar</span>
