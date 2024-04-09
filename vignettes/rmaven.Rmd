@@ -142,7 +142,7 @@ fs::dir_tree(source_directory, invert=TRUE, glob = "*/target/*")
 
 ## Step 1: compile the jar
 
-We use `rmaven` to compile the java source code. This could possibly be done in
+We use `rmaven` to compile the Java source code. This could possibly be done in
 an `.onLoad()` package function, if you were developing a package which includes
 Java source code:
 

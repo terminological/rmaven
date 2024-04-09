@@ -67,3 +67,6 @@ jobs:
         with:
           args: 'c("--no-manual", "--no-multiarch", "--as-cran")'
           upload-snapshots: true
+
+      - name: Check userspace not affects
+        run: if test -d ~/.m2; then echo "Userspace contains .m2 directory from maven"; exit 1; fi

@@ -25,11 +25,16 @@ by default
 * Re-organised to allow backend to be embedded without relying on CRAN.
 * Deployed to 'r-universe'
 
-# rmaven 0.1.2.9000
+# rmaven 0.1.3
 
 * Explicit documentation for embedding.
-* Fixes for empty or non functional JAVA_HOME specification as ween on windows
+* Fixes for empty or non functional JAVA_HOME specification as seen on windows
 hosts with multiarch setup.
+* Fix maven wrapper auto download to `~/.m2` rather than configured cache 
+location
+
+# rmaven 0.1.3.9000
+
 * TODO: identify JAVA_HOME in mulitarch systems (?utils::readRegistry)
 * HKEY_LOCAL_MACHINE\Software\MyApp\ but when running on 64-bit versions of windows, the value is under 
 * HKEY_LOCAL_MACHINE\Software\Wow6432Node\MyApp. But my application still looks for a value in 
