@@ -23,7 +23,7 @@ will default to ~/.cache/rmaven/.m2/repository/"><!-- mathjax --><script src="ht
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rmaven</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -53,7 +53,7 @@ will default to ~/.cache/rmaven/.m2/repository/"><!-- mathjax --><script src="ht
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Sets the local maven repository location</h1>
-    <small class="dont-index">Source: <a href="https://github.com/terminological/rmaven/blob/HEAD/R/cran-interface.R" class="external-link"><code>R/cran-interface.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/terminological/rmaven/blob/HEAD/R/zz-cran-interface.R" class="external-link"><code>R/zz-cran-interface.R</code></a></small>
     <div class="hidden name"><code>set_repository_location.Rd</code></div>
     </div>
 
@@ -69,8 +69,8 @@ will default to <code>~/.cache/rmaven/.m2/repository/</code></p>
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">set_repository_location</span><span class="op">(</span></span>
-<span>  repository_location <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"rmaven.m2.repository"</span>, default <span class="op">=</span></span>
-<span>    <span class="fu">.working_dir</span><span class="op">(</span>subpath <span class="op">=</span> <span class="st">".m2/repository/"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  repository_location <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"rmaven.m2.repository"</span>, default <span class="op">=</span> <span class="fu">.working_dir</span><span class="op">(</span>subpath</span>
+<span>    <span class="op">=</span> <span class="st">".m2/repository/"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  settings_path <span class="op">=</span> <span class="fu">.settings_path</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -92,14 +92,14 @@ the supplied default is what you want to use)</p></dd>
     <h2>Value</h2>
     
 
-<p>the new repository location (expanded)</p>
+<p>the expanded path of the new repository location</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Setting the repository to be a temp dir as an example:</span></span></span>
 <span class="r-in"><span><span class="fu">set_repository_location</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"/.m2/repository"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> /tmp/RtmphPnFb2/.m2/repository</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> /tmp/RtmpaPLCfU/.m2/repository</span>
 <span class="r-in"><span><span class="co"># you would never want to do this in real life as then the maven repository</span></span></span>
 <span class="r-in"><span><span class="co"># would be rebuilt on every new R session.</span></span></span>
 <span class="r-in"><span></span></span>
@@ -125,7 +125,7 @@ the supplied default is what you want to use)</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

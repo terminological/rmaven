@@ -20,7 +20,7 @@ compilation) require the use of a JDK.'><!-- mathjax --><script src="https://cdn
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rmaven</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -50,7 +50,7 @@ compilation) require the use of a JDK.'><!-- mathjax --><script src="https://cdn
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Executes a maven goal</h1>
-    <small class="dont-index">Source: <a href="https://github.com/terminological/rmaven/blob/HEAD/R/cran-interface.R" class="external-link"><code>R/cran-interface.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/terminological/rmaven/blob/HEAD/R/zz-cran-interface.R" class="external-link"><code>R/zz-cran-interface.R</code></a></small>
     <div class="hidden name"><code>execute_maven.Rd</code></div>
     </div>
 
@@ -162,48 +162,49 @@ form <code>-Dname=value</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.vm.specification.version=11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sun.java.launcher=SUN_STANDARD</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sun.boot.library.path=/usr/lib/jvm/temurin-11-jdk-amd64/lib</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sun.java.command=org.apache.maven.wrapper.MavenWrapperMain help:system -B -s /tmp/RtmphPnFb2/rmaven/settings.xml -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sun.java.command=org.apache.maven.wrapper.MavenWrapperMain help:system -B -s /tmp/RtmpaPLCfU/rmaven/settings.xml -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> jdk.debug=release</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> maven.home=/home/runner/.m2/wrapper/dists/apache-maven-3.3.9-bin/6d5080f4/apache-maven-3.3.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> maven.home=/home/runner/.cache/rmaven/.m2/wrapper/dists/apache-maven-3.3.9-bin/6d5080f4/apache-maven-3.3.9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sun.cpu.endian=little</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> user.home=/home/runner</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> user.language=en</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.specification.vendor=Oracle Corporation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> java.version.date=2022-08-12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> java.version.date=2024-01-16</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.home=/usr/lib/jvm/temurin-11-jdk-amd64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> file.separator=/</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> java.vm.compressedOopsMode=32-bit</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> java.vm.compressedOopsMode=Zero based</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> line.separator=</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.specification.name=Java Platform API Specification</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.vm.specification.vendor=Oracle Corporation</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sun.management.compiler=HotSpot 64-Bit Tiered Compilers</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> java.runtime.version=11.0.16.1+1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> java.runtime.version=11.0.22+7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> user.name=runner</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> org.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> path.separator=:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> securerandom.source=file:/dev/./urandom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> os.version=5.15.0-1020-azure</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> os.version=6.5.0-1017-azure</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.runtime.name=OpenJDK Runtime Environment</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> file.encoding=UTF-8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> guice.disable.misplaced.annotation.check=true</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.vm.name=OpenJDK 64-Bit Server VM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> java.vendor.version=Temurin-11.0.16.1+1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> java.vendor.version=Temurin-11.0.22+7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.vendor.url.bug=https://github.com/adoptium/adoptium-support/issues</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.io.tmpdir=/tmp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> java.version=11.0.16.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> java.version=11.0.22</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> user.dir=/home/runner/.cache/rmaven</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> os.arch=amd64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> maven.multiModuleProjectDirectory=/home/runner/.cache/rmaven</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.vm.specification.name=Java Virtual Machine Specification</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.awt.printerjob=sun.print.PSPrinterJob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sun.os.patch.level=unknown</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> java.library.path=/usr/lib/jvm/temurin-11-jdk-amd64/lib/server:/usr/lib/jvm/temurin-11-jdk-amd64/lib:/usr/lib/jvm/temurin-11-jdk-amd64/../lib:/opt/R/4.2.1/lib/R/lib:/usr/local/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/temurin-11-jdk-amd64/lib/server:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> java.library.path=/usr/lib/jvm/temurin-11-jdk-amd64/lib/server:/usr/lib/jvm/temurin-11-jdk-amd64/lib:/usr/lib/jvm/temurin-11-jdk-amd64/../lib:/opt/R/4.3.3/lib/R/lib:/usr/local/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/temurin-11-jdk-amd64/lib/server:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.vm.info=mixed mode</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.vendor=Eclipse Adoptium</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> java.vm.version=11.0.16.1+1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> classworlds.conf=/home/runner/.m2/wrapper/dists/apache-maven-3.3.9-bin/6d5080f4/apache-maven-3.3.9/bin/m2.conf</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> java.vm.version=11.0.22+7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> java.specification.maintenance.version=2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> classworlds.conf=/home/runner/.cache/rmaven/.m2/wrapper/dists/apache-maven-3.3.9-bin/6d5080f4/apache-maven-3.3.9/bin/m2.conf</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sun.io.unicode.encoding=UnicodeLittle</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> java.class.version=55.0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -211,36 +212,41 @@ form <code>-Dname=value</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Environment Variables</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ===============================================================================</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PATH=/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PATH=/opt/hostedtoolcache/pandoc/3.1.11/x64:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_REPOSITORY_OWNER=terminological</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SWIFT_PATH=/usr/share/swift/usr/bin</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SGX_AESM_ADDR=1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_STRIP_SHARED_LIB=strip --strip-unneeded</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CHROMEWEBDRIVER=/usr/local/share/chrome_driver</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_REPOSITORY_ID=525325654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CHROMEWEBDRIVER=/usr/local/share/chromedriver-linux64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_UNZIPCMD=/usr/bin/unzip</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_USER=runner</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RUN_NUMBER=40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RUN_NUMBER=41</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_HOME=/usr/local/lib/android/sdk</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RETENTION_DAYS=90</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_WORKSPACE=/home/runner/work/rmaven/rmaven</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RETENTION_DAYS=90</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_API_URL=https://api.github.com</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LD_LIBRARY_PATH=/usr/lib/jvm/temurin-11-jdk-amd64/lib/server:/usr/lib/jvm/temurin-11-jdk-amd64/lib:/usr/lib/jvm/temurin-11-jdk-amd64/../lib:/opt/R/4.2.1/lib/R/lib:/usr/local/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/temurin-11-jdk-amd64/lib/server</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LD_LIBRARY_PATH=/usr/lib/jvm/temurin-11-jdk-amd64/lib/server:/usr/lib/jvm/temurin-11-jdk-amd64/lib:/usr/lib/jvm/temurin-11-jdk-amd64/../lib:/opt/R/4.3.3/lib/R/lib:/usr/local/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/temurin-11-jdk-amd64/lib/server</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RUN_ATTEMPT=1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PWD=/home/runner/.cache/rmaven</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_JOB=pkgdown</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ACTIONS=true</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_V3PS=true</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LANGUAGE=en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R_SHARE_DIR=/opt/R/4.3.3/lib/R/share</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DOTNET_MULTILEVEL_LOOKUP=0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R_SHARE_DIR=/opt/R/4.2.1/lib/R/share</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=3650</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_RDCL=true</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> _R_CHECK_SYSTEM_CLOCK_=FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PAGER=/usr/bin/pager</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_NDK=/usr/local/lib/android/sdk/ndk/25.1.8937393</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GOROOT_1_18_X64=/opt/hostedtoolcache/go/1.18.6/x64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ENV=/home/runner/work/_temp/_runner_file_commands/set_env_b5614ba2-65ce-4170-8d4b-7a4e15a0c8ff</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GRAALVM_11_ROOT=/usr/local/graalvm/graalvm-ce-java11-22.2.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_ENVIRONMENT=github-hosted</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_NDK=/usr/local/lib/android/sdk/ndk/25.2.9519653</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ENV=/home/runner/work/_temp/_runner_file_commands/set_env_9c135810-326b-479e-83e4-db6a1029f441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_VMD=true</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_EVENT_PATH=/home/runner/work/_temp/_github_workflow/event.json</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SED=/usr/bin/sed</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_D=true</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ACTOR_ID=16591648</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_REF_TYPE=branch</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_PDFVIEWER=/usr/bin/xdg-open</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_TOOL_CACHE=/opt/hostedtoolcache</span>
@@ -251,40 +257,43 @@ form <code>-Dname=value</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_ZIPCMD=/usr/bin/zip</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> JAVA_HOME=/usr/lib/jvm/temurin-11-jdk-amd64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_REF=refs/heads/main</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_NAME=Hosted Agent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_NAME=GitHub Actions 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_STRIP_STATIC_LIB=strip --strip-debug</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> BOOTSTRAP_HASKELL_NONINTERACTIVE=1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GRADLE_HOME=/usr/share/gradle-7.5.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_TRP=true</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GRADLE_HOME=/usr/share/gradle-8.7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ANT_HOME=/usr/share/ant</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_SYSTEM_ABI=linux,gcc,gxx,gfortran,gfortran</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_OUTPUT=/home/runner/work/_temp/_runner_file_commands/set_output_b5614ba2-65ce-4170-8d4b-7a4e15a0c8ff</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_OUTPUT=/home/runner/work/_temp/_runner_file_commands/set_output_9c135810-326b-479e-83e4-db6a1029f441</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> JAVA_HOME_17_X64=/usr/lib/jvm/temurin-17-jdk-amd64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_STEP_SUMMARY=/home/runner/work/_temp/_runner_file_commands/step_summary_b5614ba2-65ce-4170-8d4b-7a4e15a0c8ff</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_STEP_SUMMARY=/home/runner/work/_temp/_runner_file_commands/step_summary_9c135810-326b-479e-83e4-db6a1029f441</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_REPOSITORY=terminological/rmaven</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ACTION_REF=</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GOROOT_1_21_X64=/opt/hostedtoolcache/go/1.21.9/x64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_BROWSER=xdg-open</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AZURE_EXTENSION_DIR=/opt/az/azcliextensions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_ARCH=</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> IN_PKGDOWN=true</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> CI=true</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LEIN_JAR=/usr/local/lib/lein/self-installs/leiningen-2.9.10-standalone.jar</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LEIN_JAR=/usr/local/lib/lein/self-installs/leiningen-2.11.2-standalone.jar</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> MAVEN_PROJECTBASEDIR=/home/runner/.cache/rmaven</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_ARCH=X64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_KEEPALIVE=false</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_SHA=064cccfcc6db90a60df449b7eb1b88cb7cfdcd19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ImageOS=ubuntu20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ImageVersion=20221002.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_UE=true</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_SHA=371fe79e17ee8cb60798855ab61ed878a1cfcc1c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ImageOS=ubuntu22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ImageVersion=20240407.1.0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ACCEPT_EULA=Y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_PAT=ghs_DzRKnYLAamvI7HeHM9zGqnipf6j0911aMsv4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_VMFE=true</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_PAT=ghs_6z1OVCbAsdsluE3KJ4fTX1r72TVlMi2odeC9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_PERFLOG=/home/runner/perflog</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R_INCLUDE_DIR=/opt/R/4.2.1/lib/R/include</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R_INCLUDE_DIR=/opt/R/4.3.3/lib/R/include</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PERFLOG_LOCATION_SETTING=RUNNER_PERFLOG</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R_SESSION_TMPDIR=/tmp/RtmphPnFb2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_TRACKING_ID=github_8990c166-536f-431d-a25e-457b4dee987f</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R_SESSION_TMPDIR=/tmp/RtmpaPLCfU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_TRACKING_ID=github_f75cd97c-8ea2-4160-b420-5f49a8506478</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_WORKSPACE=/home/runner/work/rmaven</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_GZIPCMD=/usr/bin/gzip</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> INVOCATION_ID=6caea123598648938ae827c91d8c594b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> INVOCATION_ID=1f712ac1504f48a886e1e6b7ff70dc15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TAR=/usr/bin/tar</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TZ=UTC</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_REF_PROTECTED=false</span>
@@ -296,51 +305,61 @@ form <code>-Dname=value</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_PLATFORM=x86_64-pc-linux-gnu</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_BASE_REF=</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PIPX_HOME=/opt/pipx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> JOURNAL_STREAM=8:22870</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R_DOC_DIR=/opt/R/4.2.1/lib/R/doc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> JOURNAL_STREAM=8:17309</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_WORKFLOW_SHA=371fe79e17ee8cb60798855ab61ed878a1cfcc1c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R_DOC_DIR=/opt/R/4.3.3/lib/R/doc</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LC_COLLATE=C</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_PATH=/home/runner/work/_temp/_runner_file_commands/add_path_b5614ba2-65ce-4170-8d4b-7a4e15a0c8ff</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_PATH=/home/runner/work/_temp/_runner_file_commands/add_path_9c135810-326b-479e-83e4-db6a1029f441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ACTIONS_RUNNER_ACTION_ARCHIVE_CACHE=/opt/actionarchivecache</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_EVENT_NAME=push</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_TRIGGERING_ACTOR=robchallen</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> CHROME_BIN=/usr/bin/google-chrome</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GOROOT_1_17_X64=/opt/hostedtoolcache/go/1.17.13/x64</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RENV_CONFIG_REPOS_OVERRIDE=https://packagemanager.posit.co/cran/__linux__/jammy/latest</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_NDK_HOME=/usr/local/lib/android/sdk/ndk/25.1.8937393</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_NDK_ROOT=/usr/local/lib/android/sdk/ndk/25.1.8937393</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_NDK_HOME=/usr/local/lib/android/sdk/ndk/25.2.9519653</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_NDK_ROOT=/usr/local/lib/android/sdk/ndk/25.2.9519653</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> VCPKG_INSTALLATION_ROOT=/usr/local/share/vcpkg</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_GRAPHQL_URL=https://api.github.com/graphql</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_PAPERSIZE=letter</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> VCPKG_ROOT=/usr/local/share/vcpkg</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> JAVA_HOME_21_X64=/usr/lib/jvm/temurin-21-jdk-amd64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RUNNER_OS=Linux</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NOT_CRAN=true</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DOTNET_NOLOGO=1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DEBIAN_FRONTEND=noninteractive</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PKGCACHE_HTTP_VERSION=2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_WORKFLOW_REF=terminological/rmaven/.github/workflows/pkgdown.yaml@refs/heads/main</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_PRINTCMD=/usr/bin/lpr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ACTION=__run</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> POWERSHELL_DISTRIBUTION_CHANNEL=GitHub-Actions-ubuntu20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> POWERSHELL_DISTRIBUTION_CHANNEL=GitHub-Actions-ubuntu22</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ACTOR=robchallen</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GOROOT_1_19_X64=/opt/hostedtoolcache/go/1.19.1/x64</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SYSTEMD_EXEC_PID=590</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PIPX_BIN_DIR=/opt/pipx_bin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_PFS=true</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R_LIBS_SITE=/opt/R/4.2.1/lib/R/site-library</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R_LIBS_SITE=/opt/R/4.3.3/lib/R/site-library</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MAVEN_USER_HOME=/home/runner/.cache/rmaven/.m2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GECKOWEBDRIVER=/usr/local/share/gecko_driver</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GOROOT_1_22_X64=/opt/hostedtoolcache/go/1.22.2/x64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> JAVA_HOME_8_X64=/usr/lib/jvm/temurin-8-jdk-amd64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> MAKE=make</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LANG=C.UTF-8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RSPM=https://packagemanager.rstudio.com/all/__linux__/focal/latest</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_REPOSITORY_OWNER_ID=16591656</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_D_D=true</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_EXTP=https://provjobdsettingscdn.blob.core.windows.net/settings/provjobdsettings-0.5.172+1/provjobd.data</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RSPM=https://packagemanager.posit.co/cran/__linux__/jammy/latest</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GHCUP_INSTALL_BASE_PREFIX=/usr/local</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> R_BZIPCMD=/usr/bin/bzip2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_STATE=/home/runner/work/_temp/_runner_file_commands/save_state_b5614ba2-65ce-4170-8d4b-7a4e15a0c8ff</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MAVEN_CMD_LINE_ARGS= help:system -B -s /tmp/RtmphPnFb2/rmaven/settings.xml -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> STATS_EXT=true</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_STATE=/home/runner/work/_temp/_runner_file_commands/save_state_9c135810-326b-479e-83e4-db6a1029f441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MAVEN_CMD_LINE_ARGS= help:system -B -s /tmp/RtmpaPLCfU/rmaven/settings.xml -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_REF_NAME=main</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NVM_DIR=/home/runner/.nvm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_NDK_LATEST_HOME=/usr/local/lib/android/sdk/ndk/25.1.8937393</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_NDK_LATEST_HOME=/usr/local/lib/android/sdk/ndk/26.2.11394342</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DEPLOYMENT_BASEPATH=/opt/runner</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R_HOME=/opt/R/4.2.1/lib/R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R_HOME=/opt/R/4.3.3/lib/R</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> HOMEBREW_NO_AUTO_UPDATE=1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_ACTION_REPOSITORY=</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ANDROID_SDK_ROOT=/usr/local/lib/android/sdk</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RUN_ID=3198676685</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GITHUB_RUN_ID=8618695952</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GOROOT_1_20_X64=/opt/hostedtoolcache/go/1.20.14/x64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> USER=runner</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> XDG_CONFIG_HOME=/home/runner/.config</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> EDITOR=vi</span>
@@ -351,13 +370,14 @@ form <code>-Dname=value</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> JAVA_HOME_11_X64=/usr/lib/jvm/temurin-11-jdk-amd64</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> XDG_RUNTIME_DIR=/run/user/1001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> HOME=/home/runner</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R_LIB_FOR_PAK=/opt/R/4.3.3/lib/R/site-library</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] BUILD SUCCESS</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Total time: 3.441 s</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Finished at: 2022-10-06T16:06:27+00:00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Final Memory: 13M/50M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Total time: 2.102 s</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Finished at: 2024-04-09T15:58:44+00:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] Final Memory: 14M/54M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [INFO] ------------------------------------------------------------------------</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
@@ -374,7 +394,7 @@ form <code>-Dname=value</code></p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
