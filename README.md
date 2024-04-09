@@ -61,7 +61,7 @@ rJava::.jaddClassPath(dynamic_classpath)
 # step 3
 StringUtils = rJava::J("org.apache.commons.lang3.StringUtils")
 
-# step 4devtoo
+# step 4
 StringUtils$rotate("ABCDEF",3L)
 ```
 
