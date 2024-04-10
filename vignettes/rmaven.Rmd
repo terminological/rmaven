@@ -59,6 +59,9 @@ from the Maven repositories. The artifact coordinates (i.e. `groupId`,
 internet. Maven manages bootstrapping the download of libraries.
 
 ```{r}
+
+options("rmaven.debug"=TRUE)
+
 # cache apache commons lang3 
 dynamic_classpath = resolve_dependencies(
   groupId = "org.apache.commons", 
