@@ -60,18 +60,17 @@ internet. Maven manages bootstrapping the download of libraries.
 
 ```{r}
 
-options("rmaven.debug"=TRUE)
-
 # cache apache commons lang3 
 dynamic_classpath = resolve_dependencies(
   groupId = "org.apache.commons", 
   artifactId = "commons-lang3", 
-  version="3.12.0"
+  version="3.12.0",
+  verbose="debug"
 )
 
 sprintf("Locally cached classpath of commons-lang3: %s",dynamic_classpath)
 
-# to get the one jar file many others are donloaded and cached as part of
+# to get the one jar file many others are downloaded and cached as part of
 # bootstrapping the Java build tools
 sprintf("Jar files found in repository: %1.0f", 
         fs::dir_ls(get_repository_location(),recurse = TRUE,glob="*.jar") %>% length())

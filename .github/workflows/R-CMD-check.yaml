@@ -20,12 +20,11 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          # - {os: ubuntu-latest, r: 'release', java: 11, distribution: zulu}
-          # - {os: macOS-latest, r: 'release', java: 11, distribution: zulu}
+          - {os: ubuntu-latest, r: 'release', java: 11, distribution: zulu}
+          - {os: macOS-latest, r: 'release', java: 11, distribution: zulu}
           - {os: windows-latest, r: 'release', java: 11, distribution: zulu}
-          # - {os: ubuntu-latest, r: 'oldrel-1', java: 8, distribution: zulu}
-          # - {os: ubuntu-latest, r: 'release', java: 17, distribution: zulu}
-          # - {os: ubuntu-latest, r: 'devel', java: 17, distribution: zulu, http-user-agent: 'release'}
+          - {os: ubuntu-latest, r: 'oldrel-1', java: 11, distribution: zulu}
+          - {os: ubuntu-latest, r: 'devel', java: 11, distribution: zulu, http-user-agent: 'release'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -68,5 +67,5 @@ jobs:
           args: 'c("--no-manual", "--no-multiarch", "--as-cran")'
           upload-snapshots: true
 
-      - name: Check userspace not affects
-        run: if test -d ~/.m2/wrapper; then echo "Userspace contains .m2 directory from maven"; exit 1; fi
+      - name: Check userspace not affected
+        run: Rscript -e 'if (fs::dir_exists(fs::path_home(".m2/wrapper"))) stop("WRAPPER DIRECTORY FOUND in ~/.m2")'

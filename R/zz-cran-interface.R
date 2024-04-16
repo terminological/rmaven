@@ -59,6 +59,17 @@ as.coordinates = .as.coordinates
 #' set_repository_location()
 set_repository_location = .set_repository_location
 
+#' @inherit .developer_mode
+#' @export
+#'
+#' @examples
+#' # set the repository location to the usual location for Java development
+#' # developer_mode()
+#'
+#' # We don't run this above example as it creates an empty directory in the
+#' # userspace and doing so in an example violates CRAN principles.
+developer_mode = .developer_mode
+
 
 #' @inherit .get_repository_location
 #' @export

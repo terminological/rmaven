@@ -21,8 +21,11 @@ debugging. The maven repository location can be defined by
 \code{.m2/repository} directory in the \code{rmaven} cache directory. This is not the
 default location for Maven when used from Java writing to the default Maven
 directory in user space is forbidden by CRAN policies. The result of this is
-that \code{rmaven} will have to unnecessarily download additional copies of java
+that \code{rmaven} will have to unnecessarily download additional copies of Java
 libraries, onto the users computer and cannot re-use already cached copies.
+Also Maven wont be able to pick up jar files locally installed through
+standard Java tooling, unless the default CRAN approved location is overridden
+using \code{set_repository_location("~/.m2/repository")}.
 This is more of an issue for developers rather than users.
 }
 \examples{

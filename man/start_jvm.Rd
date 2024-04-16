@@ -25,8 +25,7 @@ if a numeric - number of megabytes.}
 \item{thread_stack}{optional. sensible values range from '1m' to '128m' (max
 is '1g'). Can be important with deeply nested structures.}
 
-\item{...}{any other named parameters are passes as \code{-name} or \code{-name=value}
-if value is a character}
+\item{...}{any other named parameters are passed as \code{-name=value}}
 }
 \value{
 nothing - called for side effects

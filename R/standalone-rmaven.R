@@ -2,7 +2,7 @@
 # ---
 # repo: terminological/rmaven
 # file: standalone-rmaven.R
-# last-updated: 2024-04-09
+# last-updated: 2024-04-16
 # license: https://unlicense.org
 # imports:
 #   - rlang (>= 1.1.1)
@@ -100,8 +100,7 @@
 #'   if a numeric - number of megabytes.
 #' @param thread_stack optional. sensible values range from '1m' to '128m' (max
 #'   is '1g'). Can be important with deeply nested structures.
-#' @param ... any other named parameters are passes as `-name` or `-name=value`
-#'   if value is a character
+#' @param ... any other named parameters are passed as `-name=value`
 #'
 #' @return nothing - called for side effects
 #' @keywords internal
@@ -146,7 +145,7 @@
         rJava::.jinit(parameters=c(opts,"-Xdebug","-Xrunjdwp:transport=dt_socket,address=8998,server=y,suspend=n"), silent = TRUE, force.init = TRUE)
         if(!quiet) message("java debugging initialised on port 8998 with options: ",opts)
       } else {
-        rJava::.jinit(parameters=opts,silent = TRUE, force.init = FALSE)
+        utils::capture.output( rJava::.jinit(parameters=opts,silent = TRUE, force.init = FALSE ), file = nullfile())
       }
     } else {
       if(!quiet) warning("The JVM was already initialised when .start_jvm(...) was called. ",
@@ -160,15 +159,15 @@
 
 ## File functions ----
 
-#' Find location of all the jars in a particular package.
+#' Find location of some or all of the jars in a particular package.
 #'
 #' @param package_name the R package name
 #' @param types the jar types to look for in the package: one of
-#'   `all`,`thin-jar`,`fat-jar`,`src`
+#'   `all`,`thin-jar`,`fat-jar`,`shaded`,`src`
 #'
 #' @return a vector of paths to jar files in the package
 #' @keywords internal
-.package_jars = function(package_name, types = c("all","thin-jar","fat-jar","src")) {
+.package_jars = function(package_name, types = c("all","thin-jar","fat-jar","shaded","src")) {
   types = match.arg(types)
   pkgloc = system.file(package = package_name)
   if (pkgloc=="") stop("no package found for: ",package_name)
@@ -179,6 +178,8 @@
     return(.unclassified_jars_only(files))
   } else if (types == "fat-jar") {
     return(.classified_jars_only(files,"jar-with-dependencies"))
+  } else if (types == "shaded") {
+	  return(.classified_jars_only(files,"shaded"))
   } else if (types == "src") {
     return(.classified_jars_only(files,"src"))
   }
@@ -448,6 +449,30 @@
   return(repository_location)
 }
 
+
+#' Use the default Maven repository location
+#'
+#' It should be clear that running this function will affect files in the users
+#' filesystem.
+#'
+#' The default Maven directory is located in user space and writing to it is
+#' forbidden by CRAN policies. This plugin is set up to use a cache directory
+#' for the local Maven repository but if you are developing Java code and using
+#' it in R then your Java build tools will be installing content to the default
+#' Maven directory, and not the CRAN sanctioned cache. Thus `rmaven` wont by
+#' default be able to pick up jar files locally installed through standard Java
+#' tooling. This function sets the `rmaven` repository location to the Maven
+#' standard location allowing local jar files to be used. Obviously this is not
+#' portable until the Java packages are deployed to a Maven repository and is
+#' only an useful option during development.
+#'
+#' @return nothing. called for side effects
+#' @keywords internal
+.developer_mode = function() {
+  .set_repository_location(fs::path_home(".m2/repository"))
+  invisible(NULL)
+}
+
 #' Get the location of the Maven repository
 #'
 #' In general this function is mainly for internal use but maybe handy for
@@ -457,8 +482,11 @@
 #' `.m2/repository` directory in the `rmaven` cache directory. This is not the
 #' default location for Maven when used from Java writing to the default Maven
 #' directory in user space is forbidden by CRAN policies. The result of this is
-#' that `rmaven` will have to unnecessarily download additional copies of java
+#' that `rmaven` will have to unnecessarily download additional copies of Java
 #' libraries, onto the users computer and cannot re-use already cached copies.
+#' Also Maven wont be able to pick up jar files locally installed through
+#' standard Java tooling, unless the default CRAN approved location is overridden
+#' using `set_repository_location("~/.m2/repository")`.
 #' This is more of an issue for developers rather than users.
 #'
 #' @param settings_path the file path of the `settings.xml` to update (generally
