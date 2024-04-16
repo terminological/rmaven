@@ -3,7 +3,7 @@ pkgdown: 2.0.8
 pkgdown_sha: ~
 articles:
   rmaven: rmaven.html
-last_built: 2024-04-16T12:00Z
+last_built: 2024-04-16T12:19Z
 urls:
   reference: https://terminological.github.io/rmaven/reference
   article: https://terminological.github.io/rmaven/articles
