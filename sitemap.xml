@@ -37,6 +37,9 @@
     <loc>https://terminological.github.io/rmaven/reference/copy_artifact.html</loc>
   </url>
   <url>
+    <loc>https://terminological.github.io/rmaven/reference/developer_mode.html</loc>
+  </url>
+  <url>
     <loc>https://terminological.github.io/rmaven/reference/dot-as.coordinates.html</loc>
   </url>
   <url>
@@ -47,6 +50,9 @@
   </url>
   <url>
     <loc>https://terminological.github.io/rmaven/reference/dot-copy_artifact.html</loc>
+  </url>
+  <url>
+    <loc>https://terminological.github.io/rmaven/reference/dot-developer_mode.html</loc>
   </url>
   <url>
     <loc>https://terminological.github.io/rmaven/reference/dot-execute_maven.html</loc>
