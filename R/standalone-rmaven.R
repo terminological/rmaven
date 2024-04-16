@@ -605,21 +605,22 @@ manually by looking at: ",dir,"\n",sep="")
   verbose = match.arg(verbose)
   mvn_path = .load_maven_wrapper()
   named = rlang::dots_list(..., .homonyms = "error")
-  # the following is not used but calling it forces checking and creation of
-  # the file if missing.
+
+  # Set the location of the wrapper distribution
   repo_loc = .get_repository_location(settings_path = settings)
-  # filter out unnamed
-  # named = list(1,x=2,y="",z=NULL)
+  #named = c("maven.user.home"=sprintf("\"%s\"",fs::path_dir(repo_loc)),named)
+
+
   if (length(named) > 0) {
     named = named[!unlist(lapply(named, is.null))]
     named = named[unlist(named) != ""]
     named = named[names(named) != ""]
     opts2 = paste0("-D",names(named),"=",unlist(named))
   } else {
-    opts2 = NULL
+    opts2 = character()
   }
 
-  args = c(goal, opts, opts2,
+  args = c(goal, opts2, opts,
     "-B", # batch mode
     # user setting file location contains config to make sure the
     # local repository is set correctly.
@@ -651,12 +652,13 @@ manually by looking at: ",dir,"\n",sep="")
 
   args = unique(args)
   if (debug) message("executing: ",mvn_path," ",paste0(args,collapse=" "))
+  tmp_env = Sys.getenv("MAVEN_USER_HOME")
+  # prevents the maven wrapper installing itself in ~/.m2
+  Sys.setenv("MAVEN_USER_HOME"=fs::path_dir(repo_loc))
   out = system2(
-    mvn_path, args, stdout = TRUE,
-    # prevents the maven wrapper installing itself in ~/.m2
-
-    env = sprintf("MAVEN_USER_HOME=\"%s\"",fs::path_dir(repo_loc))
+    mvn_path, args, stdout = TRUE
   )
+  Sys.setenv("MAVEN_USER_HOME"=tmp_env)
   if (!quiet) cat(paste0(c(out,""),collapse="\n"))
   setwd(wd)
   invisible(NULL)
