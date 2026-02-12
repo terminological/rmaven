@@ -55,6 +55,6 @@ compilation) require the use of a \code{JDK}.
 \donttest{
 # This code can take quite a while to run as has to
 # download a lot of plugins, especially on first run on a clean system
-execute_maven("help:system")
+execute_maven("help:help")
 }
 }

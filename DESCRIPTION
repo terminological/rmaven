@@ -32,5 +32,5 @@ URL: https://terminological.github.io/rmaven,
     https://github.com/terminological/rmaven
 VignetteBuilder: knitr
 Language: en-US
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3.9007
 BugReports: https://github.com/terminological/rmaven/issues
