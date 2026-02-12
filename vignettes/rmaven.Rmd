@@ -65,7 +65,7 @@ dynamic_classpath = resolve_dependencies(
   groupId = "org.apache.commons", 
   artifactId = "commons-lang3", 
   version="3.12.0",
-  verbose="debug"
+  verbose="quiet"
 )
 
 sprintf("Locally cached classpath of commons-lang3: %s",dynamic_classpath)
@@ -255,7 +255,7 @@ options("rmaven.allow.cache.delete"=TRUE)
 
 ```{r}
 # Here we execute a maven help goal
-execute_maven("help:system")
+execute_maven("help:help")
 
 ```
 

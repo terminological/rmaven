@@ -33,7 +33,11 @@ hosts with multiarch setup.
 * Fix maven wrapper auto download to `~/.m2` rather than configured cache 
 location
 
-# rmaven 0.1.3.9000
+# rmaven 0.1.4
+
+* Examples fixes
+
+# rmaven 0.1.4.9000
 
 * TODO: identify JAVA_HOME in multiarch systems (?utils::readRegistry)
 * HKEY_LOCAL_MACHINE\Software\MyApp\ but when running on 64-bit versions of windows, the value is under 
