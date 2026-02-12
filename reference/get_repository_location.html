@@ -59,7 +59,7 @@ This is more of an issue for developers rather than users.'><!-- mathjax --><scr
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get the location of the Maven repository</h1>
-    <small class="dont-index">Source: <a href="https://github.com/terminological/rmaven/blob/main/R/zz-cran-interface.R" class="external-link"><code>R/zz-cran-interface.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/terminological/rmaven/blob/0.1.4/R/zz-cran-interface.R" class="external-link"><code>R/zz-cran-interface.R</code></a></small>
     <div class="hidden name"><code>get_repository_location.Rd</code></div>
     </div>
 
@@ -105,9 +105,9 @@ the supplied default is what you want to use)</p></dd>
 <span class="r-in"><span><span class="co"># change the location to the Java default. This change will not persist between sessions.</span></span></span>
 <span class="r-in"><span><span class="va">opt</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span><span class="st">"rmaven.m2.repository"</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"/.m2/repository/"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="set_repository_location.html">set_repository_location</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> /tmp/RtmpmVjNQL/.m2/repository</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> /tmp/Rtmp6N3Ds7/.m2/repository</span>
 <span class="r-in"><span><span class="fu">get_repository_location</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> /tmp/RtmpmVjNQL/.m2/repository</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> /tmp/Rtmp6N3Ds7/.m2/repository</span>
 <span class="r-in"><span><span class="co"># revert to rmaven defaults</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span><span class="va">opt</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="set_repository_location.html">set_repository_location</a></span><span class="op">(</span><span class="op">)</span></span></span>
