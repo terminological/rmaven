@@ -21,7 +21,6 @@ start_jvm = .start_jvm
 package_jars = .package_jars
 
 
-
 #' @inherit .print.coordinates
 #'
 #' @return nothing. for side effects.
@@ -107,7 +106,7 @@ clear_rmaven_cache = .clear_rmaven_cache
 #' \donttest{
 #' # This code can take quite a while to run as has to
 #' # download a lot of plugins, especially on first run on a clean system
-#' execute_maven("help:system")
+#' execute_maven("help:help")
 #' }
 execute_maven = .execute_maven
 
