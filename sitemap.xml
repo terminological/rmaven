@@ -1,111 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://terminological.github.io/rmaven/404.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/articles/rmaven.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/index.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/as.coordinates.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/clear_rmaven_cache.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/compile_jar.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/copy_artifact.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/developer_mode.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-as.coordinates.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-clear_rmaven_cache.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-compile_jar.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-copy_artifact.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-developer_mode.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-execute_maven.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-fetch_artifact.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-get_repository_location.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-package_jars.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-print.coordinates.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-resolve_dependencies.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-set_repository_location.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/dot-start_jvm.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/execute_maven.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/fetch_artifact.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/get_repository_location.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/package_jars.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/print.coordinates.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/resolve_dependencies.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/set_repository_location.html</loc>
-  </url>
-  <url>
-    <loc>https://terminological.github.io/rmaven/reference/start_jvm.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://terminological.github.io/rmaven/404.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/LICENSE-text.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/LICENSE.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/articles/index.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/articles/rmaven.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/authors.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/index.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/news/index.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/as.coordinates.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/clear_rmaven_cache.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/compile_jar.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/copy_artifact.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/developer_mode.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-as.coordinates.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-clear_rmaven_cache.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-compile_jar.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-copy_artifact.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-developer_mode.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-execute_maven.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-fetch_artifact.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-get_repository_location.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-package_jars.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-print.coordinates.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-resolve_dependencies.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-set_repository_location.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/dot-start_jvm.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/execute_maven.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/fetch_artifact.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/get_repository_location.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/index.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/package_jars.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/pipe.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/print.coordinates.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/resolve_dependencies.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/set_repository_location.html</loc></url>
+<url><loc>https://terminological.github.io/rmaven/reference/start_jvm.html</loc></url>
 </urlset>
+
